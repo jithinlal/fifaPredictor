@@ -11,8 +11,10 @@
 					<div class="list-group">
 						@foreach ($matches as $match)
 							@if($match->home_team != null)
-								<a class="d-flex justify-content-center list-group-item list-group-item-action"><i class="flag-icon flag-icon-{{$teams[$match->home_team - 1]->iso2}}"></i> {{$teams[$match->home_team - 1]->name}} - {{$teams[$match->away_team - 1]->name}} <i class="flag-icon flag-icon-{{$teams[$match->away_team - 1]->iso2}}"></i></a>	
-								@endif
+								<a href="/match/{{$match->id}}" class="d-flex justify-content-center list-group-item list-group-item-action">
+									<i class="flag-icon flag-icon-{{$teams[$match->home_team]['iso2']}}"></i> {{$teams[$match->home_team]['name']}} - {{$teams[$match->away_team]['name']}} <i class="flag-icon flag-icon-{{$teams[$match->away_team]['iso2']}}"></i>
+								</a>	
+							@endif
 						@endforeach
 					</div>                    
                 </div>

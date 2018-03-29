@@ -17,7 +17,7 @@ class HomeServiceProvider extends ServiceProvider
     {
         view()->composer('home', function ($view) {
             $matches = Match::all();
-            $teams = Team::all();
+            $teams = Team::all()->keyBy('id');
             $view->with(compact('matches', 'teams'));
         });
     }

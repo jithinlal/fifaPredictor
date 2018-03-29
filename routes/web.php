@@ -12,5 +12,6 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/match/{match}', 'MatchController@show');
 
 Auth::routes();
