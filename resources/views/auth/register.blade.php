@@ -67,7 +67,7 @@
 						</div>
 					</div>
 					<div class="footer">
-						Copyright &copy; Your Company 2017
+						Copyright &copy; FIFAPREDICTSA
 					</div>
 				</div>
 			</div>
