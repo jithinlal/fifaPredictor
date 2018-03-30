@@ -21,7 +21,7 @@ class CreateMatchesTable extends Migration
             $table->integer('home_result')->nullable();
             $table->integer('away_result')->nullable();
             $table->string('date');
-            $table->integer('stadium');
+            $table->integer('stadium_id');
             $table->boolean('finished')->default(false);
             $table->timestamps();
         });
