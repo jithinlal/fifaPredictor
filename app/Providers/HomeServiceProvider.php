@@ -16,7 +16,7 @@ class HomeServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('home', function ($view) {
-            $matches = Match::all();
+            $matches = Match::orderBy('date', 'ASC')->get();
             $teams = Team::all()->keyBy('id');
             $view->with(compact('matches', 'teams'));
         });

@@ -13,5 +13,5 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/match/{match}', 'MatchController@show');
-
+Route::get('/teams', 'TeamController@index')->name('getPredict');
 Auth::routes();

@@ -24,7 +24,7 @@
   </head>
 
   <body id="page-top">
-    <!-- Navigation -->        
+    <!-- Navigation -->
 	@include('layouts.nav')
 
     @yield('content')
@@ -46,6 +46,9 @@
 
     <!-- Custom scripts for this template -->
     <script src="home_js/stylish-portfolio.min.js"></script>
+
+	{{-- Custom Script made by me --}}
+	<script src="my_assets/script.js"></script>
 
   </body>
 

@@ -27,7 +27,7 @@
 		</li>
 		
 		<li class="sidebar-nav-item">
-			<a  class="js-scroll-trigger" href="{{ route('logout') }}"
+			<a  class="js-scroll-trigger bg-danger" href="{{ route('logout') }}"
             	onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
             		Logout
