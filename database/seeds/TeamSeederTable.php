@@ -20,6 +20,7 @@ class TeamSeederTable extends Seeder
         foreach ($data as $obj) {
             Team::create(array(
                 'name' => $obj->name,
+                'group_name' => $obj->group_name,
                 'iso2' => $obj->iso2
             ));
         }

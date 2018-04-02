@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Stylish Portfolio - Start Bootstrap Template</title>
+    <title>Fifa Predict 2018</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="home_vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -49,6 +49,10 @@
 
 	{{-- Custom Script made by me --}}
 	<script src="my_assets/script.js"></script>
+
+	{{-- Sweet Alert --}}
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
   </body>
 
