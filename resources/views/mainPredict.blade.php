@@ -2,8 +2,8 @@
 <section class="content-section bg-primary text-white text-center" id="services">
 	<div class="container">
 	<div class="content-section-heading">
-		<h3 class="text-secondary mb-0">Services</h3>
-		<h2 class="mb-5">What We Offer</h2>
+		<h3 class="text-secondary mb-0">The Golden 16</h3>
+		<h2 class="mb-5">MAIN PREDICTION</h2>
 	</div>
 	<div class="row">
 		<div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
