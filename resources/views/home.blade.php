@@ -52,6 +52,7 @@
 					<img class="hvr-grow" src="/flags/png100px/{{$teams[$match->home_team]['iso2']}}.png">
 				<a/>
 			</div>
+			<p></p>
 			<div class="col-md-4 text-center list-group-item list-group-item-action hvr-grow">
 				<a href="/match/{{$match->id}}" class="btn btn-info">
 					<span class="text-align-center">{{$teams[$match->home_team]['name']}} - {{$teams[$match->away_team]['name']}}</span>
