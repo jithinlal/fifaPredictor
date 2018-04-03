@@ -17,3 +17,11 @@ Route::get('/teams', 'TeamController@index')->name('getPredict');
 Route::get('/groupTeams', 'TeamController@groupTeams')->name('getGroupTeams');
 Route::get('/players', 'PlayerController@index')->name('getPlayerName');
 Auth::routes();
+
+Route::get('/days', 'DayController@create');
+Route::post('/days/add', 'DayController@save');
+
+
+Route::get('/match-days', 'MatchDayController@index');
+
+
