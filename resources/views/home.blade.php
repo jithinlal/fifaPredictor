@@ -46,13 +46,13 @@
 		<h2 class="mb-4">Fixtures</h2>
 		@foreach ($matches as $match)
 		@if($match->home_team != null)
-		<div class="row">
+		<div class="row ">
 			<div class="col-md-4 text-left list-group-item list-group-item-action">
 				<a href="/match/{{$match->id}}">
-					<img class="" src="/flags/png100px/{{$teams[$match->home_team]['iso2']}}.png">
+					<img class="hvr-grow" src="/flags/png100px/{{$teams[$match->home_team]['iso2']}}.png">
 				<a/>
 			</div>
-			<div class="col-md-4 text-center list-group-item list-group-item-action">
+			<div class="col-md-4 text-center list-group-item list-group-item-action hvr-grow">
 				<a href="/match/{{$match->id}}" class="btn btn-info">
 					<span class="text-align-center">{{$teams[$match->home_team]['name']}} - {{$teams[$match->away_team]['name']}}</span>
 					<br>
@@ -63,7 +63,7 @@
 			</div>
 			<div class="col-md-4 text-light list-group-item list-group-item-action">
 				<a href="/match/{{$match->id}}">
-					<img class="float-right" src="/flags/png100px/{{$teams[$match->away_team]['iso2']}}.png">
+					<img class="float-right hvr-grow" src="/flags/png100px/{{$teams[$match->away_team]['iso2']}}.png">
 				<a/>
 			</div>
 		</div>

@@ -20,6 +20,7 @@
 
     <!-- Custom CSS -->
     <link href="home_css/stylish-portfolio.min.css" rel="stylesheet">
+	<link href="my_css/hover.css" rel="stylesheet">
 
   </head>
 
