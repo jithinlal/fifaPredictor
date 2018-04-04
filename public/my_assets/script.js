@@ -111,55 +111,28 @@ $(document).ready(function () {
 				})
 				.then((willPredict) => {
 					if (willPredict) {
-						if (id === 1) {
-							$('.jqWinner').text($('.jqSelect option:selected').text());
-							$('.jqWinner').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						} else if (id === 2) {
-							$('.jqRunner').text($('.jqSelect option:selected').text());
-							$('.jqRunner').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						} else if (id === 3) {
-							$('.jq3rd').text($('.jqSelect option:selected').text());
-							$('.jq3rd').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						} else if (id === 4) {
-							$('.jq4th').text($('.jqSelect option:selected').text());
-							$('.jq4th').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						} else if (id === 5) {
-							$('.jqA').text($('.jqSelect option:selected').text());
-							$('.jqA').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						} else if (id === 6) {
-							$('.jqB').text($('.jqSelect option:selected').text());
-							$('.jqB').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						} else if (id === 7) {
-							$('.jqC').text($('.jqSelect option:selected').text());
-							$('.jqC').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						} else if (id === 8) {
-							$('.jqD').text($('.jqSelect option:selected').text());
-							$('.jqD').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						} else if (id === 9) {
-							$('.jqE').text($('.jqSelect option:selected').text());
-							$('.jqE').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						} else if (id === 10) {
-							$('.jqF').text($('.jqSelect option:selected').text());
-							$('.jqF').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						} else if (id === 11) {
-							$('.jqG').text($('.jqSelect option:selected').text());
-							$('.jqG').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						} else if (id === 12) {
-							$('.jqH').text($('.jqSelect option:selected').text());
-							$('.jqH').prev().prop('hidden', 'hidden');
-							$('#modal_predict').hide();
-						}
+						$('#prediction-overall-' + id + ' > p').text($('.jqSelect option:selected').text());
+						$('#prediction-overall-' + id + ' > p').prev().prop('hidden', 'hidden');
+						var predicted = selected;
+						selected = -1;
+						$('#modal_predict').hide();
+
+						$.ajax({
+							method: 'GET',
+							url: predictionSubmit,
+							data: {
+								prediction_id: id,
+								match_id: 0,
+								prediction: predicted
+							},
+							success: function (data) {
+								console.log('Predicted data :', data);
+							},
+							error: function () {
+								console.log('Prediction error on submit');
+							}
+						});
+
 						swal("Yaay! You prediction is marked!", {
 							icon: "success",
 						});

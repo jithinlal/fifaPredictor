@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Match;
 use App\Team;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeServiceProvider extends ServiceProvider
 {
@@ -18,7 +20,10 @@ class HomeServiceProvider extends ServiceProvider
         view()->composer('home', function ($view) {
             $matches = Match::orderBy('date', 'ASC')->get();
             $teams = Team::all()->keyBy('id');
-            $view->with(compact('matches', 'teams'));
+            $predictions = DB::table('predictions')->get();
+            $userPredictions = DB::table('user_match_predictions')->where('user_id', Auth::id())->pluck('prediction_id')->toArray();
+            // dd($userPredictions);
+            $view->with(compact('matches', 'teams', 'predictions', 'userPredictions'));
         });
     }
 

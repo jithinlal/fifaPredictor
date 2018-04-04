@@ -19,6 +19,7 @@ class CreatePredictionsTable extends Migration
             $table->integer('plus')->default(0);
             $table->integer('minus')->default(0);
             $table->string('type');
+            $table->string('image');
             $table->timestamps();
         });
     }

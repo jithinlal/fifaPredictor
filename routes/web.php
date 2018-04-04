@@ -17,6 +17,8 @@ Route::get('/match/{match}', 'MatchController@show');
 Route::get('/teams', 'TeamController@index')->name('getPredict');
 Route::get('/groupTeams', 'TeamController@groupTeams')->name('getGroupTeams');
 Route::get('/players', 'PlayerController@index')->name('getPlayerName');
+Route::get('/user/prediction', 'PredictionController@index')->name('submitPrediction');
+
 Auth::routes();
 
 Route::get('/days', 'DayController@create');

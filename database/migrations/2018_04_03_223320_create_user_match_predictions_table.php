@@ -18,8 +18,8 @@ class CreateUserMatchPredictionsTable extends Migration
             $table->integer('user_id');
             $table->integer('match_id');
             $table->integer('prediction_id');
-            $table->integer('prediction');
-            $table->integer('pointsObtained');
+            $table->integer('prediction')->nullable();
+            $table->integer('pointsObtained')->nullable();
             $table->timestamps();
         });
     }
