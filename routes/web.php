@@ -23,5 +23,6 @@ Route::post('/days/add', 'DayController@save');
 
 
 Route::get('/match-days', 'MatchDayController@index');
+Route::get('/match-days/add/{day}', 'MatchDayController@create');
 
 
