@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/coming-soon', 'SoonController@index');
+// Route::get('/coming-soon', 'SoonController@index');
 Route::get('/match/{match}', 'MatchController@show');
 Route::get('/teams', 'TeamController@index')->name('getPredict');
 Route::get('/groupTeams', 'TeamController@groupTeams')->name('getGroupTeams');
