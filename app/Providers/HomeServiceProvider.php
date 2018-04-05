@@ -21,9 +21,10 @@ class HomeServiceProvider extends ServiceProvider
             $matches = Match::orderBy('date', 'ASC')->get();
             $teams = Team::all()->keyBy('id');
             $predictions = DB::table('predictions')->get();
-            $userPredictions = DB::table('user_match_predictions')->where('user_id', Auth::id())->pluck('prediction_id')->toArray();
+            $userPredictions = DB::table('user_match_predictions')->where([['user_id', Auth::id()],['match_id',0]])->pluck('prediction', 'prediction_id')->toArray();
+            $userPredicionIds = DB::table('user_match_predictions')->where('user_id', Auth::id())->pluck('prediction_id')->toArray();
             // dd($userPredictions);
-            $view->with(compact('matches', 'teams', 'predictions', 'userPredictions'));
+            $view->with(compact('matches', 'teams', 'predictions', 'userPredictions', 'userPredicionIds'));
         });
     }
 

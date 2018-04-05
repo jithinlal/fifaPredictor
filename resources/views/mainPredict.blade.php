@@ -18,10 +18,10 @@
 					<h4>
 						<strong>{{$prediction->name}}</strong>
 					</h4>
-					@if(!in_array($prediction->id,$userPredictions))
+					@if(!in_array($prediction->id,$userPredicionIds))
 						<button data-text="Predict {{$prediction->name}}" data-id="{{$prediction->id}}" class="btn btn-info jqPredict">Predict</button>
 					@else
-						<p class="text-uppercase font-weight-bold text-warning">{{}}</p>
+						<p class="text-uppercase font-weight-bold text-warning">{{$userPredictions[$prediction->id]}}</p>
 					@endif
 					<p class="text-uppercase font-weight-bold text-warning"></p>
 				</div>

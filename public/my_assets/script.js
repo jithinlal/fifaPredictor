@@ -2,6 +2,7 @@ $(document).ready(function () {
 	var id = 0;
 	var text = '';
 	var selected = -1;
+	var predictionText = '';
 
 	$('button.jqPredict').on('click', function () {
 		var self = $(this);
@@ -89,6 +90,7 @@ $(document).ready(function () {
 
 	$('.jqSelect').change(function () {
 		selected = $('.jqSelect').val();
+		predictionText = $('.jqSelect :selected').text();
 		// console.log(selected);
 	});
 
@@ -98,7 +100,8 @@ $(document).ready(function () {
 	});
 
 	$('button.jqSave').on('click', function () {
-		console.log(selected);
+		// console.log(selected);
+
 		if (selected == -1) {
 			swal("Prediction aborted!", "You haven't chosen anything!", "error");
 		} else {
@@ -113,7 +116,7 @@ $(document).ready(function () {
 					if (willPredict) {
 						$('#prediction-overall-' + id + ' > p').text($('.jqSelect option:selected').text());
 						$('#prediction-overall-' + id + ' > p').prev().prop('hidden', 'hidden');
-						var predicted = selected;
+						var predictedId = selected;
 						selected = -1;
 						$('#modal_predict').hide();
 
@@ -123,7 +126,8 @@ $(document).ready(function () {
 							data: {
 								prediction_id: id,
 								match_id: 0,
-								prediction: predicted
+								predictionId: predictedId,
+								predictionText: predictionText
 							},
 							success: function (data) {
 								console.log('Predicted data :', data);
