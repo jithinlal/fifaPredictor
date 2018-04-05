@@ -26,4 +26,11 @@ class PredictionController extends Controller
 
         return response()->json($request);
     }
+
+    public function predictedData()
+    {
+        $result = DB::table('user_match_predictions')->where([['user_id',Auth::id()],['match_id',0]])->pluck('prediction');
+
+        return response()->json($result);
+    }
 }

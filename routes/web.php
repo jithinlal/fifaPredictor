@@ -18,6 +18,7 @@ Route::get('/teams', 'TeamController@index')->name('getPredict');
 Route::get('/groupTeams', 'TeamController@groupTeams')->name('getGroupTeams');
 Route::get('/players', 'PlayerController@index')->name('getPlayerName');
 Route::get('/user/prediction', 'PredictionController@index')->name('submitPrediction');
+Route::get('/prediction/data', 'PredictionController@predictedData')->name('getPredictedData');
 
 Auth::routes();
 

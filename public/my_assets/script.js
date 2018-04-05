@@ -13,23 +13,34 @@ $(document).ready(function () {
 		$('#modal_predict').show();
 		$('h5.jqModalTitle').text(text);
 
-		if (id === 1 || id === 2 || id === 3 || id === 4) {
+		if (id > 1 && id < 5) {
 			$.ajax({
 				method: 'GET',
 				url: teamUrl,
 
 				success: function (data) {
-					var option = '<option value=-1>Select</option>';
-					$('.jqSelect').html('');
-					$('.jqSelect').append(option);
-					for (var i = 0; i < data.length; i++) {
-						option = '<option value={0}>{1}</option>'
-							.replace('{0}', data[i].id)
-							.replace('{1}', data[i].name);
+					$.ajax({
+						method: 'GET',
+						url: getPredicted,
 
-						$('.jqSelect').append(option);
-					}
+						success:function (predictedArray) {
+							var option = '<option value=-1>Select</option>';
+							$('.jqSelect').html('');
+							$('.jqSelect').append(option);
+							for (var i = 0; i < data.length; i++) {
+								if(!predictedArray.includes(data[i].name)){
+									option = '<option value={0}>{1}</option>'
+										.replace('{0}', data[i].id)
+										.replace('{1}', data[i].name);
 
+									$('.jqSelect').append(option);
+								}
+							}
+						},
+						error:function(){
+							console.log('error getting predicted values');
+						}
+					});
 				},
 
 				error: function () {
@@ -66,7 +77,7 @@ $(document).ready(function () {
 		if (id > 12 && id < 17) {
 			$.ajax({
 				method: 'GET',
-				url: teamUrl,
+				url: playerUrl,
 
 				success: function (data) {
 					var option = '<option value=-1>Select</option>';

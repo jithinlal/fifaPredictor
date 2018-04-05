@@ -59,5 +59,6 @@
 	var teamUrl = '{{route('getPredict')}}';
 	var groupAUrl = '{{route('getGroupTeams')}}';
 	var playerUrl = '{{route('getPlayerName')}}';
+	var getPredicted = '{{route('getPredictedData')}}';
 	var predictionSubmit = '{{route('submitPrediction')}}';
 </script>

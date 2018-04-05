@@ -23,8 +23,12 @@ class HomeServiceProvider extends ServiceProvider
             $predictions = DB::table('predictions')->get();
             $userPredictions = DB::table('user_match_predictions')->where([['user_id', Auth::id()],['match_id',0]])->pluck('prediction', 'prediction_id')->toArray();
             $userPredicionIds = DB::table('user_match_predictions')->where('user_id', Auth::id())->pluck('prediction_id')->toArray();
-            // dd($userPredictions);
-            $view->with(compact('matches', 'teams', 'predictions', 'userPredictions', 'userPredicionIds'));
+            $userPoints = DB::table('user_match_predictions')->where('user_id',Auth::id())->pluck('pointsObtained')->toArray();
+            $sum = 0;
+            foreach($userPoints as $point){
+                $sum += $point;
+            }
+            $view->with(compact('matches', 'teams', 'predictions', 'userPredictions', 'userPredicionIds','sum'));
         });
     }
 

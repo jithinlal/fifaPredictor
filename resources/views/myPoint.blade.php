@@ -6,7 +6,7 @@
 		<h2>Stylish Portfolio is the perfect theme for your next project!</h2>
 		<p class="lead mb-5">This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at
 			<a href="https://unsplash.com/">Unsplash</a>!</p>
-		<a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">What We Offer</a>
+		<a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">{{$sum}}</a>
 		</div>
 	</div>
 	</div>
