@@ -49,7 +49,12 @@
 
                 <!--END FORM ERROR-->
 
-                @yield('content')
+                <!--CONTENT-->
+                 <div class="container">
+                    @yield('content')
+        
+                </div>
+                <!--END CONTENT-->
 
             </section>
         </div>

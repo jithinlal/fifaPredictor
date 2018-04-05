@@ -1,9 +1,14 @@
 <section class="sidebar">                
 <ul class="sidebar-menu" data-widget="tree">
-    <li class="header">TED</li>
+    <li class="header">Schedule</li>
     <li>
-        <a href="/days/" class="active" title="Dashboard">
+        <a href="/days/" class="active" title="Days">
             <i class="fa fa-calendar"></i> <span>Days</span>
+        </a>
+    </li>
+    <li>
+        <a href="/match-days/" class="active" title="Match Days">
+            <i class="fa fa-calendar-check-o "></i> <span>Match Days</span>
         </a>
     </li>
     <li class="treeview">
