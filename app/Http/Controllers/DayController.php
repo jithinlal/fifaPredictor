@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Day;
-use \Datetime;
+use App\MatchDay;
 use Session;
+use \Datetime;
+use \DatePeriod;
+use \DateInterval;
 
 class DayController extends Controller
 {
@@ -14,34 +17,37 @@ class DayController extends Controller
 
 	public function create() 
     {
-    	$days = [];
-    	$day = new DateTime(self::MIN_DAY);
-    	$maxDay = new DateTime(self::MAX_DAY);
+        $days = [];
+        $begin = new DateTime(self::MIN_DAY);
+        $end = new DateTime(self::MAX_DAY);
+        $end->modify( '+1 day' );
 
+        $interval = new DateInterval('P1D');
+        $daterange = new DatePeriod($begin, $interval, $end);
 
-    	while ($day <= $maxDay) {  
-    		$days[] = $day->format('Y-m-d');
-			$day->modify('+1 day');			
-    	}    	
+        foreach($daterange as $date){
+            $days[] = $date->format('Y-m-d');
+        }
 
     	$selectedDays = Day::all()->pluck('day')->toArray();
         return view('day.form', compact('days', 'selectedDays'));
     }
 
-     public function save(Request $request)
+    public function save(Request $request)
     {   
         $request->validate([
             'days' => 'required',
         ]);
 
-    	Day::truncate();
+        Day::truncate();
+    	MatchDay::truncate();
 
         foreach ($request->days as $key => $day) {   
         	Day::create(['day' => $day]);
         }
 
-        Session::flash('alert-success', 'Match Days Created');
+        Session::flash('alert-success', 'Match Days Created. Add Matches here');
         
-        return redirect('/days');
+        return redirect('/match-days');
     }    
 }

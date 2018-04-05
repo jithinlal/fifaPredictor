@@ -27,3 +27,7 @@ Route::post('/days/add', 'DayController@save');
 
 Route::get('/match-days', 'MatchDayController@index');
 Route::get('/match-days/add/{day}', 'MatchDayController@create');
+Route::post('/match-days/add/{day}', 'MatchDayController@save');
+Route::get('/match-days/remove/day/{day}/match/{match}/from/{from}', 'MatchDayController@delete');
+
+

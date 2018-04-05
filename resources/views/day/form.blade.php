@@ -14,8 +14,6 @@
 @endsection
 
 @section('content')
-
-    <div class="container">
          <form action="/days/add" method="post">
              {{ csrf_field() }}
             <div class="form-group">            
@@ -38,8 +36,7 @@
             </div>
             <div class="form-group">     
                 <button type="submit" name="submit" class="btn btn-primary">Save</button>
-            </div>    
+                <a class="btn btn-info" href="/match-days"> Match Days</a>
+            </div>              
         </form>
-    </div>
-
 @endsection        

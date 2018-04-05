@@ -14,9 +14,7 @@
 @endsection
 
 @section('content')
-
-    <div class="container">
-                
+               
         @if(!empty($days) && count($days))
 
             <div class="row">
@@ -54,7 +52,7 @@
                                           <td>{{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('jS F , l' )}}</td>
                                           <td>{{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('h:i A')}}</td>
                                           <td>
-                                              <a href="">
+                                              <a href="/match-days/remove/day/{{$key}}/match/{{$match->id}}/from/main">
                                                 <i class="fa fa-remove bg-red"></i>
                                             </a>
                                           </td>
@@ -88,6 +86,4 @@
             <p><a href="/days">Click here to Add them </a></p>
             
         @endif
-
-    </div>
 @endsection        
