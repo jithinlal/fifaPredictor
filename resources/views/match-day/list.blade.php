@@ -6,7 +6,7 @@
 @endsection
 
 @section('pageHeading')
-    Match Days 
+    Match Days
 @endsection
 
 @section('pageSubHeading')
@@ -14,19 +14,19 @@
 @endsection
 
 @section('content')
-               
+
         @if(!empty($days) && count($days))
 
             <div class="row">
-                @foreach($days as $key => $day)      
+                @foreach($days as $key => $day)
                     <div class="col-md-6">
                       <div class="box box-solid" style="border: solid 2px grey; width: 553px; height: 287px;">
                         <div class="box-header with-border">
                           <h3 class="box-title">
-                              <strong> 
-                                Match Day {{$key}} 
+                              <strong>
+                                Match Day {{$key}}
                               </strong>
-                               &nbsp;                                    
+                               &nbsp;
                                 <i class="fa fa-calendar"></i>
                                {{DateTime::createFromFormat('Y-m-d', $day)->format('jS F , l')}}
                           </h3>
@@ -47,8 +47,20 @@
                                 @foreach($currentDayMatches[$key] as $matchId)
                                         @php $match = $matches[$matchId]; @endphp
                                         <tr>
-                                          <td>{{$teams[$match->home_team]}}</td>
-                                          <td>{{$teams[$match->away_team]}}</td>
+                                          <td>
+                                            @if($match->home_team)
+                                                {{$teams[$match->home_team]}}
+                                            @else
+                                                tbd
+                                            @endif
+                                          </td>
+                                          <td>
+                                            @if($match->home_team)
+                                                {{$teams[$match->away_team]}}
+                                            @else
+                                                tbd
+                                            @endif
+                                          </td>
                                           <td>{{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('jS F , l' )}}</td>
                                           <td>{{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('h:i A')}}</td>
                                           <td>
@@ -56,8 +68,8 @@
                                                 <i class="fa fa-remove bg-red"></i>
                                             </a>
                                           </td>
-                                        </tr>                                       
-                                      
+                                        </tr>
+
                                 @endforeach
                                         <tr>
                                             <td><a href="/match-days/add/{{$key}}">Add More Matches</a></td>
@@ -71,19 +83,19 @@
                                         <i class="fa fa-plus"></i> Add Match
                                     </a>
                                 </div>
-                            @endif                             
-                          
+                            @endif
+
                         </div>
                       </div>
-                    </div>      
-                @endforeach	
+                    </div>
+                @endforeach
 
-            </div>    
+            </div>
 
         @else
-            
+
             <p>No Match days added</p>
             <p><a href="/days">Click here to Add them </a></p>
-            
+
         @endif
-@endsection        
+@endsection
