@@ -18,7 +18,7 @@ class HomeServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('home', function ($view) {
-            $matches = Match::orderBy('date', 'ASC')->get();
+            $matches = Match::orderBy('date', 'ASC')->get();            
             $teams = Team::all()->keyBy('id');
             $predictions = DB::table('predictions')->get();
             $userPredictions = DB::table('user_match_predictions')->where([['user_id', Auth::id()],['match_id',0]])->pluck('prediction', 'prediction_id')->toArray();
