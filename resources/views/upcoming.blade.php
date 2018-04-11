@@ -6,7 +6,7 @@
 		</div>
 		<div class="row no-gutters">
 			@foreach ($upcomingGames as $game)
-				<div class="col-lg-3"></div>
+
 
 				<div class="col-lg-6">
 					<a class="portfolio-item" href="#">
@@ -20,7 +20,7 @@
 					</a>
 				</div>
 
-				<div class="col-lg-3"></div>
+
 			@endforeach
 		</div>
 	</div>
