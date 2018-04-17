@@ -12,11 +12,14 @@
 					<a class="portfolio-item" href="#">
 						<span class="caption">
 						<span class="caption-content">
-							<h2>{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h2>
-							<p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+							@if($game->type == 'group')<h2>Group {{$teams[$game->home_team]['group_name']}}</h2>@endif
+							<img class="img-fluid" src="/flags/png100px/{{$teams[$game->home_team]['iso2']}}.png">
+							<img class="img-fluid" src="/flags/png100px/{{$teams[$game->away_team]['iso2']}}.png">
+							<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>
+							<p class="mb-0">{{$stadia[$game->stadium_id]['name']}}, {{$stadia[$game->stadium_id]['city']}}</p>
 						</span>
 						</span>
-						<img class="img-fluid" src="home_img/portfolio-1.jpg" alt="">
+						<img class="img-fluid" src="/stadiums/{{$stadia[$game->stadium_id]['name']}}.jpg" alt="">
 					</a>
 				</div>
 
