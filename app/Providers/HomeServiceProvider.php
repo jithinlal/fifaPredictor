@@ -19,9 +19,9 @@ class HomeServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('home', function ($view) {
-            $tomorrow = Carbon::tomorrow('Asia/Kolkata')->format('Y-m-d');
-            $yesterday = Carbon::yesterday('Asia/Kolkata')->format('Y-m-d');
-            $today = Carbon::today('Asia/Kolkata')->format('Y-m-d');
+            // $tomorrow = Carbon::tomorrow('Asia/Kolkata')->format('Y-m-d');
+            // $yesterday = Carbon::yesterday('Asia/Kolkata')->format('Y-m-d');
+            // $today = Carbon::today('Asia/Kolkata')->format('Y-m-d');
 
             $matches = Match::orderBy('date', 'ASC')->get();
             $teams = Team::all()->keyBy('id');
