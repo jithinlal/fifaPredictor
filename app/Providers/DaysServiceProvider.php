@@ -18,9 +18,10 @@ class DaysServiceProvider extends ServiceProvider
         view()->composer('home', function ($view) {
             $nextDayId = -1;
             $previousDayId = -1;
+            $currentDayId = -1;
 
             $today = Carbon::today('Asia/Kolkata')->format('Y-m-d');
-            $today = '2018-06-13';
+            $today = '2018-06-15';
             if ($today == '2018-06-13') {
                 $nextDayId = 1;
             }
@@ -28,10 +29,7 @@ class DaysServiceProvider extends ServiceProvider
 
             if (!is_null($currentDay)) {
                 $currentDayId = $currentDay->id;
-            } else {
-                $currentDayId = -1;
             }
-
 
             if ($currentDayId != 1 && $currentDayId != -1) {
                 $previousDayId = $currentDayId - 1;
