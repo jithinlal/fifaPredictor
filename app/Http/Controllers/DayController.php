@@ -48,6 +48,6 @@ class DayController extends Controller
 
         Session::flash('alert-success', 'Match Days Created. Add Matches here');
         
-        return redirect('/match-days');
+        return redirect('/admin/match-days');
     }    
 }

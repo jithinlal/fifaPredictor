@@ -13,8 +13,14 @@
     List
 @endsection
 
+@section('breadcrumbLevelOne')
+        <a href="/admin/days">
+				Days
+		</a>
+@endsection
+
 @section('content')
-         <form action="/days/add" method="post">
+         <form action="/admin/days/add" method="post">
              {{ csrf_field() }}
             <div class="form-group">            
                 <label for="days">Select Match Days (hold shift to select more than one):</label>
@@ -36,7 +42,7 @@
             </div>
             <div class="form-group">     
                 <button type="submit" name="submit" class="btn btn-primary">Save</button>
-                <a class="btn btn-info" href="/match-days"> Match Days</a>
+                <a class="btn btn-info" href="/admin/match-days"> Go to Match Days</a>
             </div>              
         </form>
 @endsection        

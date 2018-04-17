@@ -6,11 +6,23 @@
 @endsection
 
 @section('pageHeading')
-    {{DateTime::createFromFormat('Y-m-d', $day->day)->format('jS F , l')}} 
+  Match Day {{$day->id}}    
 @endsection
 
 @section('pageSubHeading')
-    Matches
+  {{DateTime::createFromFormat('Y-m-d', $day->day)->format('jS F , l')}} 
+@endsection
+
+@section('breadcrumbLevelOne')
+        <a href="/admin/match-days">
+				Match Days
+		</a>
+@endsection
+
+@section('breadcrumbLevelTwo')
+        <a href="/admin/match-days/add/{{$day->id}}">
+				{{$day->id}}
+		</a>
 @endsection
 
 @section('content')
@@ -41,7 +53,7 @@
                             @endif
                           </h3>
                           <div class="box-tools pull-right">
-                            <a title="remove" href="/match-days/remove/day/{{$day->id}}/match/{{$match->id}}/from/inside" type="button" class="btn btn-box-tool" style="color: red">
+                            <a title="remove" href="/admin/match-days/remove/day/{{$day->id}}/match/{{$match->id}}/from/inside" type="button" class="btn btn-box-tool" style="color: red">
                                 <i class="fa fa-2x fa-times"></i>
                             </a>
                           </div>
@@ -63,16 +75,23 @@
     </div>
 @endif 
 
-<form method="POST" action="/match-days/add/{{$day->id}}">
+<form method="POST" action="/admin/match-days/add/{{$day->id}}">
 {{ csrf_field() }}
 <div class="col-md-12">
       <div class="box box-info box-solid">
         <div class="box-header with-border">
           <h3 class="box-title">Add New Matches</h3>
+          <p>
+             <div class="pull-right">
+                  <button type="submit" class="btn bg-green">Submit</button>
+              </div>
+              <div class="pull-left">
+                  <a href="/admin/match-days" type="button" class="btn btn-primary">Cancel</a>
+              </div>
+            </p>
         </div>
         <div class="box-body">
-          <div class="row">
-                <table class="table">
+                <table class="table table-sm">
                   <thead>
                     <tr>
                       <th scope="col">HomeTeam</th>
@@ -90,14 +109,14 @@
                                 @if($match->home_team)
                                 {{$teams[$match->home_team]}}
                                 @else
-                                    &nbsp;
+                                    <i>TBA</i>
                                 @endif
                           </td>
                           <td>
                                 @if($match->home_team)
                                 {{$teams[$match->away_team]}}
                                 @else
-                                    &nbsp;
+                                  <i>TBA</i>
                                 @endif
                           </td>
                           <td>{{$match->type}}</td>
@@ -110,16 +129,7 @@
                     @endforeach
                   </tbody>
                 </table>
-           </div>
-        </div>
-        <div class="box-footer">
-            <div class="pull-left">
-                <button type="submit" class="btn btn-info">Submit</button>
-            </div>
-            <div class="pull-right">
-                <a href="/match-days" type="button" class="btn btn-primary">Cancel</a>
-            </div>
-        </div>
+        </div>        
       </div>
     </div>  
 </form>      

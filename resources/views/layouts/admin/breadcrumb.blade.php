@@ -1,8 +1,22 @@
 <ol class="breadcrumb">
 	<li>
-		<a href="/backend/">
+		<a href="/admin">
 			<i class="fa fa-dashboard"></i> 
-				Dashboard
+				Admin
 		</a>
-	</li>                
+	</li> 
+	
+	@hasSection('breadcrumbLevelOne')
+		<li>
+			@yield('breadcrumbLevelOne')
+		</li>	
+	@endif
+
+	@hasSection('breadcrumbLevelTwo')
+		<li>
+			@yield('breadcrumbLevelTwo')
+		</li>	
+	@endif
+
+	               
 </ol>

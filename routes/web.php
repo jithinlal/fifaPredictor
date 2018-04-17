@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', 'HomeController@index');
 // Route::get('/coming-soon', 'SoonController@index');
@@ -22,13 +22,31 @@ Route::get('/prediction/data', 'PredictionController@predictedData')->name('getP
 
 Auth::routes();
 
-Route::get('/days', 'DayController@create');
-Route::post('/days/add', 'DayController@save');
+
+//-----------------------------------Admin Routes--------------------------------------------
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'AdminController@index');
+
+    //Day Controller
+    Route::get('/days', 'DayController@create');
+    Route::post('/days/add', 'DayController@save');
+
+    //MatchDay Controller
+    Route::get('/match-days', 'MatchDayController@index');
+    Route::get('/match-days/add/{day}', 'MatchDayController@create');
+    Route::post('/match-days/add/{day}', 'MatchDayController@save');
+    Route::get('/match-days/remove/day/{day}/match/{match}/from/{from}', 'MatchDayController@delete');
+
+    //Overall Controller
+    Route::get('/overall-result', 'OverallResultController@index');
 
 
-Route::get('/match-days', 'MatchDayController@index');
-Route::get('/match-days/add/{day}', 'MatchDayController@create');
-Route::post('/match-days/add/{day}', 'MatchDayController@save');
-Route::get('/match-days/remove/day/{day}/match/{match}/from/{from}', 'MatchDayController@delete');
+
+});
+
+
+
+
 
 

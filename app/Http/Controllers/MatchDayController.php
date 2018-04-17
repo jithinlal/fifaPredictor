@@ -33,6 +33,7 @@ class MatchDayController extends Controller
         $currentMatchesCount = MatchDay::where('day_id', $day->id)->count();
         $currentMatchIds = MatchDay::where('day_id', $day->id)->pluck('match_id');
         $currentMatches = Match::select()->whereIn('id', $currentMatchIds)->get()->keyBy('id');
+        $currentMatches = $currentMatches->sortBy('date');
 
         $usedMatchIds = MatchDay::all()->pluck('match_id');
         $freeMatches = Match::select()->whereNotIn('id', $usedMatchIds)->get()->keyBy('id');
@@ -61,7 +62,7 @@ class MatchDayController extends Controller
             MatchDay::create(['day_id' => $day->id, 'match_id' => $match_id]);
         }
         Session::flash('alert-success', 'Matches added to ' . $day->day);
-        return redirect('/match-days/add/' . $day->id);
+        return redirect('/admin/match-days/add/' . $day->id);
     }   
 
 
@@ -75,16 +76,16 @@ class MatchDayController extends Controller
 
         if (! count($matchDays)) {
             Session::flash('alert-danger', 'Invalid Request');
-            return redirect('/match-days/add/' . $day->id);
+            return redirect('/admin/match-days/add/' . $day->id);
         }
 
         $deletedRows = MatchDay::where('day_id', $day->id)->whereIn('match_id', [$match->id])->delete();
 
-        Session::flash('alert-success', 'Match deleted From ' . $day->day);
+        Session::flash('alert-success', 'Match deleted From Match Day' . $day->id);
         if ('main' == $from) {
-            return redirect('/match-days');
+            return redirect('/admin/match-days');
         } else {
-            return redirect('/match-days/add/' . $day->id);
+            return redirect('/admin/match-days/add/' . $day->id);
         } 
         
     }    

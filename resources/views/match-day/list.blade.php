@@ -13,6 +13,12 @@
     List
 @endsection
 
+@section('breadcrumbLevelOne')
+        <a href="/admin/match-days">
+				Match Days
+		</a>
+@endsection
+
 @section('content')
 
         @if(!empty($days) && count($days))
@@ -51,20 +57,20 @@
                                             @if($match->home_team)
                                                 {{$teams[$match->home_team]}}
                                             @else
-                                                tbd
+                                                <i>TBA</i>
                                             @endif
                                           </td>
                                           <td>
                                             @if($match->home_team)
                                                 {{$teams[$match->away_team]}}
                                             @else
-                                                tbd
+                                                <i>TBA</i>
                                             @endif
                                           </td>
                                           <td>{{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('jS F , l' )}}</td>
                                           <td>{{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('h:i A')}}</td>
                                           <td>
-                                              <a href="/match-days/remove/day/{{$key}}/match/{{$match->id}}/from/main">
+                                              <a href="/admin/match-days/remove/day/{{$key}}/match/{{$match->id}}/from/main">
                                                 <i class="fa fa-remove bg-red"></i>
                                             </a>
                                           </td>
@@ -72,14 +78,14 @@
 
                                 @endforeach
                                         <tr>
-                                            <td><a href="/match-days/add/{{$key}}">Add More Matches</a></td>
+                                            <td><a href="/admin/match-days/add/{{$key}}">Add More Matches</a></td>
                                         </tr>
                                   </tbody>
                                   </table>
 
                             @else
                                 <div class="center-block text-center" style="padding-top: 80px">
-                                    <a class="btn btn-app   bg-olive btn-flat" href="/match-days/add/{{$key}}">
+                                    <a class="btn btn-app   bg-olive btn-flat" href="/admin/match-days/add/{{$key}}">
                                         <i class="fa fa-plus"></i> Add Match
                                     </a>
                                 </div>
@@ -95,7 +101,7 @@
         @else
 
             <p>No Match days added</p>
-            <p><a href="/days">Click here to Add them </a></p>
+            <p><a href="/admin/days">Click here to Add them </a></p>
 
         @endif
 @endsection
