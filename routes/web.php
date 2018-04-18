@@ -25,7 +25,7 @@ Auth::routes();
 
 //-----------------------------------Admin Routes--------------------------------------------
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'AdminController@index');
 
     //Day Controller
@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     //Overall Controller
     Route::get('/overall-result', 'OverallResultController@index');
+    Route::post('/overall-result/add', 'OverallResultController@save');
 
 
 

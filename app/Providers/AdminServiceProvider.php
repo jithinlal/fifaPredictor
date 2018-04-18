@@ -13,8 +13,8 @@ class AdminServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        View::share('title', 'title');
+    {       
+        //View::share('overallPredictions', $overallPredictions);
     }
 
     /**

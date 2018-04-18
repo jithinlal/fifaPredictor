@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Session;
 use App\Day;
 use App\MatchDay;
@@ -12,19 +13,19 @@ use App\Match;
 
 class MatchDayController extends Controller
 {
-    public function index() 
+    public function index()
     {
-    	$days = Day::all()->pluck('day', 'id');
-    	if (! empty($days) && count($days)){
-	    	$currentDayMatchCount = [];
-	    	$currentDayMatches = [];
-	    	foreach ($days as $key => $day) {
-	    		$currentDayMatchCount[$key] = MatchDay::where('day_id', $key)->count();
-	    		$currentDayMatches[$key] = MatchDay::where('day_id', $key)->pluck('match_id');
-	    	}
-	    	$matches = Match::all()->keyBy('id'); 
-	    	$teams = Team::all()->pluck('name', 'id');
-    	}
+        $days = Day::all()->pluck('day', 'id');
+        if (!empty($days) && count($days)) {
+            $currentDayMatchCount = [];
+            $currentDayMatches = [];
+            foreach ($days as $key => $day) {
+                $currentDayMatchCount[$key] = MatchDay::where('day_id', $key)->count();
+                $currentDayMatches[$key] = MatchDay::where('day_id', $key)->pluck('match_id');
+            }
+            $matches = Match::all()->keyBy('id');
+            $teams = Team::all()->pluck('name', 'id');
+        }
         return view('match-day.list', compact('days', 'currentDayMatches', 'currentDayMatchCount', 'matches', 'teams'));
     }
 
@@ -44,17 +45,17 @@ class MatchDayController extends Controller
         $teams = Team::all()->pluck('name', 'id');
 
         return view('match-day.form', compact(
-        	'currentMatchesCount', 
-        	'currentMatches',
-        	'freeMatches',
-        	'allMatches', 
-        	'teams',
+            'currentMatchesCount',
+            'currentMatches',
+            'freeMatches',
+            'allMatches',
+            'teams',
             'day'
         ));
     }
 
     public function save(Request $request, Day $day)
-    {  
+    {
         $request->validate([
             'day_matches' => 'required',
         ]);
@@ -63,18 +64,18 @@ class MatchDayController extends Controller
         }
         Session::flash('alert-success', 'Matches added to ' . $day->day);
         return redirect('/admin/match-days/add/' . $day->id);
-    }   
+    }
 
 
     public function delete(Request $request, Day $day, Match $match, $from)
-    {  
-       
-        $matchDays = DB::table('match_days')
-                ->where('day_id', $day->id)
-                ->where('match_id', $match->id)
-                ->get();
+    {
 
-        if (! count($matchDays)) {
+        $matchDays = DB::table('match_days')
+            ->where('day_id', $day->id)
+            ->where('match_id', $match->id)
+            ->get();
+
+        if (!count($matchDays)) {
             Session::flash('alert-danger', 'Invalid Request');
             return redirect('/admin/match-days/add/' . $day->id);
         }
@@ -86,7 +87,7 @@ class MatchDayController extends Controller
             return redirect('/admin/match-days');
         } else {
             return redirect('/admin/match-days/add/' . $day->id);
-        } 
-        
-    }    
+        }
+
+    }
 }

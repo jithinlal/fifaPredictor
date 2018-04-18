@@ -7,4 +7,5 @@
 <link rel="stylesheet" href="/themes/adminlte/dist/css/skins/skin-blue.min.css">
 <link rel="stylesheet" href="/themes/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <link rel="stylesheet" href="/themes/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="/select-styles/css/bootstrap-select.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

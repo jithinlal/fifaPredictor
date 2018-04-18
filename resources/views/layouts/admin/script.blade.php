@@ -19,7 +19,10 @@
     <script src="js/tinymce/tinymce.min.js"></script>
 <script src="js/tinymce/config.js"></script>  
 
+<!-- Bootstrap Select Styles-->
+<script src="/select-styles/js/bootstrap-select.min.js"></script>
 
+<!-- Flash Message-->
 <script>
     $(document).ready(function(){
 	    setTimeout(function() {
