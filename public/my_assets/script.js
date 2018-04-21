@@ -1,10 +1,13 @@
 $(document).ready(function () {
+	// $('.selectpicker').selectpicker();
+	// $('select').niceSelect();
 	var id = 0;
 	var text = '';
 	var selected = -1;
 	var predictionText = '';
 
 	$('button.jqPredict').on('click', function () {
+		// $('select').awselect();
 		var self = $(this);
 		id = self.data('id');
 		text = self.data('text');
@@ -24,18 +27,24 @@ $(document).ready(function () {
 						url: getPredicted,
 
 						success:function (predictedArray) {
+							// $('select').niceSelect();
 							var option = '<option value=-1>Select</option>';
 							$('.jqSelect').html('');
 							$('.jqSelect').append(option);
+							// $('.jqSelect').selectpicker('render').selectpicker('refresh');
+							// $('select').niceSelect('update');
 							for (var i = 0; i < data.length; i++) {
 								if(!predictedArray.includes(data[i].name)){
 									option = '<option value={0}>{1}</option>'
 										.replace('{0}', data[i].id)
 										.replace('{1}', data[i].name);
-
 									$('.jqSelect').append(option);
+									// $('.jqSelect').selectpicker('render').selectpicker('refresh');
+									// $('select').niceSelect('update');
 								}
 							}
+							// $('select').niceSelect('update');
+							// $('.selectpicker').selectpicker();
 						},
 						error:function(){
 							console.log('error getting predicted values');
