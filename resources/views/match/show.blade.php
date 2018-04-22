@@ -52,51 +52,7 @@
 
 
 
-    <body>
-
-
-
-    	<!-- header -->
-
-        	<!-- <header role="header">
-
-            	<div class="container">
-
-                	<!-- logo -->
-
-                    	<!-- <h1>
-
-                        	<a href="index.html" title="avana LLC"><img src="images/logo.png" title="avana LLC" alt="avana LLC"/></a>
-
-                        </h1> -->
-
-                    <!-- logo -->
-
-                    <!-- nav -->
-
-<!--                     <nav role="header-nav" class="navy">
-
-                        <ul>
-
-                            <li class="nav-active"><a href="index.html" title="Work">Work</a></li>
-
-                            <li><a href="about.html" title="About">About</a></li>
-
-                            <li><a href="blog.html" title="Blog">Blog</a></li>
-
-                            <li><a href="contact.html" title="Contact">Contact</a></li>
-
-                        </ul>
-
-                    </nav>
-
- -->                    <!-- nav -->
-
-<!--                 </div>
-
-            </header> -->
-
-        <!-- header -->
+    <body>    	
 
         <!-- main -->
 
@@ -121,6 +77,7 @@
                         </header>
 
                         <p>{{$stadia[$match->stadium_id]->name}}</p>
+                        <h5>{{$stadia[$match->stadium_id]->city}}</h5>
 
                     </article>
 
@@ -132,13 +89,13 @@
 
                 	<figure class="effect-oscar">
 
-                    	<img src="/avana/images/home-images/image-1.jpg" alt="" class="img-responsive"/>
+                    	<img src="/stadiums/{{$stadia[$match->stadium_id]->name}}.jpg" alt="" class="img-responsive"/>
 
                         <figcaption>
 
-                        	<h2>Eliana Dedda<span> Identity</span></h2>
+                        	<h2>{{$stadia[$match->stadium_id]->name}}<span> {{$stadia[$match->stadium_id]->city}}</span></h2>
 
-							<p>Personal Brand Identity.</p>
+							<p>{{\Carbon\Carbon::parse($match->date)->toDayDateTimeString()}}</p>
 
 							<a href="works-details.html">View more</a>
 
@@ -163,7 +120,7 @@
                         	<figure class="effect-oscar">
 
                             <img src="/avana/images/home-images/image-2.jpg" alt="" class="img-responsive"/>
-                            <img src="/avana/images/home-images/image-2.jpg" alt="" class="img-responsive"/>
+                            {{-- <img src="/avana/images/home-images/image-2.jpg" alt="" class="img-responsive"/> --}}
 
                             <figcaption>
 
@@ -504,60 +461,6 @@
             </div>
 
         </main>
-
-    	<!-- main -->
-
-        <!-- footer -->
-
-        <!-- <footer role="footer">
-
-            <!-- logo -->
-<!--
-                <h1>
-
-                    <a href="index.html" title="avana LLC"><img src="images/logo.png" title="avana LLC" alt="avana LLC"/></a>
-
-                </h1>
- -->
-            <!-- logo -->
-
-            <!-- nav -->
-<!--
-            <nav role="footer-nav">
-
-            	<ul>
-
-                	<li><a href="index.html" title="Work">Work</a></li>
-
-                    <li><a href="about.html" title="About">About</a></li>
-
-                    <li><a href="blog.html" title="Blog">Blog</a></li>
-
-                    <li><a href="contact.html" title="Contact">Contact</a></li>
-
-                </ul>
-
-            </nav> -->
-
-            <!-- nav -->
-<!--
-            <ul role="social-icons">
-
-            	<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-
-                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-
-                <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
-
-            </ul>
-
-            <p class="copy-right">&copy; 2015  avana LLC.. All rights Resved</p>
-
-        </footer> -->
-         <!-- footer -->
-
 
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
