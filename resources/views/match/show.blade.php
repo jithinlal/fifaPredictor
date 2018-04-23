@@ -76,9 +76,6 @@
 
                         </header>
 
-                        <p>{{$stadia[$match->stadium_id]->name}}</p>
-                        <h5>{{$stadia[$match->stadium_id]->city}}</h5>
-
                     </article>
 
                 </section>
@@ -146,7 +143,7 @@
 
                         	<figure class="effect-oscar">
 
-                            <img src="images/home-images/image-4.jpg" alt="" class="img-responsive"/>
+                            <img src="{{asset('/predictions/yellow-card.jpg')}}" alt="" class="img-responsive"/>
 
                             <figcaption>
 
@@ -162,111 +159,11 @@
 
                         </li>
 
-                        <li>
+						 <li>
 
                         	<figure class="effect-oscar">
 
-                            <img src="images/home-images/image-2.jpg" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                                <h2>Studio Thonik <span>Exhibition</span></h2>
-
-                                    <p>Project for Thonik, design studio based in Amsterdam</p>
-
-                                <a href="works-details.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                        <li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/image-4.jpg" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                                <h2>A Brand <span>new Agency</span></h2>
-
-                                <p>Over 40,000 customers use our themes to power their</p>
-
-                                <a href="works-details.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                        <li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/image-2.jpg" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                                <h2>Studio Thonik <span>Exhibition</span></h2>
-
-                                    <p>Project for Thonik, design studio based in Amsterdam</p>
-
-                                <a href="works-details.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                        <li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/image-4.jpg" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                                <h2>A Brand <span>new Agency</span></h2>
-
-                                <p>Over 40,000 customers use our themes to power their</p>
-
-                                <a href="works-details.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                        <li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/image-2.jpg" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                                <h2>Studio Thonik <span>Exhibition</span></h2>
-
-                                    <p>Project for Thonik, design studio based in Amsterdam</p>
-
-                                <a href="works-details.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                        <li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/image-4.jpg" alt="" class="img-responsive"/>
+                            <img src="{{asset('/predictions/hat-trick.jpg')}}" alt="" class="img-responsive"/>
 
                              <figcaption>
 
@@ -296,7 +193,7 @@
 
                         	<figure class="effect-oscar">
 
-                            <img src="images/home-images/image-3.jpg" alt="" class="img-responsive"/>
+                            <img src="{{asset('/predictions/score-line.jpg')}}" alt="" class="img-responsive"/>
 
                              <figcaption>
 
@@ -316,7 +213,7 @@
 
                         	<figure class="effect-oscar">
 
-                            <img src="images/home-images/image-5.jpg" alt="" class="img-responsive"/>
+                            <img src="{{asset('/predictions/own-goal.jpg')}}" alt="" class="img-responsive"/>
 
                              <figcaption>
 
@@ -336,7 +233,7 @@
 
                         	<figure class="effect-oscar">
 
-                            <img src="images/home-images/image-3.jpg" alt="" class="img-responsive"/>
+                            <img src="{{asset('/predictions/red-card.jpg')}}" alt="" class="img-responsive"/>
 
                              <figcaption>
 
@@ -352,105 +249,7 @@
 
                         </li>
 
-                        <li>
 
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/image-5.jpg" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                                <h2>A Brand <span>new Agency</span></h2>
-
-                                <p>Over 40,000 customers use our themes to power their</p>
-
-                                <a href="works-details.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                        <li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/image-3.jpg" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                               <h2>Anatome Milano <span>Galleria</span></h2>
-
-                                <p>Galerie Anatome based in Paris</p>
-
-                                <a href="works-details.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                        <li>
-
-                             <figure class="effect-oscar">
-
-                                <img src="/avana/images/home-images/image-5.jpg" alt="" class="img-responsive"/>
-
-                                 <figcaption>
-
-                                <h2>A Brand <span>new Agency</span></h2>
-
-                                <p>Over 40,000 customers use our themes to power their</p>
-
-                                <a href="works-details.html">View more</a>
-
-                            </figcaption>
-
-                            </figure>
-
-                        </li>
-
-                        <li>
-
-                       	 	<figure class="effect-oscar">
-
-                            <img src="images/home-images/image-3.jpg" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                                <h2>Anatome Milano <span>Galleria</span></h2>
-
-                                <p>Galerie Anatome based in Paris</p>
-
-                                <a href="works-details.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-                        <li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="images/home-images/image-5.jpg" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                                <h2>A Brand <span>new Agency</span></h2>
-
-                                <p>Over 40,000 customers use our themes to power their</p>
-
-                                <a href="works-details.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
 
                     </ul>
 
