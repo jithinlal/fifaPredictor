@@ -1,295 +1,202 @@
-<!DOCTYPE HTML>
+@extends('layouts.matchapp')
 
- <html>
+@section('content')
 
-    <head>
+	<div class="row">
 
-    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    	<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
 
-        <meta charset="utf-8">
+        	<article role="pge-title-content">
 
-        <!-- Description, Keywords and Author -->
+            	<header>
 
-        <meta name="description" content="">
+                	<h2><span>{{$match->type}}</span></h2> <h2>{{$teams[$match->home_team]->name}}</h2>
+                    <h1>v/s</h1>
+                    <h2>{{$teams[$match->away_team]->name}}</h2>
 
-        <meta name="author" content="">
+                </header>
 
+            </article>
 
-
-        <title>:: avana LLC ::</title>
-
-		<link rel="shortcut icon" href="/avana/images/favicon.ico" type="image/x-icon">
-
-
-
-        <!-- style -->
-
-        <link href="/avana/css/style.css" rel="stylesheet" type="text/css">
-
-        <!-- style -->
-
-        <!-- bootstrap -->
-
-        <link href="/avana/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-        <!-- responsive -->
-
-        <link href="/avana/css/responsive.css" rel="stylesheet" type="text/css">
-
-        <!-- font-awesome -->
-
-        <link href="/avana/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-        <!-- font-awesome -->
-
-        <link href="/avana/css/effects/set2.css" rel="stylesheet" type="text/css">
-
-        <link href="/avana/css/effects/normalize.css" rel="stylesheet" type="text/css">
-
-        <link href="/avana/css/effects/component.css"  rel="stylesheet" type="text/css" >
-
-	</head>
+        </section>
 
 
 
-    <body>
+        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
 
-        <!-- main -->
+        	<figure class="effect-oscar">
 
-        <main role="main-home-wrapper" class="container">
+            	<img src="/stadiums/{{$stadia[$match->stadium_id]->name}}.jpg" alt="" class="img-responsive"/>
 
+                <figcaption>
 
+                	<h2>{{$stadia[$match->stadium_id]->name}}<span> {{$stadia[$match->stadium_id]->city}}</span></h2>
 
-            <div class="row">
+					<p>{{\Carbon\Carbon::parse($match->date)->toDayDateTimeString()}}</p>
 
+					<a href="works-details.html">View more</a>
 
+                </figcaption>
 
-            	<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+            </figure>
 
-                	<article role="pge-title-content">
-
-                    	<header>
-
-                        	<h2><span>{{$match->type}}</span></h2> <h2>{{$teams[$match->home_team]->name}}</h2>
-                            <h1>v/s</h1>
-                            <h2>{{$teams[$match->away_team]->name}}</h2>
-
-                        </header>
-
-                    </article>
-
-                </section>
+        </section>
 
 
 
-                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
+        <div class="clearfix"></div>
+
+
+
+        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
+
+        	<ul class="grid-lod effect-2" id="grid">
+
+            	<li>
 
                 	<figure class="effect-oscar">
 
-                    	<img src="/stadiums/{{$stadia[$match->stadium_id]->name}}.jpg" alt="" class="img-responsive"/>
+                    <img src="{{asset('/flags/png1000px/'.$teams[$match->home_team]->iso2.'.png')}}" alt="" class="img-responsive"/>
+                    
 
-                        <figcaption>
+                    <figcaption>
 
-                        	<h2>{{$stadia[$match->stadium_id]->name}}<span> {{$stadia[$match->stadium_id]->city}}</span></h2>
 
-							<p>{{\Carbon\Carbon::parse($match->date)->toDayDateTimeString()}}</p>
 
-							<a href="works-details.html">View more</a>
+                            <h2><span>{{$teams[$match->home_team]->name}}</span> {{$teams[$match->away_team]->name}}</h2>
 
-                        </figcaption>
+                            <p>How much will <b>{{$teams[$match->home_team]->name}}</b> score?</p>
 
-                    </figure>
+                            <a href="works-details.html">View more</a>
 
-                </section>
 
 
+                    </figcaption>
 
-                <div class="clearfix"></div>
+                </figure>
 
+                </li>
 
 
-                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
 
-                	<ul class="grid-lod effect-2" id="grid">
+                <li>
 
-                    	<li>
+                	<figure class="effect-oscar">
 
-                        	<figure class="effect-oscar">
+                    <img src="{{asset('/predictions/yellow-card.jpg')}}" alt="" class="img-responsive"/>
 
-                            <img src="/avana/images/home-images/image-2.jpg" alt="" class="img-responsive"/>
-                            {{-- <img src="/avana/images/home-images/image-2.jpg" alt="" class="img-responsive"/> --}}
+                    <figcaption>
 
-                            <figcaption>
+                        <h2>Card <span>YELLOW</span></h2>
 
+                        <p>First player to get a <b>Yellow Card</b> ?</p>
 
+                        <a href="works-details.html">View more</a>
 
-                                    <h2>{{$teams[$match->home_team]->name}} <span>{{$teams[$match->away_team]->name}}</span></h2>
+                    </figcaption>
 
-                                    <p>Project for Thonik, design studio based in Amsterdam</p>
+                </figure>
 
-                                    <a href="works-details.html">View more</a>
+                </li>
 
+				 <li>
 
+                	<figure class="effect-oscar">
 
-                            </figcaption>
+                    <img src="{{asset('/predictions/hat-trick.jpg')}}" alt="" class="img-responsive"/>
 
-                        </figure>
+                     <figcaption>
 
-                        </li>
+                        <h2>Trick <span>HAT</span></h2>
 
+                        <p>Will there be any <b>Hat-Trick</b> ?</p>
 
+                        <a href="works-details.html">View more</a>
 
-                        <li>
+                    </figcaption>
 
-                        	<figure class="effect-oscar">
+                </figure>
 
-                            <img src="{{asset('/predictions/yellow-card.jpg')}}" alt="" class="img-responsive"/>
+                </li>
 
-                            <figcaption>
+            </ul>
 
-                                <h2>A Brand <span>new Agency</span></h2>
+        </section>
 
-                                <p>Over 40,000 customers use our themes to power their</p>
+		<div class="clear-fix"></div>
 
-                                <a href="works-details.html">View more</a>
+        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
 
-                            </figcaption>
+        	<ul class="grid-lod effect-2" id="grid">
 
-                        </figure>
+        		<li>
 
-                        </li>
+                	<figure class="effect-oscar">
 
-						 <li>
+                    <img src="{{asset('/flags/png1000px/'.$teams[$match->away_team]->iso2.'.png')}}" alt="" class="img-responsive"/>
 
-                        	<figure class="effect-oscar">
+                     <figcaption>
 
-                            <img src="{{asset('/predictions/hat-trick.jpg')}}" alt="" class="img-responsive"/>
+                        <h2>{{$teams[$match->home_team]->name}} <span>{{$teams[$match->away_team]->name}}</span></h2>
 
-                             <figcaption>
+                        <p>How much will <b>{{$teams[$match->away_team]->name}}</b> score?</p>
 
-                                <h2>A Brand <span>new Agency</span></h2>
+                        <a href="works-details.html">View more</a>
 
-                                <p>Over 40,000 customers use our themes to power their</p>
+                    </figcaption>
 
-                                <a href="works-details.html">View more</a>
+                </figure>
 
-                            </figcaption>
+                </li>            
 
-                        </figure>
+                <li>
 
-                        </li>
+                	<figure class="effect-oscar">
 
-                    </ul>
+                    <img src="{{asset('/predictions/own-goal.jpg')}}" alt="" class="img-responsive"/>
 
-                </section>
+                     <figcaption>
 
+                        <h2>Goal <span>OWN</span></h2>
 
+                        <p>Do you predict an <b>Own Goal</b> ?</p>
 
-                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
+                        <a href="works-details.html">View more</a>
 
-                	<ul class="grid-lod effect-2" id="grid">
+                    </figcaption>
 
-                    	<li>
+                </figure>
 
-                        	<figure class="effect-oscar">
+                </li>
 
-                            <img src="{{asset('/predictions/score-line.jpg')}}" alt="" class="img-responsive"/>
+                <li>
 
-                             <figcaption>
+                	<figure class="effect-oscar">
 
-                                <h2>Anatome Milano <span>Galleria</span></h2>
+                    <img src="{{asset('/predictions/red-card.jpg')}}" alt="" class="img-responsive"/>
 
-                                <p>Galerie Anatome based in Paris</p>
+                     <figcaption>
 
-                                <a href="works-details.html">View more</a>
+                        <h2>Card <span>RED</span></h2>
 
-                            </figcaption>
+                        <p>Any <b>Red Cards</b> ?</p>
 
-                        </figure>
+                        <a href="works-details.html">View more</a>
 
-                        </li>
+                    </figcaption>
 
-                        <li>
+                </figure>
 
-                        	<figure class="effect-oscar">
+                </li>
 
-                            <img src="{{asset('/predictions/own-goal.jpg')}}" alt="" class="img-responsive"/>
 
-                             <figcaption>
 
-                                <h2>A Brand <span>new Agency</span></h2>
+            </ul>
 
-                                <p>Over 40,000 customers use our themes to power their</p>
+        </section>
 
-                                <a href="works-details.html">View more</a>
+        <div class="clearfix"></div>
 
-                            </figcaption>
+    </div>
 
-                        </figure>
-
-                        </li>
-
-                        <li>
-
-                        	<figure class="effect-oscar">
-
-                            <img src="{{asset('/predictions/red-card.jpg')}}" alt="" class="img-responsive"/>
-
-                             <figcaption>
-
-                                <h2>Anatome Milano <span>Galleria</span></h2>
-
-                                <p>Galerie Anatome based in Paris</p>
-
-                                <a href="works-details.html">View more</a>
-
-                            </figcaption>
-
-                        </figure>
-
-                        </li>
-
-
-
-                    </ul>
-
-                </section>
-
-                <div class="clearfix"></div>
-
-            </div>
-
-        </main>
-
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-        <script src="/avana/js/jquery.min.js" type="text/javascript"></script>
-
-        <!-- custom -->
-
-		<script src="/avana/js/nav.js" type="text/javascript"></script>
-
-        <script src="/avana/js/custom.js" type="text/javascript"></script>
-
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-
-        <script src="/avana/js/bootstrap.min.js" type="text/javascript"></script>
-
-        <script src="/avana/js/effects/masonry.pkgd.min.js"  type="text/javascript"></script>
-
-		<script src="/avana/js/effects/imagesloaded.js"  type="text/javascript"></script>
-
-		<script src="/avana/js/effects/classie.js"  type="text/javascript"></script>
-
-		<script src="/avana/js/effects/AnimOnScroll.js"  type="text/javascript"></script>
-
-        <script src="/avana/js/effects/modernizr.custom.js"></script>
-
-        <!-- jquery.countdown -->
-
-        <script src="/avana/js/html5shiv.js" type="text/javascript"></script>
-
-    </body>
-
-</html>
+@endsection
