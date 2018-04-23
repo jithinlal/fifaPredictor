@@ -23,12 +23,12 @@ $(document).ready(function () {
 						method: 'GET',
 						url: getPredicted,
 
-						success:function (predictedArray) {
+						success: function (predictedArray) {
 							var option = '<option value=-1>Select</option>';
 							$('.jqSelect').html('');
 							$('.jqSelect').append(option);
 							for (var i = 0; i < data.length; i++) {
-								if(!predictedArray.includes(data[i].name)){
+								if (!predictedArray.includes(data[i].name)) {
 									option = '<option value={0}>{1}</option>'
 										.replace('{0}', data[i].id)
 										.replace('{1}', data[i].name);
@@ -37,7 +37,7 @@ $(document).ready(function () {
 								}
 							}
 						},
-						error:function(){
+						error: function () {
 							console.log('error getting predicted values');
 						}
 					});

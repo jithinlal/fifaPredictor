@@ -42,7 +42,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <select class="selectpicker form-control show-tick jqSelect" data-live-search="true" title="Choose" data-style="bg-navy btn-flat" data-size="10">
+        <select class="form-control jqSelect">
 		</select>
       </div>
       <div class="modal-footer">

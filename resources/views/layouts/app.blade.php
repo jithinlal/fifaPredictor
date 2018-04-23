@@ -41,10 +41,11 @@
 
     <!-- Bootstrap core JavaScript -->
 
-	<script src="/select-styles/js/bootstrap-select.min.js"></script>
 
     <script src="/home_vendor/jquery/jquery.min.js"></script>
-    <script src="/home_vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/home_vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/select-styles/js/bootstrap-select.min.js"></script>
+
 
     <!-- Plugin JavaScript -->
     <script src="/home_vendor/jquery-easing/jquery.easing.min.js"></script>
