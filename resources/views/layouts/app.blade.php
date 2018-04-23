@@ -15,7 +15,10 @@
 
     <!-- Custom Fonts -->
     <link href="/home_vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="/select-styles/css/bootstrap-select.min.css">
+	{{-- <link rel="stylesheet" href="/select-styles/css/bootstrap-select.min.css"> --}}
+    <link rel="stylesheet" type="text/css" href="/awselect_plugin/awselect.css">
+    <link rel="stylesheet" href="/chosen_plugin/chosen.css">
+    <link rel="stylesheet" href="/nice_select_plugin/css/nice-select.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="/home_vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
@@ -47,8 +50,16 @@
 	<script src="/select-styles/js/bootstrap-select.min.js"></script>
 
 
+
+    <script src="/home_vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/nice_select_plugin/js/jquery.nice-select.js"></script>
+    <script src="/home_vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    {{-- <script src="/select-styles/js/bootstrap-select.min.js"></script> --}}
+    <script type="text/javascript" src="/chosen_plugin/chosen.jquery.js"></script>
     <!-- Plugin JavaScript -->
     <script src="/home_vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="/awselect_plugin/awselect.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="/home_js/stylish-portfolio.min.js"></script>

@@ -18,41 +18,85 @@
 
         <title>:: avana LLC ::</title>
 
-		<link rel="shortcut icon" href="/avana/images/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
 
 
         <!-- style -->
 
-        <link href="/avana/css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
 
         <!-- style -->
 
         <!-- bootstrap -->
 
-        <link href="/avana/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
         <!-- responsive -->
 
-        <link href="/avana/css/responsive.css" rel="stylesheet" type="text/css">
+        <link href="css/responsive.css" rel="stylesheet" type="text/css">
 
         <!-- font-awesome -->
 
-        <link href="/avana/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
         <!-- font-awesome -->
 
-        <link href="/avana/css/effects/set2.css" rel="stylesheet" type="text/css">
+        <link href="css/effects/set2.css" rel="stylesheet" type="text/css">
 
-        <link href="/avana/css/effects/normalize.css" rel="stylesheet" type="text/css">
+        <link href="css/effects/normalize.css" rel="stylesheet" type="text/css">
 
-        <link href="/avana/css/effects/component.css"  rel="stylesheet" type="text/css" >
+        <link href="css/effects/component.css"  rel="stylesheet" type="text/css" >
 
 	</head>
 
 
 
-    <body>    	
+    <body>
+
+
+
+    	<!-- header -->
+
+        	<!-- <header role="header">
+
+            	<div class="container">
+
+                	<!-- logo -->
+
+                    	<!-- <h1>
+
+                        	<a href="index.html" title="avana LLC"><img src="images/logo.png" title="avana LLC" alt="avana LLC"/></a>
+
+                        </h1> -->
+
+                    <!-- logo -->
+
+                    <!-- nav -->
+
+<!--                     <nav role="header-nav" class="navy">
+
+                        <ul>
+
+                            <li class="nav-active"><a href="index.html" title="Work">Work</a></li>
+
+                            <li><a href="about.html" title="About">About</a></li>
+
+                            <li><a href="blog.html" title="Blog">Blog</a></li>
+
+                            <li><a href="contact.html" title="Contact">Contact</a></li>
+
+                        </ul>
+
+                    </nav>
+
+ -->                    <!-- nav -->
+
+<!--                 </div>
+
+            </header> -->
+
+        <!-- header -->
 
         <!-- main -->
 
@@ -70,14 +114,11 @@
 
                     	<header>
 
-                        	<h2><span>{{$match->type}}</span></h2> <h2>{{$teams[$match->home_team - 1]->name}}</h2>
-                            <h1>v/s</h1>
-                            <h2>{{$teams[$match->away_team - 1]->name}}</h2>
+                        	<h2><span>avana</span> A Brand new Agency.</h2>
 
                         </header>
 
-                        <p>{{$stadia[$match->stadium_id]->name}}</p>
-                        <h5>{{$stadia[$match->stadium_id]->city}}</h5>
+                        <p>This is the story of Avana, a minimal Bootstrap template for creative agency.</p>
 
                     </article>
 
@@ -89,13 +130,13 @@
 
                 	<figure class="effect-oscar">
 
-                    	<img src="/stadiums/{{$stadia[$match->stadium_id]->name}}.jpg" alt="" class="img-responsive"/>
+                    	<img src="images/home-images/image-1.jpg" alt="" class="img-responsive"/>
 
                         <figcaption>
 
-                        	<h2>{{$stadia[$match->stadium_id]->name}}<span> {{$stadia[$match->stadium_id]->city}}</span></h2>
+                        	<h2>Eliana Dedda<span> Identity</span></h2>
 
-							<p>{{\Carbon\Carbon::parse($match->date)->toDayDateTimeString()}}</p>
+							<p>Personal Brand Identity.</p>
 
 							<a href="works-details.html">View more</a>
 
@@ -119,8 +160,7 @@
 
                         	<figure class="effect-oscar">
 
-                            <img src="/avana/images/home-images/image-2.jpg" alt="" class="img-responsive"/>
-                            {{-- <img src="/avana/images/home-images/image-2.jpg" alt="" class="img-responsive"/> --}}
+                            <img src="images/home-images/image-2.jpg" alt="" class="img-responsive"/>
 
                             <figcaption>
 
@@ -396,7 +436,7 @@
 
                              <figure class="effect-oscar">
 
-                                <img src="/avana/images/home-images/image-5.jpg" alt="" class="img-responsive"/>
+                                <img src="images/home-images/image-5.jpg" alt="" class="img-responsive"/>
 
                                  <figcaption>
 
@@ -462,34 +502,88 @@
 
         </main>
 
+    	<!-- main -->
+
+        <!-- footer -->
+
+        <!-- <footer role="footer">
+
+            <!-- logo -->
+<!--
+                <h1>
+
+                    <a href="index.html" title="avana LLC"><img src="images/logo.png" title="avana LLC" alt="avana LLC"/></a>
+
+                </h1>
+ -->
+            <!-- logo -->
+
+            <!-- nav -->
+<!--
+            <nav role="footer-nav">
+
+            	<ul>
+
+                	<li><a href="index.html" title="Work">Work</a></li>
+
+                    <li><a href="about.html" title="About">About</a></li>
+
+                    <li><a href="blog.html" title="Blog">Blog</a></li>
+
+                    <li><a href="contact.html" title="Contact">Contact</a></li>
+
+                </ul>
+
+            </nav> -->
+
+            <!-- nav -->
+<!--
+            <ul role="social-icons">
+
+            	<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+
+                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+
+                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+
+                <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+
+            </ul>
+
+            <p class="copy-right">&copy; 2015  avana LLC.. All rights Resved</p>
+
+        </footer> -->
+         <!-- footer -->
+
+
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
-        <script src="/avana/js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
 
         <!-- custom -->
 
-		<script src="/avana/js/nav.js" type="text/javascript"></script>
+		<script src="js/nav.js" type="text/javascript"></script>
 
-        <script src="/avana/js/custom.js" type="text/javascript"></script>
+        <script src="js/custom.js" type="text/javascript"></script>
 
         <!-- Include all compiled plugins (below), or include individual files as needed -->
 
-        <script src="/avana/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
 
-        <script src="/avana/js/effects/masonry.pkgd.min.js"  type="text/javascript"></script>
+        <script src="js/effects/masonry.pkgd.min.js"  type="text/javascript"></script>
 
-		<script src="/avana/js/effects/imagesloaded.js"  type="text/javascript"></script>
+		<script src="js/effects/imagesloaded.js"  type="text/javascript"></script>
 
-		<script src="/avana/js/effects/classie.js"  type="text/javascript"></script>
+		<script src="js/effects/classie.js"  type="text/javascript"></script>
 
-		<script src="/avana/js/effects/AnimOnScroll.js"  type="text/javascript"></script>
+		<script src="js/effects/AnimOnScroll.js"  type="text/javascript"></script>
 
-        <script src="/avana/js/effects/modernizr.custom.js"></script>
+        <script src="js/effects/modernizr.custom.js"></script>
 
         <!-- jquery.countdown -->
 
-        <script src="/avana/js/html5shiv.js" type="text/javascript"></script>
+        <script src="js/html5shiv.js" type="text/javascript"></script>
 
     </body>
 

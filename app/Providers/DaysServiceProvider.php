@@ -21,7 +21,7 @@ class DaysServiceProvider extends ServiceProvider
             $currentDayId = -1;
 
             $today = Carbon::today('Asia/Kolkata')->format('Y-m-d');
-            // $today = '2018-06-15';
+            $today = '2018-06-15';
             if ($today == '2018-06-13') {
                 $nextDayId = 1;
             }

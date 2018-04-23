@@ -31,7 +31,6 @@
 </section>
 
 
-
 <div class="modal" tabindex="-1" role="dialog" id="modal_predict">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
