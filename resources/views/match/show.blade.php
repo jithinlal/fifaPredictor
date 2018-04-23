@@ -52,7 +52,7 @@
 
 
 
-    <body>    	
+    <body>
 
         <!-- main -->
 
@@ -70,9 +70,9 @@
 
                     	<header>
 
-                        	<h2><span>{{$match->type}}</span></h2> <h2>{{$teams[$match->home_team - 1]->name}}</h2>
+                        	<h2><span>{{$match->type}}</span></h2> <h2>{{$teams[$match->home_team]->name}}</h2>
                             <h1>v/s</h1>
-                            <h2>{{$teams[$match->away_team - 1]->name}}</h2>
+                            <h2>{{$teams[$match->away_team]->name}}</h2>
 
                         </header>
 
@@ -126,7 +126,7 @@
 
 
 
-                                    <h2>{{$teams[$match->home_team - 1]->name}} <span>{{$teams[$match->away_team - 1]->name}}</span></h2>
+                                    <h2>{{$teams[$match->home_team]->name}} <span>{{$teams[$match->away_team]->name}}</span></h2>
 
                                     <p>Project for Thonik, design studio based in Amsterdam</p>
 

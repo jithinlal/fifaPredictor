@@ -12,8 +12,8 @@ class MatchController extends Controller
     public function show($id)
     {
         $match = Match::find($id);
-        $teams = Team::all();
-        $stadia = Stadium::all();
+        $teams = Team::all()->keyBy('id');
+        $stadia = Stadium::all()->keyBy('id');
         return view('match.show', ['match' => $match,'teams' => $teams, 'stadia' => $stadia]);
     }
 }
