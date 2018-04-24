@@ -61,7 +61,7 @@
 
 
 			@yield('content')
-           
+
 
         </main>
 
@@ -93,6 +93,8 @@
         <!-- jquery.countdown -->
 
         <script src="/avana/js/html5shiv.js" type="text/javascript"></script>
+
+		<script src="/avana/js/myScript.js" type="text/javascript"></script>
 
     </body>
 

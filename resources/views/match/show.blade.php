@@ -34,7 +34,7 @@
 
 					<p>{{\Carbon\Carbon::parse($match->date)->toDayDateTimeString()}}</p>
 
-					<a href="works-details.html">View more</a>
+					<a href="">View more</a>
 
                 </figcaption>
 
@@ -57,7 +57,7 @@
                 	<figure class="effect-oscar">
 
                     <img src="{{asset('/flags/png1000px/'.$teams[$match->home_team]->iso2.'.png')}}" alt="" class="img-responsive"/>
-                    
+
 
                     <figcaption>
 
@@ -67,7 +67,7 @@
 
                             <p>How much will <b>{{$teams[$match->home_team]->name}}</b> score?</p>
 
-                            <a href="works-details.html">View more</a>
+                            <a class="home_score" href="">View more</a>
 
 
 
@@ -147,7 +147,7 @@
 
                 </figure>
 
-                </li>            
+                </li>
 
                 <li>
 
