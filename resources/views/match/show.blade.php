@@ -67,7 +67,7 @@
 
                             <p>How much will <b>{{$teams[$match->home_team]->name}}</b> score?</p>
 
-                            <a class="home_score" href="">View more</a>
+                            <a class="home_score" data-team={{$teams[$match->home_team]->name}} href="">View more</a>
 
 
 
