@@ -20,6 +20,9 @@ Route::get('/players', 'PlayerController@index')->name('getPlayerName');
 Route::get('/user/prediction', 'PredictionController@index')->name('submitPrediction');
 Route::get('/prediction/data', 'PredictionController@predictedData')->name('getPredictedData');
 
+// Individual match Prediction
+Route::post('away_team/goal','PredictionController@awayScore')->name('getAwayTeamGoal');
+
 Auth::routes();
 
 

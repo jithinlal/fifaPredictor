@@ -67,7 +67,7 @@
 
                             <p>How much will <b>{{$teams[$match->home_team]->name}}</b> score?</p>
 
-                            <a class="home_score" data-team={{$teams[$match->home_team]->name}} href="">View more</a>
+                            <a class="home_score" data-team={{$teams[$match->home_team]->name}} data-id={{$teams[$match->home_team]->id}} href="">View more</a>
 
 
 
@@ -91,7 +91,7 @@
 
                         <p>First player to get a <b>Yellow Card</b> ?</p>
 
-                        <a href="works-details.html">View more</a>
+                        <a class="yellow_card" href="" data-matchid={{$match->id}}>View more</a>
 
                     </figcaption>
 
@@ -111,7 +111,7 @@
 
                         <p>Will there be any <b>Hat-Trick</b> ?</p>
 
-                        <a href="works-details.html">View more</a>
+                        <a class="hat_trick" href="" data-matchid={{$match->id}}>View more</a>
 
                     </figcaption>
 
@@ -141,7 +141,7 @@
 
                         <p>How much will <b>{{$teams[$match->away_team]->name}}</b> score?</p>
 
-                        <a href="works-details.html">View more</a>
+                        <a class="away_score" data-team={{$teams[$match->away_team]->name}} data-id={{$teams[$match->away_team]->id}} href="">View more</a>
 
                     </figcaption>
 
@@ -161,7 +161,7 @@
 
                         <p>Do you predict an <b>Own Goal</b> ?</p>
 
-                        <a href="works-details.html">View more</a>
+                        <a class="own_goal" href="" data-matchid={{$match->id}}>View more</a>
 
                     </figcaption>
 
@@ -181,7 +181,7 @@
 
                         <p>Any <b>Red Cards</b> ?</p>
 
-                        <a href="works-details.html">View more</a>
+                        <a class="red_card" href="" data-matchid={{$match->id}}>View more</a>
 
                     </figcaption>
 
@@ -198,5 +198,11 @@
         <div class="clearfix"></div>
 
     </div>
+
+
+    <script type="text/javascript">
+		var token = '{{Session::token()}}';
+		var storeAwayGoal = '{{route('getAwayTeamGoal')}}';		
+	</script>
 
 @endsection

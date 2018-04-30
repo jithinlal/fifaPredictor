@@ -49,6 +49,8 @@
         <link href="/avana/css/effects/component.css"  rel="stylesheet" type="text/css" >
         <link href="/avana/css/effects/myComponent.css"  rel="stylesheet" type="text/css" >
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+
 	</head>
 
 
@@ -98,6 +100,9 @@
 
 		{{-- Sweet Alert --}}
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+		{{-- jquery-confirm --}}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 
     </body>
 

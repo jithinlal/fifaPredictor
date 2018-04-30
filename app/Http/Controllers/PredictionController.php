@@ -33,4 +33,8 @@ class PredictionController extends Controller
 
         return response()->json($result);
     }
+
+    public function awayScore(){
+    	
+    }
 }
