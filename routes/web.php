@@ -21,7 +21,12 @@ Route::get('/user/prediction', 'PredictionController@index')->name('submitPredic
 Route::get('/prediction/data', 'PredictionController@predictedData')->name('getPredictedData');
 
 // Individual match Prediction
-Route::post('away_team/goal','PredictionController@awayScore')->name('getAwayTeamGoal');
+Route::get('away_team/goal', 'PredictionController@awayScore')->name('getAwayTeamGoal');
+Route::get('home_team/goal', 'PredictionController@homeScore')->name('getHomeTeamGoal');
+Route::get('yellow/card', 'PredictionController@yellowCard')->name('getYellowCard');
+Route::get('red/card', 'PredictionController@redCard')->name('getRedCard');
+Route::get('hat/trick', 'PredictionController@hatTrick')->name('getHatTrick');
+Route::get('own/goal', 'PredictionController@ownGoal')->name('getOwnGoal');
 
 Auth::routes();
 
@@ -29,21 +34,21 @@ Auth::routes();
 //-----------------------------------Admin Routes--------------------------------------------
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    Route::get('/', 'AdminController@index');
+	Route::get('/', 'AdminController@index');
 
     //Day Controller
-    Route::get('/days', 'DayController@create');
-    Route::post('/days/add', 'DayController@save');
+	Route::get('/days', 'DayController@create');
+	Route::post('/days/add', 'DayController@save');
 
     //MatchDay Controller
-    Route::get('/match-days', 'MatchDayController@index');
-    Route::get('/match-days/add/{day}', 'MatchDayController@create');
-    Route::post('/match-days/add/{day}', 'MatchDayController@save');
-    Route::get('/match-days/remove/day/{day}/match/{match}/from/{from}', 'MatchDayController@delete');
+	Route::get('/match-days', 'MatchDayController@index');
+	Route::get('/match-days/add/{day}', 'MatchDayController@create');
+	Route::post('/match-days/add/{day}', 'MatchDayController@save');
+	Route::get('/match-days/remove/day/{day}/match/{match}/from/{from}', 'MatchDayController@delete');
 
     //Overall Controller
-    Route::get('/overall-result', 'OverallResultController@index');
-    Route::post('/overall-result/add', 'OverallResultController@save');
+	Route::get('/overall-result', 'OverallResultController@index');
+	Route::post('/overall-result/add', 'OverallResultController@save');
 
 
 

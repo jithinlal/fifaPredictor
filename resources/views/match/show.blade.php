@@ -67,7 +67,7 @@
 
                             <p>How much will <b>{{$teams[$match->home_team]->name}}</b> score?</p>
 
-                            <a class="home_score" data-team={{$teams[$match->home_team]->name}} data-id={{$teams[$match->home_team]->id}} href="">View more</a>
+                            <a class="home_score" data-team={{$teams[$match->home_team]->name}} data-id={{$teams[$match->home_team]->id}} data-matchid={{$match->id}} data-matchid={{$match->id}} href="">View more</a>
 
 
 
@@ -89,7 +89,7 @@
 
                         <h2>Card <span>YELLOW</span></h2>
 
-                        <p>First player to get a <b>Yellow Card</b> ?</p>
+                        <p>Will number of <b>Yellow Card</b> goes past <b>5</b> ?</p>
 
                         <a class="yellow_card" href="" data-matchid={{$match->id}}>View more</a>
 
@@ -141,7 +141,7 @@
 
                         <p>How much will <b>{{$teams[$match->away_team]->name}}</b> score?</p>
 
-                        <a class="away_score" data-team={{$teams[$match->away_team]->name}} data-id={{$teams[$match->away_team]->id}} href="">View more</a>
+                        <a class="away_score" data-team={{$teams[$match->away_team]->name}} data-id={{$teams[$match->away_team]->id}} data-matchid={{$match->id}} href="">View more</a>
 
                     </figcaption>
 
@@ -161,7 +161,7 @@
 
                         <p>Do you predict an <b>Own Goal</b> ?</p>
 
-                        <a class="own_goal" href="" data-matchid={{$match->id}}>View more</a>
+                        <a class="own_goal" data-matchid={{$match->id}} href="">View more</a>
 
                     </figcaption>
 
@@ -202,7 +202,12 @@
 
     <script type="text/javascript">
 		var token = '{{Session::token()}}';
-		var storeAwayGoal = '{{route('getAwayTeamGoal')}}';		
+		var storeAwayGoal = '{{route('getAwayTeamGoal')}}';
+		var storeHomeGoal = '{{route('getHomeTeamGoal')}}';
+		var storeYellowCard = '{{route('getYellowCard')}}';
+		var storeRedCard = '{{route('getRedCard')}}';
+		var storeHatTrick = '{{route('getHatTrick')}}';
+		var storeOwnGoal = '{{route('getOwnGoal')}}';
 	</script>
 
 @endsection
