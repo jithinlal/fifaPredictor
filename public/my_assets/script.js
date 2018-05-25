@@ -12,11 +12,10 @@ $(document).ready(function () {
 		id = self.data('id');
 		text = self.data('text');
 		console.log(id, text);
-
 		$('#modal_predict').show();
 		$('h5.jqModalTitle').text(text);
 
-		if (id > 1 && id < 5) {
+		if (id > 0 && id < 5) {
 			$.ajax({
 				method: 'GET',
 				url: teamUrl,
