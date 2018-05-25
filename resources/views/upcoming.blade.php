@@ -9,7 +9,7 @@
 
 
 				<div class="col-lg-6">
-					<a class="portfolio-item" href="#">
+					<a class="portfolio-item" href="/match/{{$game->match_id}}">
 						<span class="caption">
 						<span class="caption-content">
 							@if($game->type == 'group')<h2>Group {{$teams[$game->home_team]['group_name']}}</h2>@endif

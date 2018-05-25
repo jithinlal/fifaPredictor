@@ -9,6 +9,7 @@
     <meta name="author" content="">
 
     <title>Fifa Predict 2018</title>
+	<link rel="shortcut icon" href="/prediction_logo/favicon.ico" />
 
     <!-- Bootstrap Core CSS -->
     <link href="/home_vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

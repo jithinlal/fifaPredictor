@@ -5,11 +5,10 @@
 	<div class="row">
 
     	<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
-
         	<article role="pge-title-content">
 
             	<header>
-
+					<a type="button" class="btn btn-outline-warning" href="{{url()->previous()}}"><span style="font-size:50px;">&#8592;</span></a>
                 	<h2><span>{{$match->type}}</span></h2> <h2>{{$teams[$match->home_team]->name}}</h2>
                     <h1>v/s</h1>
                     <h2>{{$teams[$match->away_team]->name}}</h2>

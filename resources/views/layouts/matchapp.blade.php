@@ -16,9 +16,9 @@
 
 
 
-        <title>:: avana LLC ::</title>
+        <title>Fifa Predict 2018</title>
 
-		<link rel="shortcut icon" href="/avana/images/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="/prediction_logo/favicon.ico" />
 
 
 
