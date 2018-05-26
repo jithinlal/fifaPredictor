@@ -15,23 +15,31 @@ class PredictionController extends Controller
         //     if ($request->prediction_id > 0 || $request->prediction_id < 13) {
         //         $teamName = Team::find($request->predictionId)->name;
         //     }
-        // }
+		// }
 
-		DB::table('user_match_predictions')->insert([
-			'user_id' => Auth::id(),
-			'match_id' => $request->match_id,
-			'prediction_id' => $request->prediction_id,
-			'prediction' => $request->predictionText
-		]);
+		if ($request->ajax()) {
+			DB::table('user_match_predictions')->insert([
+				'user_id' => Auth::id(),
+				'match_id' => $request->match_id,
+				'prediction_id' => $request->prediction_id,
+				'prediction' => $request->predictionText
+			]);
 
-		return response()->json($request);
+			return response()->json($request);
+		} else {
+			return view('errors.503');
+		}
 	}
 
 	public function predictedData()
 	{
-		$result = DB::table('user_match_predictions')->where([['user_id', Auth::id()], ['match_id', 0]])->pluck('prediction');
+		if ($request->ajax()) {
+			$result = DB::table('user_match_predictions')->where([['user_id', Auth::id()], ['match_id', 0]])->pluck('prediction');
 
-		return response()->json($result);
+			return response()->json($result);
+		} else {
+			return view('errors.503');
+		}
 	}
 
 
@@ -40,80 +48,103 @@ class PredictionController extends Controller
 
 	public function awayScore(Request $request)
 	{
-		if (!is_numeric($request->score)) {
-			return response()->json(['success' => false]);
-		}
-		DB::table('user_match_predictions')->insert([
-			'user_id' => Auth::id(),
-			'match_id' => $request->matchId,
-			'prediction_id' => 18,
-			'prediction' => $request->score
-		]);
+		if ($request->ajax()) {
+			if (!is_numeric($request->score)) {
+				return response()->json(['success' => false]);
+			}
+			DB::table('user_match_predictions')->insert([
+				'user_id' => Auth::id(),
+				'match_id' => $request->matchId,
+				'prediction_id' => 18,
+				'prediction' => $request->score
+			]);
 
-		return response()->json(['success' => true]);
+			return response()->json(['success' => true]);
+		} else {
+			return view('errors.view');
+		}
 	}
 
 	public function homeScore(Request $request)
 	{
-		if (!is_numeric($request->score)) {
-			return response()->json(['success' => false]);
-		}
-		DB::table('user_match_predictions')->insert([
-			'user_id' => Auth::id(),
-			'match_id' => $request->matchId,
-			'prediction_id' => 17,
-			'prediction' => $request->score
-		]);
+		if ($request->ajax()) {
+			if (!is_numeric($request->score)) {
+				return response()->json(['success' => false]);
+			}
+			DB::table('user_match_predictions')->insert([
+				'user_id' => Auth::id(),
+				'match_id' => $request->matchId,
+				'prediction_id' => 17,
+				'prediction' => $request->score
+			]);
 
-		return response()->json(['success' => true]);
+			return response()->json(['success' => true]);
+		} else {
+			return view('errors.view');
+		}
 	}
 
 	public function yellowCard(Request $request)
 	{
-		DB::table('user_match_predictions')->insert([
-			'user_id' => Auth::id(),
-			'match_id' => $request->matchId,
-			'prediction_id' => 19,
-			'prediction' => 'yes'
-		]);
+		if ($request->ajax()) {
+			DB::table('user_match_predictions')->insert([
+				'user_id' => Auth::id(),
+				'match_id' => $request->matchId,
+				'prediction_id' => 19,
+				'prediction' => 'yes'
+			]);
 
-		return response()->json(['success' => true]);
+			return response()->json(['success' => true]);
+		} else {
+			return view('errors.view');
+		}
 	}
 
 	public function redCard(Request $request)
 	{
-		DB::table('user_match_predictions')->insert([
-			'user_id' => Auth::id(),
-			'match_id' => $request->matchId,
-			'prediction_id' => 20,
-			'prediction' => 'yes'
-		]);
+		if ($request->ajax()) {
+			DB::table('user_match_predictions')->insert([
+				'user_id' => Auth::id(),
+				'match_id' => $request->matchId,
+				'prediction_id' => 20,
+				'prediction' => 'yes'
+			]);
 
-		return response()->json(['success' => true]);
+			return response()->json(['success' => true]);
+		} else {
+			return view('errors.view');
+		}
 	}
 
 	public function hatTrick(Request $request)
 	{
-		DB::table('user_match_predictions')->insert([
-			'user_id' => Auth::id(),
-			'match_id' => $request->matchId,
-			'prediction_id' => 21,
-			'prediction' => 'yes'
-		]);
+		if ($request->ajax()) {
+			DB::table('user_match_predictions')->insert([
+				'user_id' => Auth::id(),
+				'match_id' => $request->matchId,
+				'prediction_id' => 21,
+				'prediction' => 'yes'
+			]);
 
-		return response()->json(['success' => true]);
+			return response()->json(['success' => true]);
+		} else {
+			return view('errors.view');
+		}
 	}
 
 	public function ownGoal(Request $request)
 	{
-		DB::table('user_match_predictions')->insert([
-			'user_id' => Auth::id(),
-			'match_id' => $request->matchId,
-			'prediction_id' => 22,
-			'prediction' => 'yes'
-		]);
+		if ($request->ajax()) {
+			DB::table('user_match_predictions')->insert([
+				'user_id' => Auth::id(),
+				'match_id' => $request->matchId,
+				'prediction_id' => 22,
+				'prediction' => 'yes'
+			]);
 
-		return response()->json(['success' => true]);
+			return response()->json(['success' => true]);
+		} else {
+			return view('errors.view');
+		}
 	}
-
 }

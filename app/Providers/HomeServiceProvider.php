@@ -33,7 +33,7 @@ class HomeServiceProvider extends ServiceProvider
 			}
 
             // dd($upcomingGames);
-			$view->with(compact('matches', 'teams', 'stadia', 'predictions', 'userPredictions', 'userPredicionIds', 'sum', 'upcomingGames'));
+			$view->with(compact('matches', 'teams', 'stadia', 'predictions', 'userPredictions', 'userPredicionIds', 'sum'));
 		});
 	}
 
