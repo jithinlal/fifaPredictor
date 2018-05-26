@@ -17,7 +17,7 @@
           	<a class="js-scroll-trigger" href="#services">Services</a>
         </li>
         <li class="sidebar-nav-item">
-          	<a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
+          	<a class="js-scroll-trigger" href="#portfolio">Upcoming</a>
         </li>
         <li class="sidebar-nav-item">
           	<a class="js-scroll-trigger" href="#contact">Contact</a>
@@ -25,7 +25,7 @@
 		<li class="sidebar-nav-item">
 			<a class="js-scroll-trigger" href="#fixtures">Fixtures</a>
 		</li>
-		
+
 		<li class="sidebar-nav-item">
 			<a  class="js-scroll-trigger bg-danger" href="{{ route('logout') }}"
             	onclick="event.preventDefault();
@@ -35,6 +35,6 @@
 		  	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
           	</form>
-		</li>		
+		</li>
     </ul>
 </nav>

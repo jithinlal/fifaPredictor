@@ -1,4 +1,7 @@
-<!-- About -->
+@push('style')
+	{{-- <link rel="stylesheet" href="{{asset('my_css/leaderboard.css')}}" > --}}
+@endpush
+<!-- Point -->
 <section class="content-section bg-light" id="about">
 	<div class="container text-center">
 	<div class="row">

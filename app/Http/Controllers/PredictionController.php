@@ -33,7 +33,7 @@ class PredictionController extends Controller
 		}
 	}
 
-	public function predictedData()
+	public function predictedData(Request $request)
 	{
 		if ($request->ajax()) {
 			$result = DB::table('user_match_predictions')->where([['user_id', Auth::id()], ['match_id', 0]])->pluck('prediction');

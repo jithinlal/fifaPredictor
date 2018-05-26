@@ -27,7 +27,7 @@ $(document).ready(function () {
 					success: function (result) {
 						console.log(result);
 						if (result.success) {
-							swal("Great!", "Your prediction of " + teamName + "(" + teamId + ") scoring " + value + " goals is recorded!", "success");
+							swal("Great!", "Your prediction of " + teamName + " scoring " + value + " goals is recorded!", "success");
 						} else {
 							swal("Oops", "Something went wrong!", "error");
 						}
@@ -68,7 +68,7 @@ $(document).ready(function () {
 					success: function (result) {
 						console.log(result);
 						if (result.success) {
-							swal("Great!", "Your prediction of " + teamName + "(" + teamId + ") scoring " + value + " goals is recorded!", "success");
+							swal("Great!", "Your prediction of " + teamName + " scoring " + value + " goals is recorded!", "success");
 						} else {
 							swal("Oops", "Something went wrong!", "error");
 						}
@@ -87,7 +87,7 @@ $(document).ready(function () {
 		$.confirm({
 			theme: 'supervan',
 			title: 'Yellow Card',
-			content: 'Do you see a yellow card in this match?',
+			content: 'Do you see more than 5 yellow cards in this match?',
 			buttons: {
 				confirm: function () {
 					$.ajax({
