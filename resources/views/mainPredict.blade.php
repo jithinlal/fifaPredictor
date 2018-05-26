@@ -6,6 +6,11 @@
 			<h2 class="mb-5">MAIN PREDICTION</h2>
 		</div>
 		<div class="row">
+
+		@php
+			$isOverAllLocked = \App\Meliorate::isOverallPredictionLocked();
+		@endphp
+
 			@foreach($predictions as $prediction)
 				@if($loop->iteration == 5 || $loop->iteration == 9 || $loop->iteration == 13)
 					</div>
@@ -18,11 +23,20 @@
 					<h4>
 						<strong>{{$prediction->name}}</strong>
 					</h4>
-					@if(!in_array($prediction->id,$userPredicionIds))
-						<button data-text="Predict {{$prediction->name}}" data-id="{{$prediction->id}}" class="btn btn-info jqPredict">Predict</button>
+					@if(!$isOverAllLocked)
+						@if(!in_array($prediction->id,$userPredicionIds))
+							<button data-text="Predict {{$prediction->name}}" data-id="{{$prediction->id}}" class="btn btn-info jqPredict">Predict</button>
+						@else
+							<p class="text-uppercase font-weight-bold text-warning">{{$userPredictions[$prediction->id]}}</p>
+						@endif
 					@else
-						<p class="text-uppercase font-weight-bold text-warning">{{$userPredictions[$prediction->id]}}</p>
+						@if(in_array($prediction->id,$userPredicionIds))
+							<p class="text-uppercase font-weight-bold text-warning">{{$userPredictions[$prediction->id]}}</p>
+						@else
+							<p class="text-uppercase font-weight-bold text-warning">Not Predicted</p>
+						@endif
 					@endif
+
 					<p class="text-uppercase font-weight-bold text-warning"></p>
 				</div>
 			@endforeach
