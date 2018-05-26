@@ -33,7 +33,7 @@ Auth::routes();
 
 //-----------------------------------Admin Routes--------------------------------------------
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
 	Route::get('/', 'AdminController@index');
 
     //Day Controller

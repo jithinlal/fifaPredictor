@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class DaysServiceProvider extends ServiceProvider
 {
 	/**
-	 * Bootstrap services.
+	 * Upcoming games details
 	 *
 	 * @return void
 	 */

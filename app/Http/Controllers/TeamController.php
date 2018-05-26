@@ -7,6 +7,9 @@ use App\Team;
 
 class TeamController extends Controller
 {
+	/*
+		all the team details
+	 */
 	public function index(Request $request)
 	{
 		if ($request->ajax()) {
@@ -17,6 +20,9 @@ class TeamController extends Controller
 		}
 	}
 
+	/*
+		returns group teams
+	 */
 	public function groupTeams(Request $request)
 	{
 		if ($request->ajax()) {

@@ -16,7 +16,9 @@ class PredictionController extends Controller
         //         $teamName = Team::find($request->predictionId)->name;
         //     }
 		// }
-
+		/*
+			Records user predictions
+		 */
 		if ($request->ajax()) {
 			DB::table('user_match_predictions')->insert([
 				'user_id' => Auth::id(),
@@ -46,6 +48,9 @@ class PredictionController extends Controller
 	// currently the id of the home and away score is written as plain
 	// it should be taken from the database and a clear picture should be made
 
+	/*
+		records away score
+	 */
 	public function awayScore(Request $request)
 	{
 		if ($request->ajax()) {
@@ -65,6 +70,9 @@ class PredictionController extends Controller
 		}
 	}
 
+	/*
+		records home score
+	 */
 	public function homeScore(Request $request)
 	{
 		if ($request->ajax()) {
@@ -84,6 +92,9 @@ class PredictionController extends Controller
 		}
 	}
 
+	/*
+		records yellow card
+	 */
 	public function yellowCard(Request $request)
 	{
 		if ($request->ajax()) {
@@ -100,6 +111,9 @@ class PredictionController extends Controller
 		}
 	}
 
+	/*
+		records red card
+	 */
 	public function redCard(Request $request)
 	{
 		if ($request->ajax()) {
@@ -116,6 +130,9 @@ class PredictionController extends Controller
 		}
 	}
 
+	/*
+		records hat trick
+	 */
 	public function hatTrick(Request $request)
 	{
 		if ($request->ajax()) {
@@ -132,6 +149,9 @@ class PredictionController extends Controller
 		}
 	}
 
+	/*
+		records own goal
+	 */
 	public function ownGoal(Request $request)
 	{
 		if ($request->ajax()) {

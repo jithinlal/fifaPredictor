@@ -9,11 +9,14 @@ use App\Stadium;
 
 class MatchController extends Controller
 {
-    public function show($id)
-    {
-        $match = Match::find($id);
-        $teams = Team::all()->keyBy('id');
-        $stadia = Stadium::all()->keyBy('id');
-        return view('match.show', ['match' => $match,'teams' => $teams, 'stadia' => $stadia]);
-    }
+	/*
+		Per match details
+	 */
+	public function show($id)
+	{
+		$match = Match::find($id);
+		$teams = Team::all()->keyBy('id');
+		$stadia = Stadium::all()->keyBy('id');
+		return view('match.show', ['match' => $match, 'teams' => $teams, 'stadia' => $stadia]);
+	}
 }
