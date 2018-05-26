@@ -18,154 +18,176 @@ class PredictionSeederTable extends Seeder
 				'plus' => 500,
 				'minus' => 100,
 				'type' => 'overall',
-				'image' => 'world-cup'
+				'image' => 'world-cup',
+				'forType' => 'team'
 			],
 			[
 				'name' => 'Runner Up',
 				'plus' => 400,
 				'minus' => 75,
 				'type' => 'overall',
-				'image' => 'world-cup-2'
+				'image' => 'world-cup-2',
+				'forType' => 'team'
 			],
 			[
 				'name' => '3rd Place',
 				'plus' => 300,
 				'minus' => 50,
 				'type' => 'overall',
-				'image' => 'world-cup-3'
+				'image' => 'world-cup-3',
+				'forType' => 'team'
 			],
 			[
 				'name' => '4th Place',
 				'plus' => 200,
 				'minus' => 25,
 				'type' => 'overall',
-				'image' => 'world-cup-4'
+				'image' => 'world-cup-4',
+				'forType' => 'team'
 			],
 			[
 				'name' => 'Group A Winner',
 				'plus' => 250,
 				'minus' => 50,
 				'type' => 'overall',
-				'image' => 'group-a'
+				'image' => 'group-a',
+				'forType' => 'team'
 			],
 			[
 				'name' => 'Group B Winner',
 				'plus' => 250,
 				'minus' => 50,
 				'type' => 'overall',
-				'image' => 'group-b'
+				'image' => 'group-b',
+				'forType' => 'team'
 			],
 			[
 				'name' => 'Group C Winner',
 				'plus' => 250,
 				'minus' => 50,
 				'type' => 'overall',
-				'image' => 'group-c'
+				'image' => 'group-c',
+				'forType' => 'team'
 			],
 			[
 				'name' => 'Group D Winner',
 				'plus' => 250,
 				'minus' => 50,
 				'type' => 'overall',
-				'image' => 'group-d'
+				'image' => 'group-d',
+				'forType' => 'team'
 			],
 			[
 				'name' => 'Group E Winner',
 				'plus' => 250,
 				'minus' => 50,
 				'type' => 'overall',
-				'image' => 'group-e'
+				'image' => 'group-e',
+				'forType' => 'team'
 			],
 			[
 				'name' => 'Group F Winner',
 				'plus' => 250,
 				'minus' => 50,
 				'type' => 'overall',
-				'image' => 'group-f'
+				'image' => 'group-f',
+				'forType' => 'team'
 			],
 			[
 				'name' => 'Group G Winner',
 				'plus' => 250,
 				'minus' => 50,
 				'type' => 'overall',
-				'image' => 'group-g'
+				'image' => 'group-g',
+				'forType' => 'team'
 			],
 			[
 				'name' => 'Group H Winner',
 				'plus' => 250,
 				'minus' => 50,
 				'type' => 'overall',
-				'image' => 'group-h'
+				'image' => 'group-h',
+				'forType' => 'team'
 			],
 			[
 				'name' => 'Golden Boot',
 				'plus' => 500,
 				'minus' => 100,
 				'type' => 'overall',
-				'image' => 'golden-boot'
+				'image' => 'golden-boot',
+				'forType' => 'player'
 			],
 			[
 				'name' => 'Golden Ball',
 				'plus' => 500,
 				'minus' => 100,
 				'type' => 'overall',
-				'image' => 'golden-ball'
+				'image' => 'golden-ball',
+				'forType' => 'player'
 			],
 			[
 				'name' => 'Golden Glove',
 				'plus' => 500,
 				'minus' => 100,
 				'type' => 'overall',
-				'image' => 'golden-glove'
+				'image' => 'golden-glove',
+				'forType' => 'goalkeeper'
 			],
 			[
 				'name' => 'Best Young Player',
 				'plus' => 500,
 				'minus' => 100,
 				'type' => 'overall',
-				'image' => 'best-young-player'
+				'image' => 'best-young-player',
+				'forType' => 'young_player',
 			],
 			[
 				'name' => 'Home Team Goal',
 				'plus' => 50,
 				'minus' => 25,
 				'type' => 'group',
-				'image' => ''
+				'image' => '',
+				'forType' => '',
 			],
 			[
 				'name' => 'Away Team Goal',
 				'plus' => 50,
 				'minus' => 25,
 				'type' => 'group',
-				'image' => ''
+				'image' => '',
+				'forType' => '',
 			],
 			[
 				'name' => 'Yellow Card',
 				'plus' => 50,
 				'minus' => 25,
 				'type' => 'group',
-				'image' => ''
+				'image' => '',
+				'forType' => '',
 			],
 			[
 				'name' => 'Red Card',
 				'plus' => 50,
 				'minus' => 25,
 				'type' => 'group',
-				'image' => ''
+				'image' => '',
+				'forType' => '',
 			],
 			[
 				'name' => 'Hat Trick',
 				'plus' => 50,
 				'minus' => 25,
 				'type' => 'group',
-				'image' => ''
+				'image' => '',
+				'forType' => '',
 			],
 			[
 				'name' => 'Own Goal',
 				'plus' => 50,
 				'minus' => 25,
 				'type' => 'group',
-				'image' => ''
+				'image' => '',
+				'forType' => '',
 			]
 		]);
 	}

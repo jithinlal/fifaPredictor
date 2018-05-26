@@ -88,6 +88,11 @@
                                         <option>GK 2</option>
                                         <option>GK 3</option>
                                         @break
+                                    @case('young_player')
+                                        <option>Young player 1</option>
+                                        <option>Young player 2</option>
+                                        <option>Young player 3</option>
+                                    @break
                                 @endswitch                               
                             </select>
                             <input type="hidden" name="match_id" value="0">

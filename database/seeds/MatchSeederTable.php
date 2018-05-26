@@ -26,7 +26,7 @@ class MatchSeederTable extends Seeder
                 'away_result' => $obj->away_result,
                 'date' => \Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($obj->date), 'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('Y-m-d H:i:s'),
                 'stadium_id' => $obj->stadium,
-                'finished' => $obj->finished
+                'result_published' => $obj->finished
             ));
         }
     }
