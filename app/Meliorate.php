@@ -20,6 +20,7 @@ class Meliorate extends Model
     const ADMIN_SITE_DATE_FORMAT = 'jS F , l';
     const ADMIN_SITE_TIME = 'h:i A';
     const ADMIN_SITE_DATE_FORMAT_WITH_TIME = 'jS F , l  h:i A';
+    const PER_MATCH_DATE_FORMAT = 'D, M j, Y h:i A';
     const FORMAT_2 = 'jS F , l';
     const MINUTES_FORMAT = '%I';
 
@@ -129,12 +130,16 @@ class Meliorate extends Model
     {
         $now = new DateTime();
         $today = new DateTime($now->format('Y-m-d'));
-        $diff = $today->diff(DateTime($date));
-        return (int)$diff->format('%R%a');
+
+        $givenDate = new DateTime($date);
+
+        $diff = $today->diff($givenDate);
+
+        return (int)$diff->format('%R%a') . ' days from now';
     }
 
     /**
-     * change mysql date to site date format
+     * date format used in admin side
      * 
      * @param string $date
      * @return string
@@ -145,7 +150,7 @@ class Meliorate extends Model
     }
 
     /**
-     * change mysql date to site date format
+     * date format used in admin side with time
      * 
      * @param string $date
      * @return string
@@ -154,6 +159,19 @@ class Meliorate extends Model
     {
         return self::baseFormater($date, self::ADMIN_SITE_DATE_FORMAT_WITH_TIME, $default);
     }
+
+    /**
+     * per match date format
+     * 
+     * @param string $date
+     * @return string
+     */
+    public static function perMatchDate($date, $default = '')
+    {
+        return self::baseFormater($date, self::PER_MATCH_DATE_FORMAT, $default);
+    }
+
+
 
     /**
      * get Time Alone
