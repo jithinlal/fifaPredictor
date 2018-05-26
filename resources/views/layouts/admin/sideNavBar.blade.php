@@ -16,6 +16,19 @@
                 <i class="fa fa-calendar-check-o "></i> <span>Match Days</span>
             </a>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-lock"></i>
+            <span>Lock Time</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/admin/lock-match"><i class="fa fa-circle-o"></i> Lock Time</a></li>
+            <li><a href="/admin/lock-match/set-lock-time"><i class="fa fa-circle-o"></i> Set Lock Time</a></li>            
+          </ul>
+        </li>
     <li class="header">Results</li>
         <li>
             <a href="/admin/overall-result/" class="active" title="Days">

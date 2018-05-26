@@ -16,8 +16,8 @@
 <script src="/themes/adminlte/dist/js/adminlte.min.js"></script>
 
 <script src="/themes/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <script src="js/tinymce/tinymce.min.js"></script>
-<script src="js/tinymce/config.js"></script>  
+    {{-- <script src="js/tinymce/tinymce.min.js"></script>
+<script src="js/tinymce/config.js"></script>   --}}
 
 <!-- Bootstrap Select Styles-->
 <script src="/select-styles/js/bootstrap-select.min.js"></script>

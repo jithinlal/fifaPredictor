@@ -1,3 +1,7 @@
+@php
+    use App\Meliorate;
+@endphp
+
 @extends('layouts.admin.master')
 
 @section('title')
@@ -35,7 +39,7 @@
                             }
                         @endphp
 
-                        <option {{$selected}} value="{{$day}}">{{DateTime::createFromFormat('Y-m-d', $day)->format('jS F , l ')}}</option>
+                        <option {{$selected}} value="{{$day}}">{{Meliorate::adminSiteDate($day)}}</option>
                     @endforeach
 
                 </select>

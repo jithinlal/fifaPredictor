@@ -1,3 +1,7 @@
+@php
+    use App\Meliorate;
+@endphp
+
 @extends('layouts.admin.master')
 
 @section('title')
@@ -10,7 +14,7 @@
 @endsection
 
 @section('pageSubHeading')
-  {{DateTime::createFromFormat('Y-m-d', $day->day)->format('jS F , l')}} 
+  {{Meliorate::adminSiteDate($day->day)}}
 @endsection
 
 @section('breadcrumbLevelOne')
@@ -59,9 +63,9 @@
                           </div>
                         </div>
                         <div class="box-body">
-                          {{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('jS F , l' )}}
+                          {{Meliorate::adminSiteDate($match->date)}}
                           <br>
-                          {{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('h:i A')}}
+                          {{Meliorate::getTime($match->date)}}
                         </div>
                       </div>
                     </div>
@@ -120,8 +124,8 @@
                                 @endif
                           </td>
                           <td>{{$match->type}}</td>
-                          <td>{{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('jS F , l' )}}</td>
-                          <td>{{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('h:i A')}}</td>
+                          <td>{{Meliorate::adminSiteDate($match->date)}}</td>
+                          <td>{{Meliorate::getTime($match->date)}}</td>
                           <td>
                               <input name="day_matches[]" value="{{$match->id}}" type="checkbox">
                           </td>

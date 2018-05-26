@@ -46,10 +46,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 	Route::post('/match-days/add/{day}', 'MatchDayController@save');
 	Route::get('/match-days/remove/day/{day}/match/{match}/from/{from}', 'MatchDayController@delete');
 
-    //Overall Controller
+    //Overall Result Controller
 	Route::get('/overall-result', 'OverallResultController@index');
 	Route::post('/overall-result/add', 'OverallResultController@save');
 
+	//PerMatch Result Controller
+
+
+
+	//Lock Match Controller
+	Route::get('/lock-match', 'LockMatchController@index');
+	//Route::get('/lock-match/set-lock-time', 'LockMatchController@setLockTime');
+	Route::post('/lock-match/run-lock-time', 'LockMatchController@save');
 
 
 });

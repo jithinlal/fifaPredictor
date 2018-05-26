@@ -1,3 +1,7 @@
+@php
+    use App\Meliorate;
+@endphp
+
 @extends('layouts.admin.master')
 
 @section('title')
@@ -34,7 +38,7 @@
                               </strong>
                                &nbsp;
                                 <i class="fa fa-calendar"></i>
-                               {{DateTime::createFromFormat('Y-m-d', $day)->format('jS F , l')}}
+                               {{Meliorate::adminSiteDate($day)}}
                           </h3>
                         </div>
                         <div class="box-body">
@@ -67,8 +71,8 @@
                                                 <i>TBA</i>
                                             @endif
                                           </td>
-                                          <td>{{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('jS F , l' )}}</td>
-                                          <td>{{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->format('h:i A')}}</td>
+                                          <td>{{Meliorate::adminSiteDate($match->date)}}</td>
+                                          <td>{{Meliorate::getTime($match->date)}}</td>
                                           <td>
                                               <a href="/admin/match-days/remove/day/{{$key}}/match/{{$match->id}}/from/main">
                                                 <i class="fa fa-remove bg-red"></i>
