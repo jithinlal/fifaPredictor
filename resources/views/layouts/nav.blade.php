@@ -11,10 +11,10 @@
           	<a class="js-scroll-trigger" href="#page-top">Home</a>
         </li>
         <li class="sidebar-nav-item">
-          	<a class="js-scroll-trigger" href="#about">About</a>
+          	<a class="js-scroll-trigger" href="#about">Your Points</a>
         </li>
         <li class="sidebar-nav-item">
-          	<a class="js-scroll-trigger" href="#services">Services</a>
+          	<a class="js-scroll-trigger" href="#services">Main Prediction</a>
         </li>
         <li class="sidebar-nav-item">
           	<a class="js-scroll-trigger" href="#portfolio">Upcoming</a>
