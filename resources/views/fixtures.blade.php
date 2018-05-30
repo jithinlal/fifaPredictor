@@ -15,7 +15,7 @@
 				<br>
 				<span class="text-align-center">{{$match->stadium->name}}</span>
 				<br>
-				<span class="text-align-center">{{\Carbon\Carbon::parse(date_format(\Carbon\Carbon::parse($match->date),'Y-m-d H:i:s T'))->setTimeZone('Asia/Kolkata')->diffForHumans()}}</span>
+				<span class="text-align-center">{{ \App\Meliorate::daysFromToday($match->date) }}</span>
 			<a/>
 		</div>
 		<div class="col-md-4 text-light list-group-item list-group-item-action">

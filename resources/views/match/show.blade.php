@@ -31,9 +31,7 @@
 
                 	<h2>{{$stadia[$match->stadium_id]->name}}<span> {{$stadia[$match->stadium_id]->city}}</span></h2>
 
-					<p>{{\Carbon\Carbon::parse($match->date)->toDayDateTimeString()}}</p>
-
-					<a href="">View more</a>
+					<p>{{ \App\Meliorate::perMatchDate($match->date) }}</p>
 
                 </figcaption>
 
@@ -66,9 +64,11 @@
 
                             <p>How much will <b>{{$teams[$match->home_team]->name}}</b> score?</p>
 
-                            <a class="home_score" data-team={{$teams[$match->home_team]->name}} data-id={{$teams[$match->home_team]->id}} data-matchid={{$match->id}} data-matchid={{$match->id}} href="">View more</a>
-
-
+							@if(!\App\Meliorate::isMatchLocked($match->id))
+                            	<a class="home_score" data-team={{$teams[$match->home_team]->name}} data-id={{$teams[$match->home_team]->id}} data-matchid={{$match->id}} data-matchid={{$match->id}} href="">View more</a>
+							@else
+								<a class="match_lock_alert"></a>
+							@endif
 
                     </figcaption>
 
@@ -90,7 +90,11 @@
 
                         <p>Will number of <b>Yellow Card</b> goes past <b>5</b> ?</p>
 
-                        <a class="yellow_card" href="" data-matchid={{$match->id}}>View more</a>
+						@if(!\App\Meliorate::isMatchLocked($match->id))
+                        	<a class="yellow_card" href="" data-matchid={{$match->id}}>View more</a>
+						@else
+							<a class="match_lock_alert"></a>
+						@endif
 
                     </figcaption>
 
@@ -110,7 +114,11 @@
 
                         <p>Will there be any <b>Hat-Trick</b> ?</p>
 
-                        <a class="hat_trick" href="" data-matchid={{$match->id}}>View more</a>
+						@if(!\App\Meliorate::isMatchLocked($match->id))
+							<a class="hat_trick" href="" data-matchid={{$match->id}}>View more</a>
+						@else
+							<a class="match_lock_alert"></a>
+						@endif
 
                     </figcaption>
 
@@ -140,7 +148,11 @@
 
                         <p>How much will <b>{{$teams[$match->away_team]->name}}</b> score?</p>
 
-                        <a class="away_score" data-team={{$teams[$match->away_team]->name}} data-id={{$teams[$match->away_team]->id}} data-matchid={{$match->id}} href="">View more</a>
+						@if(!\App\Meliorate::isMatchLocked($match->id))
+							<a class="away_score" data-team={{$teams[$match->away_team]->name}} data-id={{$teams[$match->away_team]->id}} data-matchid={{$match->id}} href="">View more</a>
+						@else
+							<a class="match_lock_alert"></a>
+						@endif
 
                     </figcaption>
 
@@ -160,7 +172,11 @@
 
                         <p>Do you predict an <b>Own Goal</b> ?</p>
 
-                        <a class="own_goal" data-matchid={{$match->id}} href="">View more</a>
+						@if(!\App\Meliorate::isMatchLocked($match->id))
+							<a class="own_goal" data-matchid={{$match->id}} href="">View more</a>
+						@else
+							<a class="match_lock_alert"></a>
+						@endif
 
                     </figcaption>
 
@@ -180,7 +196,11 @@
 
                         <p>Any <b>Red Cards</b> ?</p>
 
-                        <a class="red_card" href="" data-matchid={{$match->id}}>View more</a>
+						@if(!\App\Meliorate::isMatchLocked($match->id))
+                        	<a class="red_card" href="" data-matchid={{$match->id}}>View more</a>
+						@else
+							<a class="match_lock_alert"></a>
+						@endif
 
                     </figcaption>
 
