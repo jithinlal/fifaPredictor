@@ -27,6 +27,12 @@
                 <i class="fa fa-server"></i> <span>Overall</span>
             </a>
         </li>
+        <li>
+            <a href="/admin/per-match-result/" class="active" title="Days">
+                <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
+                 <span>Per Match</span>
+            </a>
+        </li>
     
 </ul> 
 </section>
@@ -40,7 +46,7 @@
 
 
 
-<!--
+<!-- Multiple in single
  <li class="treeview">
         <a href="javascript:;">
             <i class="fa fa-institution"></i>

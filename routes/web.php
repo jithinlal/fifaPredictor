@@ -51,12 +51,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 	Route::post('/overall-result/add', 'OverallResultController@save');
 
 	//PerMatch Result Controller
-
+	Route::get('/per-match-result', 'PerMatchResultController@index');
+	Route::get('/per-match-result/match/{match}', 'PerMatchResultController@match');
 
 
 	//Lock Match Controller
 	Route::get('/lock-match', 'LockMatchController@index');
-	//Route::get('/lock-match/set-lock-time', 'LockMatchController@setLockTime');
 	Route::post('/lock-match/run-lock-time', 'LockMatchController@save');
 
 

@@ -24,7 +24,7 @@
                             <a href="/backend/profile" title="Profile" class="btn btn-default btn-flat">Profile</a>
                         </div>
                         <div class="pull-right">
-                            <a href="/backend/index/logout" title="Sign out" class="btn btn-default btn-flat">Sign out</a>
+                            <a href="logout" title="Sign out" class="btn btn-default btn-flat">Sign out</a>
                         </div>
                     </li>
                 </ul>

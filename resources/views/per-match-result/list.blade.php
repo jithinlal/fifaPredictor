@@ -6,20 +6,20 @@
 
 @section('title')
     @parent
-    Match Days
+    Per Match Results
 @endsection
 
 @section('pageHeading')
-    Match Days
+    Per Match
 @endsection
 
 @section('pageSubHeading')
-    List
+    Results
 @endsection
 
 @section('breadcrumbLevelOne')
-        <a href="/admin/match-days">
-				Match Days
+        <a href="/admin/per-match-result">
+				Per Match Results
 		</a>
 @endsection
 
@@ -50,7 +50,8 @@
                                       <th scope="col">AwayTeam</th>
                                       <th scope="col">Date</th>
                                       <th scope="col">Time</th>
-                                      <th scope="col">Remove</th>
+                                      <th scope="col">Publish</th>
+                                      <th scope="col">Result Published</th>
                                     </tr>
                                   </thead>
                                   <tbody>
@@ -65,7 +66,7 @@
                                             @endif
                                           </td>
                                           <td>
-                                            @if($match->away_team)
+                                            @if($match->home_team)
                                                 {{$teams[$match->away_team]}}
                                             @else
                                                 <i>TBA</i>
@@ -74,9 +75,16 @@
                                           <td>{{Meliorate::adminSiteDate($match->date)}}</td>
                                           <td>{{Meliorate::getTime($match->date)}}</td>
                                           <td>
-                                              <a href="/admin/match-days/remove/day/{{$key}}/match/{{$match->id}}/from/main">
-                                                <i class="fa fa-remove bg-red"></i>
+                                              <a href="/admin/per-match-result/match/{{$match->id}}">
+                                                <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
                                             </a>
+                                          </td>
+                                          <td>
+                                            @if($match->result_published)
+                                                <i class="fa fa-check-circle-o" style="color:green" aria-hidden="true"></i>
+                                            @else
+                                                NO
+                                            @endif
                                           </td>
                                         </tr>
 

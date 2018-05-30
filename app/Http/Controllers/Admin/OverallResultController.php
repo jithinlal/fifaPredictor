@@ -19,6 +19,7 @@ class OverallResultController extends Controller
         $teams = Team::all();
         $players = '';
         $goalkeepers = '';
+        $youngPlayers = '';
         $groups = [
             'A' => Team::where('group_name', 'A')->get(),
             'B' => Team::where('group_name', 'B')->get(),
