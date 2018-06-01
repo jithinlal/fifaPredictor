@@ -4,9 +4,9 @@
 
     <head>
         <meta charset="utf-8">
-        <title>
-            Imminent - The most spectacular coming soon template!
-        </title><!-- Behavioral Meta Data -->
+        <title>Fifa Predict 2018</title>
+		<link rel="shortcut icon" href="/prediction_logo/favicon.ico" />
+
         <meta content="yes" name="apple-mobile-web-app-capable">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"><!-- Core Meta Data -->
 
