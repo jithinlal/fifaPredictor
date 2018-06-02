@@ -17,6 +17,9 @@
           	<a class="js-scroll-trigger" href="#services">Main Prediction</a>
         </li>
         <li class="sidebar-nav-item">
+            <a class="js-scroll-trigger" href="#leaderboard">Leaderboard</a>
+        </li>
+        <li class="sidebar-nav-item">
           	<a class="js-scroll-trigger" href="#portfolio">Upcoming</a>
         </li>
         <li class="sidebar-nav-item">

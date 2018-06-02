@@ -1,0 +1,75 @@
+body {
+  background: #fafafa;
+}
+#app {
+  width: 800px;
+  margin: 60px auto;
+  font-family: sans-serif;
+  color: #213b4c;
+}
+#app h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+#app table {
+  width: 100%;
+  border-spacing: 0 0;
+  background: #213b4c;
+  color: white;
+  box-shadow: 0 0 20px #1e3344;
+  border-radius: 20px;
+  overflow: hidden;
+}
+#app table th {
+  background: #0c1e28;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  padding: 20px 0px 20px 0px;
+}
+#app table th:first-of-type {
+  padding: 0 30px 0 30px;
+  text-align: center;
+}
+#app table th:last-of-type {
+  padding: 0 30px 0 30px;
+}
+#app table th:nth-child(3), #app table th:nth-child(4) {
+  text-align: center;
+  cursor: pointer;
+}
+#app table tr:nth-child(2n+1) {
+  background: #1e3344;
+}
+#app table tr td {
+  padding: 10px 0px;
+}
+#app table tr td:nth-child(1) {
+  padding: 10px 30px 10px 30px;
+  text-align: center;
+}
+#app table tr td:nth-child(3), #app table tr td:nth-child(4) {
+  text-align: center;
+}
+#app table tr:hover {
+  background: #18a5fe;
+}
+#app a {
+  color: white;
+  text-decoration: none;
+}
+#app a:hover {
+  color: white;
+}
+.none {
+  visible: hidden;
+  opacity: 0;
+}
+.user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 10px;
+}

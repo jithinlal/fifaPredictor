@@ -1,0 +1,130 @@
+/* Variables */
+/* Elements */
+body {
+  background-color: #e9f2fe;
+  color: #666;
+  font-family: 'Lato';
+}
+h3 {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 2.5em;
+  padding-bottom: 0.5em;
+  font-family: 'Catamaran';
+  font-weight: 500;
+}
+h3 span {
+  font-size: 0.66em;
+  color: #ffda6d;
+}
+li {
+  list-style: none;
+}
+ul {
+  padding: 0 20px;
+}
+/* Classes */
+.avatar {
+  border-radius: 100%;
+}
+.avatar-sm {
+  max-height: 32px;
+  float: center;
+  margin-right: 2em;
+}
+.avatar-lg {
+  border-style: double;
+  border-color: #ddd;
+  border-width: 0.25em;
+  box-shadow: 0px 2px 4px #e9f2fe;
+}
+.brownies {
+  font-size: 0.75em;
+  color: #888;
+}
+.leader {
+  display: inline-block;
+  vertical-align: text-bottom;
+  text-align: center;
+  width: 33%;
+  z-index: 1;
+  position: relative;
+}
+.leader .list-index {
+  background-color: #74f3a5;
+  border-radius: 100%;
+  width: 1.45em;
+  height: 1.45em;
+  vertical-align: middle;
+  line-height: 1.4em;
+  font-size: 0.95em;
+  color: white;
+  font-weight: 700;
+  position: absolute;
+  left: 44.5%;
+  bottom: 18%;
+}
+.leader:nth-child(1) .list-index {
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.45em;
+  font-size: 1em;
+  background-color: #ffda6d;
+}
+.leader:nth-child(2) {
+  float: left;
+  padding-top: 2em;
+}
+.leader:nth-child(2) .list-index {
+  background-color: #b4a3ff;
+}
+.leader:nth-child(3) {
+  float: right;
+  padding-top: 2em;
+}
+.list-index {
+  display: inline-block;
+}
+.list-sm {
+  margin: 0 2em;
+  padding: 2em 0;
+  box-shadow: 0px 1px 1px #e9f2fe;
+}
+.list-sm * {
+  vertical-align: middle;
+}
+.list-sm .list-index {
+  margin: 0;
+  padding-right: 2em;
+}
+.right {
+  float: right;
+}
+.underline {
+  text-decoration: underline;
+}
+.userinfo {
+  display: inline-block;
+}
+.username {
+  margin: 0;
+  font-size: 0.95em;
+  font-weight: 600;
+}
+#app {
+  background-color: #fff;
+  box-shadow: 0px 2px 2px 2px #e0ecfb;
+  border-radius: 2px;
+  max-width: 40em;
+  margin: 2.5em auto;
+}
+#header {
+  padding-top: 0.5em;
+  padding-right: 1em;
+  font-size: 0.95em;
+}
+#header a {
+  color: #b4a3ff;
+  text-decoration: none;
+  font-weight: 700;
+}
