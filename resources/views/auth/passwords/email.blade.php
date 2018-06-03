@@ -2,8 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="author" content="Kodinger">
-	<title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
+	<title>Fifa Predict 2018</title>
+	<link rel="shortcut icon" href="/prediction_logo/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href={{asset("login_bootstrap/css/bootstrap.min.css")}}>
 	<link rel="stylesheet" type="text/css" href={{asset("login_css/my-login.css")}}>
 </head>
