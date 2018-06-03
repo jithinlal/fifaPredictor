@@ -17,6 +17,6 @@
 				</a>
 			</li>
 		</ul>
-		<p class="text-muted small mb-0">Copyright &copy; FIFAPREDICT SA</p>
+		<p class="text-muted small mb-0">Copyright &copy; FIFAPREDICT</p>
 	</div>
 </footer>

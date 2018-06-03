@@ -20,7 +20,7 @@
             <a class="js-scroll-trigger" href="#leaderboard">Leaderboard</a>
         </li>
         <li class="sidebar-nav-item">
-          	<a class="js-scroll-trigger" href="#portfolio">Upcoming</a>
+          	<a class="js-scroll-trigger" href="#upcoming">Upcoming</a>
         </li>
         <li class="sidebar-nav-item">
           	<a class="js-scroll-trigger" href="#contact">Contact</a>
