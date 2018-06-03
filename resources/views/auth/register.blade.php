@@ -2,8 +2,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="author" content="Kodinger">
-	<title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
+	<title>Fifa Predict 2018</title>
+	<link rel="shortcut icon" href="/prediction_logo/favicon.ico" />
+	<meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="843739308716-bi50a2dilaen6in99sdf9aaufn93jk2s.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 	<link rel="stylesheet" type="text/css" href={{asset("login_bootstrap/css/bootstrap.min.css")}}>
 	<link rel="stylesheet" type="text/css" href={{asset("login_css/my-login.css")}}>
 </head>
@@ -13,11 +16,13 @@
 			<div class="row justify-content-md-center h-100">
 				<div class="card-wrapper">
 					<div class="brand">
-						<img src={{asset("login_img/logo.jpg")}}>
+						<img src={{asset("home_img/logo2.png")}}>
 					</div>
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">Register</h4>
+							<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+							<b>OR</b>
 							<form method="POST" action="{{ route('register') }}">
 							 	@csrf
 								<div class="form-group">
@@ -52,7 +57,7 @@
 
 								<div class="form-group">
 									<label for="password-confirm">{{ __('Confirm Password') }}</label>
-									<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>									
+									<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 								</div>
 
 								<div class="form-group no-margin">
@@ -66,8 +71,9 @@
 							</form>
 						</div>
 					</div>
+
 					<div class="footer">
-						Copyright &copy; FIFAPREDICTSA
+						Copyright &copy; FIFAPREDICT
 					</div>
 				</div>
 			</div>

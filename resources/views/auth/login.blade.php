@@ -2,8 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="author" content="Kodinger">
-	<title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
+	<title>Fifa Predict 2018</title>
+	<link rel="shortcut icon" href="/prediction_logo/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href={{asset("login_bootstrap/css/bootstrap.min.css")}}>
 	<link rel="stylesheet" type="text/css" href={{asset("login_css/my-login.css")}}>
 </head>
@@ -13,7 +13,7 @@
 			<div class="row justify-content-md-center h-100">
 				<div class="card-wrapper">
 					<div class="brand">
-						<img src={{asset("login_img/logo.jpg")}}>
+						<img src={{asset("home_img/logo2.png")}}>
 					</div>
 					<div class="card fat">
 						<div class="card-body">
@@ -63,7 +63,7 @@
 						</div>
 					</div>
 					<div class="footer">
-						Copyright &copy; FIFAPREDICTSA
+						Copyright &copy; FIFAPREDICT
 					</div>
 				</div>
 			</div>
