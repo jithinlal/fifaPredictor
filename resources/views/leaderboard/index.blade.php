@@ -8,7 +8,7 @@
 	<link rel="shortcut icon" href="/prediction_logo/favicon.ico" />
 
 </head>
-<body>
+<body background="/home_img/leader.jpg">
 
 	<div id="app"></div>
 

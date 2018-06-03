@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  var urlRecent = 'https://fcctop100.herokuapp.com/api/fccusers/top/recent';
+  // var urlRecent = 'https://fcctop100.herokuapp.com/api/fccusers/top/recent';
+  var urlRecent = '/api/allTime';
   var urlAllTime = 'https://fcctop100.herokuapp.com/api/fccusers/top/alltime';
 
   var App = React.createClass({
@@ -12,7 +13,7 @@ $(document).ready(function(){
     getAndUpdateUsers: function(url, active){
        $.getJSON(url, function(data){
         this.setState({
-          users: data,
+          users: data.result,
           active: ''+active
         });
       }.bind(this));
@@ -29,7 +30,7 @@ $(document).ready(function(){
     render: function(){
       return (
         <div>
-          <h1>Camper Leaderboard</h1>
+          <h1>Leaderboard</h1>
           <table className="table">
             <tr>
               <th>#</th>
@@ -42,9 +43,9 @@ $(document).ready(function(){
                 return (
                   <tr>
                     <td>{index+1}</td>
-                    <td><a href={'https://www.freecodecamp.com/' + item.username} target="_blank"> <img className="user-img" src={item.img} />{item.username}</a></td>
-                    <td>{item.recent}</td>
-                    <td>{item.alltime} </td>
+                    <td><a href={'https://www.freecodecamp.com/' + item.id} target="_blank"> <img className="user-img" src="" />{item.name}</a></td>
+                    <td></td>
+                    <td>{item.points} </td>
                   </tr>
                 )
               })
