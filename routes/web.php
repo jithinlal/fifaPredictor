@@ -11,6 +11,8 @@
 |
  */
 
+Route::get('/api/allTime', 'ApiController@allTime');
+
 Route::get('/', 'HomeController@index');
 Route::get('/favTeam', function () {
 	return view('myteam.index');
