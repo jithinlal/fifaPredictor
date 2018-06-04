@@ -142,12 +142,20 @@ class PredictionSeederTable extends Seeder
 				'forType' => 'young_player',
 			],
 			[
+				'name' => 'Result',
+				'plus' => 50,
+				'minus' => 25,
+				'type' => 'group',
+				'image' => '',
+				'forType' => 'result',
+			],
+			[
 				'name' => 'Home Team Goal',
 				'plus' => 50,
 				'minus' => 25,
 				'type' => 'group',
 				'image' => '',
-				'forType' => '',
+				'forType' => 'score',
 			],
 			[
 				'name' => 'Away Team Goal',
@@ -155,7 +163,7 @@ class PredictionSeederTable extends Seeder
 				'minus' => 25,
 				'type' => 'group',
 				'image' => '',
-				'forType' => '',
+				'forType' => 'score',
 			],
 			[
 				'name' => 'Yellow Card',
@@ -163,7 +171,7 @@ class PredictionSeederTable extends Seeder
 				'minus' => 25,
 				'type' => 'group',
 				'image' => '',
-				'forType' => '',
+				'forType' => 'yesNo',
 			],
 			[
 				'name' => 'Red Card',
@@ -171,7 +179,7 @@ class PredictionSeederTable extends Seeder
 				'minus' => 25,
 				'type' => 'group',
 				'image' => '',
-				'forType' => '',
+				'forType' => 'yesNo',
 			],
 			[
 				'name' => 'Hat Trick',
@@ -179,7 +187,7 @@ class PredictionSeederTable extends Seeder
 				'minus' => 25,
 				'type' => 'group',
 				'image' => '',
-				'forType' => '',
+				'forType' => 'yesNo',
 			],
 			[
 				'name' => 'Own Goal',
@@ -187,7 +195,7 @@ class PredictionSeederTable extends Seeder
 				'minus' => 25,
 				'type' => 'group',
 				'image' => '',
-				'forType' => '',
+				'forType' => 'yesNo',
 			]
 		]);
 	}

@@ -30,7 +30,7 @@
             <div class="row">
                 @foreach($days as $key => $day)
                     <div class="col-md-6">
-                      <div class="box box-solid" style="border: solid 2px grey; width: 553px; height: 287px;">
+                      <div class="box box-solid" style="border: solid 2px grey; width: 553px; height: 355px;">
                         <div class="box-header with-border">
                           <h3 class="box-title">
                               <strong>
@@ -72,8 +72,8 @@
                                                 <i>TBA</i>
                                             @endif
                                           </td>
-                                          <td>{{Meliorate::adminSiteDate($match->date)}}</td>
-                                          <td>{{Meliorate::getTime($match->date)}}</td>
+                                          <td>{{ Meliorate::adminSiteDate($match->date) }}</td>
+                                          <td>{{ Meliorate::getTime($match->date) }}</td>
                                           <td>
                                               <a href="/admin/per-match-result/match/{{$match->id}}">
                                                 <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
@@ -87,20 +87,13 @@
                                             @endif
                                           </td>
                                         </tr>
-
                                 @endforeach
-                                        <tr>
-                                            <td><a href="/admin/match-days/add/{{$key}}">Add More Matches</a></td>
-                                        </tr>
+
                                   </tbody>
                                   </table>
 
                             @else
-                                <div class="center-block text-center" style="padding-top: 80px">
-                                    <a class="btn btn-app   bg-olive btn-flat" href="/admin/match-days/add/{{$key}}">
-                                        <i class="fa fa-plus"></i> Add Match
-                                    </a>
-                                </div>
+                                
                             @endif
 
                         </div>

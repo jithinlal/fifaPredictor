@@ -18,7 +18,7 @@ Route::get('/favTeam', function () {
 	return view('myteam.index');
 });
 Route::get('/leaderboard', function () {
-    return view('leaderboard.index');
+	return view('leaderboard.index');
 });
 Route::get('/favTeam/{team}', 'FavController@index');
 // Route::get('/coming-soon', 'SoonController@index');
@@ -62,6 +62,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 	//PerMatch Result Controller
 	Route::get('/per-match-result', 'PerMatchResultController@index');
 	Route::get('/per-match-result/match/{match}', 'PerMatchResultController@match');
+	Route::post('/per-match-result/save', 'PerMatchResultController@save');
+	Route::post('/per-match-result/mark-as-published', 'PerMatchResultController@markAsPublished');
 
 
 	//Lock Match Controller

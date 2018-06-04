@@ -27,8 +27,8 @@
 @endsection
 
 @section('pageSubHeading')
-   {{Meliorate::adminSiteDate($match->date)}}
-   {{Meliorate::getTime($match->date)}}
+   {{ Meliorate::adminSiteDate($match->date) }}
+   {{ Meliorate::getTime($match->date) }}
 @endsection
 
 @section('breadcrumbLevelOne')
@@ -38,7 +38,7 @@
 @endsection
 
 @section('breadcrumbLevelTwo')
-       Match {{$match->id}}
+       Match {{ $match->id }}
 @endsection
 
 @section('content')
@@ -46,36 +46,91 @@
             <div class="col-md-6">
                     <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Horizontal Form</h3>
+                    <h3 class="box-title"><strong>#{{ $count }} </strong> &nbsp; {{ $prediction->name }}</h3>
                     </div>
-                    <form class="form-horizontal">
-                        <div class="box-body">
-                            @if(isset($existingPredictions[$prediction->id]))
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Current Result</label>
+                    <form method="POST" action="/admin/per-match-result/save" class="form-horizontal">
+                        {{ csrf_field() }}
+                        <div class="box-body">                            
+                            @if('yesNo' == $prediction->forType)
 
-                                    <div class="col-sm-10">
-                                        {{ $existingPredictions[$prediction->id] }}
+                                
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-4 control-label">Current Result</label>
+
+                                        <div class="col-sm-4">
+                                            @if(isset($existingPredictions[$prediction->id]))
+                                                @if(1 == $existingPredictions[$prediction->id])
+                                                    <text class="bg-green">Yes</text>
+                                                @elseif(0 == $existingPredictions[$prediction->id])
+                                                    <text class="bg-red">No</text>
+                                                @endif
+                                            @else
+                                                Not Published
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                            @endif
-                            <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                
 
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="inputPassword3" placeholder="Password" type="password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Remember me
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="outcome" id="yesNoId1" value=1>
+                                    <label class="form-check-label" for="yesNoId1">
+                                        Yes
                                     </label>
-                                    </div>
                                 </div>
-                            </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="outcome" id="yesNoId2" value=0>
+                                    <label class="form-check-label" for="yesNoId2">
+                                        No
+                                    </label>
+                                </div>
+                            @elseif('score' == $prediction->forType)
+
+                                
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-4 control-label">Current Result</label>
+
+                                        <div class="col-sm-4">
+                                            @if(isset($existingPredictions[$prediction->id]))
+                                                {{ $existingPredictions[$prediction->id] }}
+                                            @else
+                                                Not Published
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                <select name="outcome">
+                                    <option value="-1">Select</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5+</option>
+                                </select>
+                            @elseif('result' == $prediction->forType)                               
+
+                                <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-4 control-label">Current Result</label>
+
+                                        <div class="col-sm-4">
+                                            @if(isset($existingPredictions[$prediction->id]))
+                                                {{ $existingPredictions[$prediction->id] }}
+                                            @else
+                                                Not Published
+                                            @endif
+                                        </div>
+                                </div>
+
+                                <select name="outcome">
+                                    <option value="-1">Choose a result</option>
+                                    @foreach($resultOptions as $key => $value)
+                                        <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+                            @endif
                         </div>
+                        <input type="hidden" name="predictionId" value="{{ $prediction->id }}">
+                        <input type="hidden" name="matchId" value="{{ $match->id }}">
                         <div class="box-footer">
                             <button type="submit" class="btn btn-info pull-right">Publish</button>
                         </div>
@@ -84,5 +139,45 @@
             </div>
             @php $count++; @endphp
         @endforeach
+
+
+
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><strong>#{{ $count }} </strong> &nbsp; Result Published</h3>
+                </div>
+                <form method="POST" action="/admin/per-match-result/mark-as-published" class="form-horizontal">
+                    {{ csrf_field() }}
+                    <div class="box-body">    
+                        <label for="inputEmail3" class="col-sm-4 control-label">Current Result</label>  
+                        <div class="col-sm-4">                      
+                            @if($match->result_published)                            
+                                <text class="bg-green">Published</text>
+                            @else
+                                <text class="bg-red">Not Published</text>
+                            @endif   
+                        </div>
+                        <hr>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="publishResult" id="publishResult1" value=1>
+                            <label class="form-check-label" for="publishResult1">
+                                Mark as Published
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="publishResult" id="publishResult2" value=0>
+                            <label class="form-check-label" for="publishResult2">
+                                Mark as NOT Published
+                            </label>
+                        </div>                 
+                    </div>
+                    <input type="hidden" name="matchId" value="{{ $match->id }}">
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info pull-right">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
        
 @endsection
