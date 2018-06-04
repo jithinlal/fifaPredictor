@@ -2,6 +2,7 @@ $(document).ready(function () {
 	var score;
 	var matchId;
 	var teamName;
+	var flag;
 
 	$('.match_lock_alert').on('click', function (e) {
 		swal("Oops", "Prediction Time Over!", "error");
@@ -12,61 +13,59 @@ $(document).ready(function () {
 		teamName = $(this).data('team');
 		var teamId = $(this).data('id');
 		matchId = $(this).data('matchid');
+		flag = 1;
 
 		$('#scoreHomeModal').modal('show');
 	});
 
-	$('#predictHomeGoal').on('click', function () {
-		$.ajax({
-			method: 'GET',
-			url: storeHomeGoal,
-			data: {
-				matchId: matchId,
-				score: score
-			},
-
-			success: function (result) {
-				console.log(result);
-				if (result.success) {
-					swal("Great!", "Your prediction of " + teamName + " scoring " + score + " goals is recorded!", "success");
-					$('#scoreHomeModal').modal('hide');
-				} else {
-					swal("Oops", "Something went wrong!", "error");
-				}
-			},
-			error: function () {
-				swal("Oops", "Something went wrong!", "error");
-			}
-		});
-	});
-
 	$(".btn-group > button.btn").on("click", function () {
 		score = $(this).data('value');
-		console.log(score);
-	});
+		if (flag) {
+			$.ajax({
+				method: 'GET',
+				url: storeHomeGoal,
+				data: {
+					matchId: matchId,
+					score: score
+				},
 
-	$('#predictAwayGoal').on('click', function () {
-		$.ajax({
-			method: 'GET',
-			url: storeAwayGoal,
-			data: {
-				matchId: matchId,
-				score: score
-			},
-
-			success: function (result) {
-				console.log(result);
-				if (result.success) {
-					swal("Great!", "Your prediction of " + teamName + " scoring " + score + " goals is recorded!", "success");
-					$('#scoreAwayModal').modal('hide');
-				} else {
+				success: function (result) {
+					console.log(result);
+					if (result.success) {
+						swal("Great!", "Your prediction of " + teamName + " scoring " + score + " goals is recorded!", "success");
+						$('#scoreHomeModal').modal('hide');
+					} else {
+						swal("Oops", "Something went wrong!", "error");
+					}
+				},
+				error: function () {
 					swal("Oops", "Something went wrong!", "error");
 				}
-			},
-			error: function () {
-				swal("Oops", "Something went wrong!", "error");
-			}
-		});
+			});
+		} else {
+			$.ajax({
+				method: 'GET',
+				url: storeAwayGoal,
+				data: {
+					matchId: matchId,
+					score: score
+				},
+
+				success: function (result) {
+					console.log(result);
+					if (result.success) {
+						swal("Great!", "Your prediction of " + teamName + " scoring " + score + " goals is recorded!", "success");
+						$('#scoreAwayModal').modal('hide');
+					} else {
+						swal("Oops", "Something went wrong!", "error");
+					}
+				},
+				error: function () {
+					swal("Oops", "Something went wrong!", "error");
+				}
+			});
+		}
+		console.log(score);
 	});
 
 	$('.away_score').on('click', function (e) {
@@ -74,6 +73,7 @@ $(document).ready(function () {
 		teamName = $(this).data('team');
 		var teamId = $(this).data('id');
 		matchId = $(this).data('matchid');
+		flag = 0;
 
 		$('#scoreAwayModal').modal('show');
 	});
