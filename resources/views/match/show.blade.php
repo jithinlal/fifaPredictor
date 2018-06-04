@@ -87,7 +87,7 @@
                     <figcaption>
 
                         <h2>Card <span>YELLOW</span></h2>
-
+7
                         <p>Will number of <b>Yellow Card</b> goes past <b>5</b> ?</p>
 
 						@if(!\App\Meliorate::isMatchLocked($match->id))
@@ -217,6 +217,8 @@
         <div class="clearfix"></div>
 
     </div>
+
+	@include('popup.score')
 
 
     <script type="text/javascript">

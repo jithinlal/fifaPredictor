@@ -1,88 +1,81 @@
 $(document).ready(function () {
+	var score;
+	var matchId;
+	var teamName;
+
 	$('.match_lock_alert').on('click', function (e) {
 		swal("Oops", "Prediction Time Over!", "error");
 	});
 
 	$('.home_score').on('click', function (e) {
 		e.preventDefault();
-		var teamName = $(this).data('team');
+		teamName = $(this).data('team');
 		var teamId = $(this).data('id');
-		var matchId = $(this).data('matchid');
+		matchId = $(this).data('matchid');
 
-		swal(teamName + " will score ...", {
-			content: {
-				element: "input",
-				attributes: {
-					type: "number"
+		$('#scoreHomeModal').modal('show');
+	});
+
+	$('#predictHomeGoal').on('click', function () {
+		$.ajax({
+			method: 'GET',
+			url: storeHomeGoal,
+			data: {
+				matchId: matchId,
+				score: score
+			},
+
+			success: function (result) {
+				console.log(result);
+				if (result.success) {
+					swal("Great!", "Your prediction of " + teamName + " scoring " + score + " goals is recorded!", "success");
+					$('#scoreHomeModal').modal('hide');
+				} else {
+					swal("Oops", "Something went wrong!", "error");
 				}
 			},
-			buttons: true,
+			error: function () {
+				swal("Oops", "Something went wrong!", "error");
+			}
+		});
+	});
 
-		}).then((value) => {
-			if (value !== null && value !== '') {
-				$.ajax({
-					method: 'GET',
-					url: storeHomeGoal,
-					data: {
-						matchId: matchId,
-						score: value
-					},
+	$(".btn-group > button.btn").on("click", function () {
+		score = $(this).data('value');
+		console.log(score);
+	});
 
-					success: function (result) {
-						console.log(result);
-						if (result.success) {
-							swal("Great!", "Your prediction of " + teamName + " scoring " + value + " goals is recorded!", "success");
-						} else {
-							swal("Oops", "Something went wrong!", "error");
-						}
-					},
-					error: function () {
-						swal("Oops", "Something went wrong!", "error");
-					}
-				});
+	$('#predictAwayGoal').on('click', function () {
+		$.ajax({
+			method: 'GET',
+			url: storeAwayGoal,
+			data: {
+				matchId: matchId,
+				score: score
+			},
+
+			success: function (result) {
+				console.log(result);
+				if (result.success) {
+					swal("Great!", "Your prediction of " + teamName + " scoring " + score + " goals is recorded!", "success");
+					$('#scoreAwayModal').modal('hide');
+				} else {
+					swal("Oops", "Something went wrong!", "error");
+				}
+			},
+			error: function () {
+				swal("Oops", "Something went wrong!", "error");
 			}
 		});
 	});
 
 	$('.away_score').on('click', function (e) {
 		e.preventDefault();
-		var teamName = $(this).data('team');
+		teamName = $(this).data('team');
 		var teamId = $(this).data('id');
-		var matchId = $(this).data('matchid');
+		matchId = $(this).data('matchid');
 
-		swal(teamName + " will score ...", {
-			content: {
-				element: "input",
-				attributes: {
-					type: "number"
-				}
-			},
-			buttons: true,
-
-		}).then((value) => {
-			if (value !== null && value !== '') {
-				$.ajax({
-					method: 'GET',
-					url: storeAwayGoal,
-					data: {
-						matchId: matchId,
-						score: value
-					},
-
-					success: function (result) {
-						console.log(result);
-						if (result.success) {
-							swal("Great!", "Your prediction of " + teamName + " scoring " + value + " goals is recorded!", "success");
-						} else {
-							swal("Oops", "Something went wrong!", "error");
-						}
-					},
-					error: function () {
-						swal("Oops", "Something went wrong!", "error");
-					}
-				});
-			}
-		});
+		$('#scoreAwayModal').modal('show');
 	});
 
 	$('.yellow_card').on('click', function (e) {
