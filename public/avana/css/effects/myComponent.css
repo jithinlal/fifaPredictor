@@ -1,3 +1,13 @@
-img{
+img {
 	filter: brightness(50%);
+}
+
+.btnGroupCenter {
+	width: 100%;
+	float: left;
+	text-align: center;
+}
+
+.btnGroupCenter button {
+	float: none !important;
 }

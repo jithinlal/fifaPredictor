@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body ">
 		<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-			<div class="btn-group mr-2 justify-content-center" role="group" aria-label="First group" id="goalNumber">
+			<div class="btn-group mr-2 justify-content-center btnGroupCenter" role="group" aria-label="First group" id="goalNumber">
 				<button type="button" class="btn btn-secondary" data-value="0">0</button>
 				<button type="button" class="btn btn-secondary" data-value="1">1</button>
 				<button type="button" class="btn btn-secondary" data-value="2">2</button>
@@ -34,7 +34,7 @@
       </div>
       <div class="modal-body ">
 		<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-			<div class="btn-group mr-2 justify-content-center" role="group" aria-label="First group" id="goalNumber">
+			<div class="btn-group mr-2 justify-content-center btnGroupCenter" role="group" aria-label="First group" id="goalNumber">
 				<button type="button" class="btn btn-secondary" data-value="0">0</button>
 				<button type="button" class="btn btn-secondary" data-value="1">1</button>
 				<button type="button" class="btn btn-secondary" data-value="2">2</button>
