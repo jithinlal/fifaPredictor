@@ -23,7 +23,7 @@
           	<a class="js-scroll-trigger" href="#upcoming">Upcoming</a>
         </li>
         <li class="sidebar-nav-item">
-          	<a class="js-scroll-trigger" href="#contact">Contact</a>
+          	<a class="js-scroll-trigger" href="#secondNation">Second Nation</a>
         </li>
 		<li class="sidebar-nav-item">
 			<a class="js-scroll-trigger" href="#fixtures">Fixtures</a>

@@ -5,7 +5,7 @@
 	<title>Fifa Predict 2018</title>
 	<link rel="shortcut icon" href="/prediction_logo/favicon.ico" />
 	<meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="843739308716-bi50a2dilaen6in99sdf9aaufn93jk2s.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="131810808876-hefcorob59779evk6fc3hmqrk1915jfq.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 	<link rel="stylesheet" type="text/css" href={{asset("login_bootstrap/css/bootstrap.min.css")}}>
 	<link rel="stylesheet" type="text/css" href={{asset("login_css/my-login.css")}}>
@@ -22,6 +22,7 @@
 						<div class="card-body">
 							<h4 class="card-title">Register</h4>
 							<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+							<a href="#" onclick="signOut();">Sign out</a>
 							<b>OR</b>
 							<form method="POST" action="{{ route('register') }}">
 							 	@csrf
