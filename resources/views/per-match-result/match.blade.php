@@ -146,6 +146,7 @@
             <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>#{{ $count }} </strong> &nbsp; Result Published</h3>
+                    <h4 style="color:red">Do this only after publishing other predictions</h4>
                 </div>
                 <form method="POST" action="/admin/per-match-result/mark-as-published" class="form-horizontal">
                     {{ csrf_field() }}
@@ -175,6 +176,23 @@
                     <input type="hidden" name="matchId" value="{{ $match->id }}">
                     <div class="box-footer">
                         <button type="submit" class="btn btn-info pull-right">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><strong>#{{ ++$count }} </strong> &nbsp; Publish Bonus Points</h3>
+                    <h4 style="color:red">Do this only after Match Result has been Published. </h4>
+                    <h4 style="color:red">If home team goal, away team goal or result is changed, this has to be run again. </h4>
+                </div>
+                <form method="POST" action="/admin/per-match-result/bonus-points" class="form-horizontal">
+                    {{ csrf_field() }}                    
+                    <input type="hidden" name="matchId" value="{{ $match->id }}">
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info pull-right">Publish Bonus Points</button>
                     </div>
                 </form>
             </div>
