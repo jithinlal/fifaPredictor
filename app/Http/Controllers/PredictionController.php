@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Team;
 use App\UserMatchPrediction;
+use App\Match;
 
 class PredictionController extends Controller
 {
@@ -58,16 +59,30 @@ class PredictionController extends Controller
 			if (!is_numeric($request->score)) {
 				return response()->json(['success' => false]);
 			}
+
+			$homeTeamId = Match::find($request->matchId)->home_team;
 			$query = UserMatchPrediction::where([['user_id', Auth::id()], ['match_id', $request->matchId], ['prediction_id', 18]]);
 			$preCount = $query->get()->count();
 			if ($preCount > 0) {
 				$query->update(['prediction' => $request->score]);
 			} else {
+				$anoQuery = UserMatchPrediction::where([['user_id', Auth::id()], ['match_id', $request->matchId], ['prediction_id', 17]]);
+				$preAnoQuery = $query->get()->count();
+				if ($preAnoQuery == 0) {
+					DB::table('user_match_predictions')->insert([
+						'user_id' => Auth::id(),
+						'match_id' => $request->matchId,
+						'prediction_id' => 17,
+						'prediction' => 0,
+						'team_id' => $homeTeamId
+					]);
+				}
 				DB::table('user_match_predictions')->insert([
 					'user_id' => Auth::id(),
 					'match_id' => $request->matchId,
 					'prediction_id' => 18,
-					'prediction' => $request->score
+					'prediction' => $request->score,
+					'team_id' => $request->teamId
 				]);
 			}
 			return response()->json(['success' => true]);
@@ -85,16 +100,30 @@ class PredictionController extends Controller
 			if (!is_numeric($request->score)) {
 				return response()->json(['success' => false]);
 			}
+			$awayTeamId = Match::find($request->matchId)->away_team;
+
 			$query = UserMatchPrediction::where([['user_id', Auth::id()], ['match_id', $request->matchId], ['prediction_id', 17]]);
 			$preCount = $query->get()->count();
 			if ($preCount > 0) {
 				$query->update(['prediction' => $request->score]);
 			} else {
+				$anoQuery = UserMatchPrediction::where([['user_id', Auth::id()], ['match_id', $request->matchId], ['prediction_id', 18]]);
+				$preAnoQuery = $query->get()->count();
+				if ($preAnoQuery == 0) {
+					DB::table('user_match_predictions')->insert([
+						'user_id' => Auth::id(),
+						'match_id' => $request->matchId,
+						'prediction_id' => 18,
+						'prediction' => 0,
+						'team_id' => $awayTeamId
+					]);
+				}
 				DB::table('user_match_predictions')->insert([
 					'user_id' => Auth::id(),
 					'match_id' => $request->matchId,
 					'prediction_id' => 17,
-					'prediction' => $request->score
+					'prediction' => $request->score,
+					'team_id' => $request->teamId
 				]);
 			}
 			return response()->json(['success' => true]);

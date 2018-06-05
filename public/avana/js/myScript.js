@@ -2,6 +2,7 @@ $(document).ready(function () {
 	var score;
 	var matchId;
 	var teamName;
+	var teamId;
 	var flag;
 
 	$('.match_lock_alert').on('click', function (e) {
@@ -11,7 +12,7 @@ $(document).ready(function () {
 	$('.home_score').on('click', function (e) {
 		e.preventDefault();
 		teamName = $(this).data('team');
-		var teamId = $(this).data('id');
+		teamId = $(this).data('id');
 		matchId = $(this).data('matchid');
 		flag = 1;
 
@@ -26,7 +27,8 @@ $(document).ready(function () {
 				url: storeHomeGoal,
 				data: {
 					matchId: matchId,
-					score: score
+					score: score,
+					teamId: teamId
 				},
 
 				success: function (result) {
@@ -34,6 +36,10 @@ $(document).ready(function () {
 					if (result.success) {
 						swal("Great!", "Your prediction of " + teamName + " scoring " + score + " goals is recorded!", "success");
 						$('#scoreHomeModal').modal('hide');
+						$('#homeScorePredict').text('');
+						$('#homeScorePredict').text(score);
+						$('#homeScorePredicth2').empty();
+						$('#homeScorePredicth2').html(`<span id="homeScorePredict">` + score + `</span>`);
 					} else {
 						swal("Oops", "Something went wrong!", "error");
 					}
@@ -48,7 +54,8 @@ $(document).ready(function () {
 				url: storeAwayGoal,
 				data: {
 					matchId: matchId,
-					score: score
+					score: score,
+					teamId: teamId
 				},
 
 				success: function (result) {
@@ -56,6 +63,10 @@ $(document).ready(function () {
 					if (result.success) {
 						swal("Great!", "Your prediction of " + teamName + " scoring " + score + " goals is recorded!", "success");
 						$('#scoreAwayModal').modal('hide');
+						$('#awayScorePredict').text('');
+						$('#awayScorePredict').text(score);
+						$('#awayScorePredicth2').empty();
+						$('#awayScorePredicth2').html(`<span id="awayScorePredict">` + score + `</span>`);
 					} else {
 						swal("Oops", "Something went wrong!", "error");
 					}
@@ -71,7 +82,7 @@ $(document).ready(function () {
 	$('.away_score').on('click', function (e) {
 		e.preventDefault();
 		teamName = $(this).data('team');
-		var teamId = $(this).data('id');
+		teamId = $(this).data('id');
 		matchId = $(this).data('matchid');
 		flag = 0;
 
@@ -100,6 +111,10 @@ $(document).ready(function () {
 								console.log(result);
 								if (result.success) {
 									$.alert('Prediction Recorded!');
+									$('#yellowCardPredict').text('');
+									$('#yellowCardPredict').text('YES');
+									$('#yellowCardPredicth2').empty();
+									$('#yellowCardPredicth2').html(`<span id="yellowCardPredict">YES</span>`);
 								} else {
 									swal("Oops", "Already Predicted!", "error");
 								}
@@ -124,6 +139,10 @@ $(document).ready(function () {
 								console.log(result);
 								if (result.success) {
 									$.alert('Prediction Recorded!');
+									$('#yellowCardPredict').text('');
+									$('#yellowCardPredict').text('NO');
+									$('#yellowCardPredicth2').empty();
+									$('#yellowCardPredicth2').html(`<span id="yellowCardPredict">NO</span>`);
 								} else {
 									swal("Oops", "Already Predicted!", "error");
 								}
@@ -164,6 +183,10 @@ $(document).ready(function () {
 								console.log(result);
 								if (result.success) {
 									$.alert('Prediction Recorded!');
+									$('#hatTrickPredict').text('');
+									$('#hatTrickPredict').text('YES');
+									$('#hatTrickPredicth2').empty();
+									$('#hatTrickPredicth2').html(`<span id="hatTrickPredict">YES</span>`);
 								} else {
 									swal("Oops", "Something went wrong!", "error");
 								}
@@ -189,6 +212,10 @@ $(document).ready(function () {
 								console.log(result);
 								if (result.success) {
 									$.alert('Prediction Recorded!');
+									$('#hatTrickPredict').text('');
+									$('#hatTrickPredict').text('NO');
+									$('#hatTrickPredicth2').empty();
+									$('#hatTrickPredicth2').html(`<span id="hatTrickPredict">NO</span>`);
 								} else {
 									swal("Oops", "Something went wrong!", "error");
 								}
@@ -229,6 +256,10 @@ $(document).ready(function () {
 								console.log(result);
 								if (result.success) {
 									$.alert('Prediction Recorded!');
+									$('#ownGoalPredict').text('');
+									$('#ownGoalPredict').text('YES');
+									$('#ownGoalPredicth2').empty();
+									$('#ownGoalPredicth2').html(`<span id="ownGoalPredict">YES</span>`);
 								} else {
 									swal("Oops", "Something went wrong!", "error");
 								}
@@ -254,6 +285,10 @@ $(document).ready(function () {
 								console.log(result);
 								if (result.success) {
 									$.alert('Prediction Recorded!');
+									$('#ownGoalPredict').text('');
+									$('#ownGoalPredict').text('NO');
+									$('#ownGoalPredicth2').empty();
+									$('#ownGoalPredicth2').html(`<span id="ownGoalPredict">NO</span>`);
 								} else {
 									swal("Oops", "Something went wrong!", "error");
 								}
@@ -294,6 +329,10 @@ $(document).ready(function () {
 								console.log(result);
 								if (result.success) {
 									$.alert('Prediction Recorded!');
+									$('#redCardPredict').text('');
+									$('#redCardPredict').text('YES');
+									$('#redCardPredicth2').empty();
+									$('#redCardPredicth2').html(`<span id="redCardPredict">YES</span>`);
 								} else {
 									swal("Oops", "Something went wrong!", "error");
 								}
@@ -319,6 +358,10 @@ $(document).ready(function () {
 								console.log(result);
 								if (result.success) {
 									$.alert('Prediction Recorded!');
+									$('#redCardPredict').text('');
+									$('#redCardPredict').text('NO');
+									$('#redCardPredicth2').empty();
+									$('#redCardPredicth2').html(`<span id="redCardPredict">NO</span>`);
 								} else {
 									swal("Oops", "Something went wrong!", "error");
 								}

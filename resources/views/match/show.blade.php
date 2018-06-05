@@ -58,9 +58,11 @@
 
                     <figcaption>
 
-
-
-                            <h2><span>{{$teams[$match->home_team]->name}}</span> {{$teams[$match->away_team]->name}}</h2>
+							@if(\App\Meliorate::isItemPredicted(17, $match->id) != -1)
+								<h2><span id="homeScorePredict">{{\App\Meliorate::isItemPredicted(17, $match->id)}}</span></h2>
+							@else
+								<h2 id="homeScorePredicth2"><span>{{$teams[$match->home_team]->name}}</span> {{$teams[$match->away_team]->name}}</h2>
+							@endif
 
                             <p>How much will <b>{{$teams[$match->home_team]->name}}</b> score?</p>
 
@@ -86,8 +88,12 @@
 
                     <figcaption>
 
-                        <h2>Card <span>YELLOW</span></h2>
-7
+						@if(\App\Meliorate::isItemPredicted(19, $match->id) != -1)
+							<h2><span id="yellowCardPredict">{{\App\Meliorate::isItemPredicted(19, $match->id)}}</span></h2>
+						@else
+                        	<h2 id="yellowCardPredicth2">Card <span>YELLOW</span></h2>
+						@endif
+
                         <p>Will number of <b>Yellow Card</b> goes past <b>5</b> ?</p>
 
 						@if(!\App\Meliorate::isMatchLocked($match->id))
@@ -110,7 +116,11 @@
 
                      <figcaption>
 
-                        <h2>Trick <span>HAT</span></h2>
+						@if(\App\Meliorate::isItemPredicted(21, $match->id) != -1)
+							<h2><span id="hatTrickPredict">{{\App\Meliorate::isItemPredicted(21, $match->id)}}</span></h2>
+						@else
+                        	<h2 id="hatTrickPredicth2">Trick <span>HAT</span></h2>
+						@endif
 
                         <p>Will there be any <b>Hat-Trick</b> ?</p>
 
@@ -144,7 +154,11 @@
 
                      <figcaption>
 
-                        <h2>{{$teams[$match->home_team]->name}} <span>{{$teams[$match->away_team]->name}}</span></h2>
+						@if(\App\Meliorate::isItemPredicted(18, $match->id) != -1)
+							<h2><span id="awayScorePredict">{{\App\Meliorate::isItemPredicted(18, $match->id)}}</span></h2>
+						@else
+                        	<h2 id="awayScorePredicth2">{{$teams[$match->home_team]->name}} <span>{{$teams[$match->away_team]->name}}</span></h2>
+						@endif
 
                         <p>How much will <b>{{$teams[$match->away_team]->name}}</b> score?</p>
 
@@ -168,7 +182,11 @@
 
                      <figcaption>
 
-                        <h2>Goal <span>OWN</span></h2>
+						@if(\App\Meliorate::isItemPredicted(22, $match->id) != -1)
+							<h2><span id="ownGoalPredict">{{\App\Meliorate::isItemPredicted(22, $match->id)}}</span></h2>
+						@else
+                        	<h2 id="ownGoalPredicth2">Goal <span>OWN</span></h2>
+						@endif
 
                         <p>Do you predict an <b>Own Goal</b> ?</p>
 
@@ -192,8 +210,11 @@
 
                      <figcaption>
 
-                        <h2>Card <span>RED</span></h2>
-
+						@if(\App\Meliorate::isItemPredicted(20, $match->id) != -1)
+							<h2><span id="redCardPredict">{{\App\Meliorate::isItemPredicted(20, $match->id)}}</span></h2>
+						@else
+                        	<h2 id="redCardPredicth2">Card <span>RED</span></h2>
+						@endif
                         <p>Any <b>Red Cards</b> ?</p>
 
 						@if(!\App\Meliorate::isMatchLocked($match->id))
