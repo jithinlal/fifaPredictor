@@ -142,14 +142,6 @@ class PredictionSeederTable extends Seeder
 				'forType' => 'young_player',
 			],
 			[
-				'name' => 'Result',
-				'plus' => 50,
-				'minus' => 25,
-				'type' => 'group',
-				'image' => '',
-				'forType' => 'result',
-			],
-			[
 				'name' => 'Home Team Goal',
 				'plus' => 50,
 				'minus' => 25,
@@ -196,6 +188,14 @@ class PredictionSeederTable extends Seeder
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'yesNo',
+			],
+			[
+				'name' => 'Result',
+				'plus' => 50,
+				'minus' => 25,
+				'type' => 'group',
+				'image' => '',
+				'forType' => 'result',
 			]
 		]);
 	}
