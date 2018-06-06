@@ -129,6 +129,9 @@
                                 </select>
                             @endif
                         </div>
+                        <div>
+                            <input name="comment" class="form-control" type="text" value="{{ $existingComments[$prediction->id] ?? '' }}" id="comment" placeholder="Add Comment Here">
+                        </div>
                         <input type="hidden" name="predictionId" value="{{ $prediction->id }}">
                         <input type="hidden" name="matchId" value="{{ $match->id }}">
                         <div class="box-footer">

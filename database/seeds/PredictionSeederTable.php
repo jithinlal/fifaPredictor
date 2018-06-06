@@ -196,6 +196,14 @@ class PredictionSeederTable extends Seeder
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'result',
+			],
+			[
+				'name' => 'SemiFinalist',
+				'plus' => 300,
+				'minus' => 0,
+				'type' => 'AdminAdded',
+				'image' => '',
+				'forType' => '',
 			]
 		]);
 	}

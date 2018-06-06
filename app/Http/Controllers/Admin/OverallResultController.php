@@ -8,6 +8,7 @@ use Session;
 
 use App\Prediction;
 use App\Team;
+use App\User;
 use App\Result;
 use App\UserMatchPrediction;
 
@@ -32,8 +33,8 @@ class OverallResultController extends Controller
         ];
 
         $currentPredictions = Result::where('match_id', 0)->pluck('outcome', 'prediction_id')->toArray();
-
-        return view('overall-result.list', compact('overallPredictions', 'teams', 'currentPredictions', 'groups'));
+        $currentComments = Result::where('match_id', 0)->pluck('comment', 'prediction_id')->toArray();
+        return view('overall-result.list', compact('overallPredictions', 'teams', 'currentPredictions', 'groups', 'currentComments'));
     }
 
     public function save(Request $request)
@@ -49,7 +50,7 @@ class OverallResultController extends Controller
 
         $deletedRows = Result::where($where)->delete();
 
-        $insertedRow = Result::create(['match_id' => 0, 'prediction_id' => $request->prediction_id, 'outcome' => $request->outcome]);
+        $insertedRow = Result::create(['match_id' => 0, 'prediction_id' => $request->prediction_id, 'outcome' => $request->outcome, 'comment' => $request->comment]);
         
         //----------------Do for all users with loading circle----------
 
@@ -72,4 +73,64 @@ class OverallResultController extends Controller
 
         return redirect('/admin/overall-result');
     }
+
+    public function semiFinalistsPoints()
+    {
+        if ($this->_isSemifinalistsPublishedByAdmin()) {
+            $semiFinalistPoint = Prediction::where('id', 24)->value('plus');
+            $semiFinalists = $this->_getSemiFinalists();
+            $userIds = UserMatchPrediction::distinct()->pluck('user_id');
+            foreach ($userIds as $userId) {
+                if ($this->_hasUserPredictedAllSemifinalists($userId)) {
+                    $userSemifinalists = $this->_getUserSemifinalists($userId);
+                    $points = 0;
+                    $count = 0;
+                    foreach ($userSemifinalists as $userSemifinalist) {
+                        if (in_array($userSemifinalist, $semiFinalists)) {
+                            $points += $semiFinalistPoint;
+                            $count++;
+                        }
+                    }
+
+                    UserMatchPrediction::where('user_id', $userId)->where('prediction_id', 24)->delete();
+
+                    $newUserPrediction = new UserMatchPrediction();
+                    $newUserPrediction->user_id = $userId;
+                    $newUserPrediction->match_id = 0;
+                    $newUserPrediction->prediction_id = 24;
+                    $newUserPrediction->prediction = $count;
+                    $newUserPrediction->pointsObtained = $points;
+                    $newUserPrediction->save();
+                }
+            }
+            Session::flash('alert-success', 'Added points for all users who have predicted all four semifinalists and got some of them right irrespective of the order');
+            return redirect('/admin/overall-result');
+
+        } else {
+            Session::flash('alert-warning', 'Please Wait till Semi Finalists are announced');
+            return redirect('/admin/overall-result');
+        }
+    }
+
+    private function _isSemifinalistsPublishedByAdmin()
+    {
+        return Result::where('match_id', 0)->whereIn('prediction_id', [1, 2, 3, 4])->count() == 4;
+    }
+
+    private function _getSemiFinalists()
+    {
+        return Result::where('match_id', 0)->whereIn('prediction_id', [1, 2, 3, 4])->pluck('outcome')->toArray();
+    }
+
+    private function _hasUserPredictedAllSemifinalists($userId)
+    {
+        return UserMatchPrediction::where('match_id', 0)->where('user_id', $userId)->whereIn('prediction_id', [1, 2, 3, 4])->count() == 4;
+    }
+
+    private function _getUserSemifinalists($userId)
+    {
+        return UserMatchPrediction::where('match_id', 0)->where('user_id', $userId)->whereIn('prediction_id', [1, 2, 3, 4])->pluck('prediction')->toArray();
+    }
+
+
 }

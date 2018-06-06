@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\User;
 use App\Team;
+use App\Match;
 
 class BonusPoint extends Model
 {
@@ -33,22 +34,24 @@ class BonusPoint extends Model
     }
 
     /**
-     * Bonus Points earned by user via his Favourite teams victories and goals scored
-     * 
-     */
-    public static function userBonusPoints($userId)
-    {
-
-    }
-
-    /**
      * Bonus Points earned by team victories and goals scored
      * 
      */
     public static function teamBonusPoints($teamId)
     {
-
+        return self::where('team_id', $teamId)->sum('total_point');
     }
+
+    /**
+     * Bonus Points earned by user via his Favourite teams victories and goals scored
+     * 
+     */
+    public static function userBonusPoints($userId)
+    {
+        $favTeamId = self::getFavTeamId($userId);
+        return self::where('team_id', $favTeamId)->sum('total_point');
+    }
+
 
     /**
      * Is user's fav team a part of this match
@@ -56,7 +59,9 @@ class BonusPoint extends Model
      */
     public static function isFavTeamPlaying($userId, $matchId)
     {
-
+        $favTeamId = self::getFavTeamId($userId);
+        $match = Match::find($matchId);
+        return in_array($favTeamId, [$match->home_team, $match->away_team]);
     }
 
     /**
@@ -65,7 +70,12 @@ class BonusPoint extends Model
      */
     public static function userMatchBonusPoints($userId, $matchId)
     {
-
+        $favTeamId = self::getFavTeamId($userId);
+        $where = [
+            ['team_id', $favTeamId],
+            ['match_id', $matchId]
+        ];
+        return self::where($where)->value('total_point');
     }
 
     /**
@@ -74,7 +84,12 @@ class BonusPoint extends Model
      */
     public static function userMatchFavTeamGoals($userId, $matchId)
     {
-
+        $favTeamId = self::getFavTeamId($userId);
+        $where = [
+            ['team_id', $favTeamId],
+            ['match_id', $matchId]
+        ];
+        return self::where($where)->value('goals_scored');
     }
 
     /**
@@ -83,7 +98,12 @@ class BonusPoint extends Model
      */
     public static function userMatchFavTeamGoalsPoints($userId, $matchId)
     {
-
+        $favTeamId = self::getFavTeamId($userId);
+        $where = [
+            ['team_id', $favTeamId],
+            ['match_id', $matchId]
+        ];
+        return self::where($where)->value('points_goals_scored');
     }
 
     /**
@@ -92,7 +112,12 @@ class BonusPoint extends Model
      */
     public static function userMatchFavTeamResult($userId, $matchId)
     {
-
+        $favTeamId = self::getFavTeamId($userId);
+        $where = [
+            ['team_id', $favTeamId],
+            ['match_id', $matchId]
+        ];
+        return self::where($where)->value('result');
     }
 
     /**
@@ -101,6 +126,11 @@ class BonusPoint extends Model
      */
     public static function userMatchFavTeamResultPoints($userId, $matchId)
     {
-
+        $favTeamId = self::getFavTeamId($userId);
+        $where = [
+            ['team_id', $favTeamId],
+            ['match_id', $matchId]
+        ];
+        return self::where($where)->value('result_point');
     }
 }

@@ -1,7 +1,7 @@
 <section class="sidebar">                
 <ul class="sidebar-menu" data-widget="tree">
     <li>
-        <a href="/admin/" class="active" title="Days">
+        <a href="/admin/" class="active" title="Home">
             <i class="fa fa-dashboard"></i> <span>Admin Home</span>
         </a>
     </li>
@@ -31,14 +31,21 @@
 
     <li class="header">Results</li>
         <li>
-            <a href="/admin/overall-result/" class="active" title="Days">
+            <a href="/admin/overall-result/" class="active" title="Overall Results">
                 <i class="fa fa-server"></i> <span>Overall</span>
             </a>
         </li>
         <li>
-            <a href="/admin/per-match-result/" class="active" title="Days">
+            <a href="/admin/per-match-result/" class="active" title="Per Match Results">
                 <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
                  <span>Per Match</span>
+            </a>
+        </li>
+    <li class="header">Test</li>    
+        <li>
+            <a href="/admin/test" class="active" title="Test">
+                <i class="fa fa-thermometer-quarter" aria-hidden="true"></i>
+                <span>Test</span>
             </a>
         </li>
     

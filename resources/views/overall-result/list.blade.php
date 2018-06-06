@@ -95,6 +95,10 @@
                                     @break
                                 @endswitch                               
                             </select>
+                            <br>
+                            <div class="col-10">
+                                <input name="comment" class="form-control bg-black" type="text" value="{{ $currentComments[$overallPrediction->id] ?? '' }}" id="comment" placeholder="Add Comment Here">
+                            </div>
                             <input type="hidden" name="match_id" value="0">
                             <input type="hidden" name="prediction_id" value="{{$overallPrediction->id}}">
                         </div>
@@ -104,6 +108,32 @@
                 </div>
             </form>
         @endforeach
+    </div>
+
+    
+    <div class="col-md-6">
+        <div class="box bg-olive">
+            <div class="box-header with-border">
+                <i class="fa fa-warning"></i>
+
+                <h3 class="box-title">Semifinalists</h3>
+            </div>
+            <div class="box-body">
+                <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                    Please use this carefully. This is a Get Request. Not a Form submission.
+                    Try to use this only once
+                    Do this Only after Admin has finished entering 1,2,3,4 places.(Precaution has been taken anyway)
+            
+                    This will check if the user has predicted any of the semifinalists correctly, irrespective of the order.
+                    
+                    Only users who have predicted all 4 of 1,2,3,4 places will get points via this method
+
+                </div>    
+                <a class="btn btn-primary" href="/admin/overall-result/semi-finalists-points">Submit and populate semifinalists points</a>          
+            </div>
+        </div>
     </div>
 
 

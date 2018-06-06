@@ -66,6 +66,7 @@ class PerMatchResultController extends Controller
         $data['resultOptions'] = $resultOptions;
         $data['predictions'] = Prediction::where('type', 'group')->get();
         $data['existingPredictions'] = Result::where('match_id', $match->id)->pluck('outcome', 'prediction_id');
+        $data['existingComments'] = Result::where('match_id', $match->id)->pluck('comment', 'prediction_id');
         return view('per-match-result.match', $data);
     }
 
@@ -88,7 +89,7 @@ class PerMatchResultController extends Controller
             ['prediction_id', '=', $predictionId]
         ];
         $deletedRows = Result::where($where)->delete();
-        $insertedRow = Result::create(['match_id' => $matchId, 'prediction_id' => $predictionId, 'outcome' => $request->outcome]);
+        $insertedRow = Result::create(['match_id' => $matchId, 'prediction_id' => $predictionId, 'outcome' => $request->outcome, 'comment' => $request->comment]);
 
         $prediction = Prediction::find($predictionId);
 

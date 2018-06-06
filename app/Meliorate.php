@@ -24,7 +24,8 @@ class Meliorate extends Model
 	const ADMIN_SITE_DATE_FORMAT_WITH_TIME = 'jS F , l  h:i A';
 	const PER_MATCH_DATE_FORMAT = 'D, M j, Y h:i A';
 	const FORMAT_2 = 'jS F , l';
-	const MINUTES_FORMAT = '%I';
+	const MINUTES_FORMAT = '%i';
+	const HIS_FORMAT = '%h Hour %i Minutes';
 
 
 	/**
@@ -120,6 +121,24 @@ class Meliorate extends Model
 		$interval = $dateTime1->diff($dateTime2);
 
 		return $interval->format(self::MINUTES_FORMAT);
+	}
+
+	/**
+	 * Difference in his
+	 *
+	 * @return int
+	 */
+	public static function findTimeDiffInHis($date1, $date2)
+	{
+		$dateTime1 = new DateTime($date1);
+		$dateTime2 = new DateTime($date2);
+
+		$interval = $dateTime1->diff($dateTime2);
+		$oldFormat = $interval->format(self::MINUTES_FORMAT);
+		if ($oldFormat == 0) {
+			return $interval->format(self::HIS_FORMAT);
+		}
+		return $oldFormat;
 	}
 
 	/**
@@ -240,6 +259,20 @@ class Meliorate extends Model
 				}
 			}
 		}
+	}
+
+	/**
+	 * Find the current lock time gap
+	 * 
+	 */
+	public static function currentLockTimeGap()
+	{
+		$match1 = Match::find(1);
+		$lockGap = 10;
+		if ($match1->lock_time) {
+			$lockGap = self::findTimeDiffInHis($match1->date, $match1->lock_time);
+		}
+		return $lockGap;
 	}
 
 }

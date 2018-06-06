@@ -51,6 +51,9 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
 	Route::get('/', 'AdminController@index');
 
+	//Test Controller
+	Route::get('/test', 'TestController@index');
+
     //Day Controller
 	Route::get('/days', 'DayController@create');
 	Route::post('/days/add', 'DayController@save');
@@ -64,6 +67,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     //Overall Result Controller
 	Route::get('/overall-result', 'OverallResultController@index');
 	Route::post('/overall-result/add', 'OverallResultController@save');
+	Route::get('/overall-result/semi-finalists-points', 'OverallResultController@semiFinalistsPoints');
 
 	//PerMatch Result Controller
 	Route::get('/per-match-result', 'PerMatchResultController@index');
