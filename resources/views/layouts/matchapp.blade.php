@@ -97,6 +97,7 @@
         <script src="/avana/js/html5shiv.js" type="text/javascript"></script>
 
 		<script src="/avana/js/myScript.js" type="text/javascript"></script>
+        <script type="text/javascript" src="/my_js/outcome.js"></script>
 
 		{{-- Sweet Alert --}}
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

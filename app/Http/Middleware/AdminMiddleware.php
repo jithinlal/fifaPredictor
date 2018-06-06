@@ -16,7 +16,7 @@ class AdminMiddleware
 	 */
 	public function handle($request, Closure $next)
 	{
-		if (Auth::id() == 1) {
+		if (Auth::id() == 1 || Auth::id() == 2) {
 			return $next($request);
 		} else {
 			return redirect()->back();

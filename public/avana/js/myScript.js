@@ -37,9 +37,15 @@ $(document).ready(function () {
 						swal("Great!", "Your prediction of " + teamName + " scoring " + score + " goals is recorded!", "success");
 						$('#scoreHomeModal').modal('hide');
 						$('#homeScorePredict').text('');
-						$('#homeScorePredict').text(score);
 						$('#homeScorePredicth2').empty();
-						$('#homeScorePredicth2').html(`<span id="homeScorePredict">` + score + `</span>`);
+						if(score == 5){
+							$('#homeScorePredict').text('5+');
+							$('#homeScorePredicth2').html(`<span id="homeScorePredict">5+</span>`);
+						}else{
+							$('#homeScorePredict').text(score);
+							$('#homeScorePredicth2').html(`<span id="homeScorePredict">` + score + `</span>`);
+						}
+
 					} else {
 						swal("Oops", "Something went wrong!", "error");
 					}
@@ -64,9 +70,15 @@ $(document).ready(function () {
 						swal("Great!", "Your prediction of " + teamName + " scoring " + score + " goals is recorded!", "success");
 						$('#scoreAwayModal').modal('hide');
 						$('#awayScorePredict').text('');
-						$('#awayScorePredict').text(score);
 						$('#awayScorePredicth2').empty();
-						$('#awayScorePredicth2').html(`<span id="awayScorePredict">` + score + `</span>`);
+						if(score == 5){
+							$('#awayScorePredict').text('5+');
+							$('#awayScorePredicth2').html(`<span id="awayScorePredict">5+</span>`);
+						}else{
+							$('#awayScorePredict').text(score);
+							$('#awayScorePredicth2').html(`<span id="awayScorePredict">` + score + `</span>`);
+						}
+
 					} else {
 						swal("Oops", "Something went wrong!", "error");
 					}
