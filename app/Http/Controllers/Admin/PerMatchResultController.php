@@ -13,9 +13,19 @@ use App\Match;
 use App\MatchDay;
 use App\Result;
 use App\UserMatchPrediction;
+use App\BonusPoint;
 
 class PerMatchResultController extends Controller
 {
+    const BONUS_POINT_VICTORY = 100;
+    const BONUS_POINT_LOSS = -100;
+    const BONUS_POINT_DRAW = 30;
+    const BONUS_POINT_PER_GOAL = 10;
+
+    const DRAW_STATUS = 'draw';
+    const WIN_STATUS = 'win';
+    const LOSS_STATUS = 'loss';
+
     public function index()
     {
         $days = Day::all()->pluck('day', 'id');
@@ -66,13 +76,13 @@ class PerMatchResultController extends Controller
         ]);
 
         $matchId = $request->matchId;
+        $predictionId = $request->predictionId;
 
         if (-1 == $request->outcome) {
             Session::flash('alert-danger', 'Outcome not selected');
             return redirect('/admin/per-match-result/match/' . $matchId);
         }
 
-        $predictionId = $request->predictionId;
         $where = [
             ['match_id', '=', $matchId],
             ['prediction_id', '=', $predictionId]
@@ -80,23 +90,13 @@ class PerMatchResultController extends Controller
         $deletedRows = Result::where($where)->delete();
         $insertedRow = Result::create(['match_id' => $matchId, 'prediction_id' => $predictionId, 'outcome' => $request->outcome]);
 
-        //----------------Do for all users with loading circle----------
+        $prediction = Prediction::find($predictionId);
 
-        $requiredUserPerMatchPredictionIds = UserMatchPrediction::where($where)->get()->pluck('id');
-        foreach ($requiredUserPerMatchPredictionIds as $requiredUserPerMatchPredictionId) {
-            $userPrediction = UserMatchPrediction::find($requiredUserPerMatchPredictionId);
-            $predictionResult = $insertedRow;
-            $prediction = Prediction::find($predictionId);
-            if ($userPrediction->prediction == $predictionResult->outcome) {
-                $userPrediction->pointsObtained = $prediction->plus;
-            } else {
-                $userPrediction->pointsObtained = $prediction->minus * -1;
-            }
-            $userPrediction->save();
+        if ($prediction->name = 'Result') {
+            $this->_populateResultPredictions($matchId);
         }
 
-
-        //--------------------------------------------------------------
+        $this->_calculateUserMatchPoints($prediction, $where, $insertedRow);
 
         Session::flash('alert-success', 'Result Added and Points updated for all Users');
 
@@ -120,7 +120,169 @@ class PerMatchResultController extends Controller
 
         Session::flash('alert-success', 'Match result_published fiels set as ' . $resultPublishedStatus);
         return redirect('/admin/per-match-result/match/' . $matchId);
+    }
 
+    public function bonusPoints(Request $request)
+    {
+
+        $matchId = $request->matchId;
+        BonusPoint::where('match_id', $matchId)->delete();
+        $match = Match::find($matchId);
+        $allTeams = Team::all()->pluck('name', 'id');
+
+        $homeTeamWhere = [
+            ['match_id', '=', $matchId],
+            ['prediction_id', '=', 17]
+        ];
+
+        $awayTeamWhere = [
+            ['match_id', '=', $matchId],
+            ['prediction_id', '=', 18]
+        ];
+
+        $homeTeamGoals = Result::where($homeTeamWhere)->value('outcome');
+        $homeTeamId = $match->home_team;
+        $homeTeamName = $allTeams[$homeTeamId];
+
+        $awayTeamGoals = Result::where($awayTeamWhere)->value('outcome');
+        $awayTeamId = $match->away_team;
+        $awayTeamName = $allTeams[$awayTeamId];
+
+        $resultWhere = [
+            ['match_id', '=', $matchId],
+            ['prediction_id', '=', 23]
+        ];
+        $result = Result::where($resultWhere)->value('outcome');
+
+        if ('draw' == $result) {
+            $homeTeamVictoryPoints = self::BONUS_POINT_DRAW;
+            $homeTeamVictoryStatus = self::DRAW_STATUS;
+
+            $awayTeamVictoryPoints = self::BONUS_POINT_DRAW;
+            $awayTeamVictoryStatus = self::DRAW_STATUS;
+        } else {
+            if ($result == $homeTeamName) {
+                $homeTeamVictoryPoints = self::BONUS_POINT_VICTORY;
+                $homeTeamVictoryStatus = self::WIN_STATUS;
+
+                $awayTeamVictoryPoints = self::BONUS_POINT_LOSS;
+                $awayTeamVictoryStatus = self::LOSS_STATUS;
+            } elseif ($result == $awayTeamName) {
+                $awayTeamVictoryPoints = self::BONUS_POINT_VICTORY;
+                $awayTeamVictoryStatus = self::WIN_STATUS;
+
+                $homeTeamVictoryPoints = self::BONUS_POINT_LOSS;
+                $homeTeamVictoryStatus = self::LOSS_STATUS;
+            }
+        }
+
+        $array1 = [
+            'match_id' => $matchId,
+            'team_id' => $homeTeamId,
+            'goals_scored' => $homeTeamGoals,
+            'points_goals_scored' => $homeTeamGoals * self::BONUS_POINT_PER_GOAL,
+            'result' => $homeTeamVictoryStatus,
+            'result_point' => $homeTeamVictoryPoints,
+            'total_point' => $homeTeamGoals * self::BONUS_POINT_PER_GOAL + $homeTeamVictoryPoints
+        ];
+
+        $array2 = [
+            'match_id' => $matchId,
+            'team_id' => $awayTeamId,
+            'goals_scored' => $awayTeamGoals,
+            'points_goals_scored' => $awayTeamGoals * self::BONUS_POINT_PER_GOAL,
+            'result' => $awayTeamVictoryStatus,
+            'result_point' => $awayTeamVictoryPoints,
+            'total_point' => $awayTeamGoals * self::BONUS_POINT_PER_GOAL + $awayTeamVictoryPoints
+        ];
+
+        BonusPoint::insert($array1);
+        BonusPoint::insert($array2);
+
+        Session::flash('alert-success', 'Bonus Points for ' . $homeTeamName . ' and ' . $awayTeamName . ' Added to bonus_points table in match id: ' . $matchId);
+
+        return redirect('/admin/per-match-result/match/' . $matchId);
+
+    }
+
+    /**
+     * Populating 'result' prediction for users who have predicted the scoreline of this match
+     * 
+     */
+    private function _populateResultPredictions($matchId)
+    {
+        $allTeams = Team::all()->pluck('name', 'id');
+        $userIds = UserMatchPrediction::distinct()->pluck('user_id');
+        foreach ($userIds as $userId) {
+            $userWhere = [
+                ['match_id', '=', $matchId],
+                ['user_id', '=', $userId],
+                ['prediction_id', '<=', 18],
+                ['prediction_id', '>=', 17],
+            ];
+            $alreadyExistsWhere = [
+                ['match_id', '=', $matchId],
+                ['user_id', '=', $userId],
+                ['prediction_id', '=', 23],
+            ];
+            $isMatchResultFindable = UserMatchPrediction::where($userWhere)->count() == 2;
+            $hasPopulatedForUser = UserMatchPrediction::where($alreadyExistsWhere)->count() > 0;
+            if ($isMatchResultFindable && !$hasPopulatedForUser) {
+                $homeTeamWhere = [
+                    ['user_id', '=', $userId],
+                    ['match_id', '=', $matchId],
+                    ['prediction_id', '=', 17],
+                ];
+                $userMatchHomeTeamQuery = UserMatchPrediction::where($homeTeamWhere);
+                $userMatchHomeTeamGoals = $userMatchHomeTeamQuery->value('prediction');
+                $userMatchHomeTeamId = $userMatchHomeTeamQuery->value('team_id');
+
+                $awayTeamWhere = [
+                    ['user_id', '=', $userId],
+                    ['match_id', '=', $matchId],
+                    ['prediction_id', '=', 18],
+                ];
+                $userMatchAwayTeamQuery = UserMatchPrediction::where($awayTeamWhere);
+                $userMatchAwayTeamGoals = $userMatchAwayTeamQuery->value('prediction');
+                $userMatchAwayTeamId = $userMatchAwayTeamQuery->value('team_id');
+
+                $result = '';
+                if ($userMatchHomeTeamGoals > $userMatchAwayTeamGoals) {
+                    $result = $allTeams[$userMatchHomeTeamId];
+                } elseif ($userMatchAwayTeamGoals > $userMatchHomeTeamGoals) {
+                    $result = $allTeams[$userMatchAwayTeamId];
+                } else {
+                    $result = 'draw';
+                }
+
+                $newUserPrediction = new UserMatchPrediction();
+                $newUserPrediction->user_id = $userId;
+                $newUserPrediction->match_id = $matchId;
+                $newUserPrediction->prediction_id = 23;
+                $newUserPrediction->prediction = $result;
+                $newUserPrediction->save();
+
+            }
+        }
+    }
+
+    /**
+     * Calculate User Match Points   
+     * Do for all users with loading circle
+     * 
+     */
+    private function _calculateUserMatchPoints($prediction, $where, $predictionResult)
+    {
+        $requiredUserPerMatchPredictionIds = UserMatchPrediction::where($where)->get()->pluck('id');
+        foreach ($requiredUserPerMatchPredictionIds as $requiredUserPerMatchPredictionId) {
+            $userPrediction = UserMatchPrediction::find($requiredUserPerMatchPredictionId);
+            if ($userPrediction->prediction == $predictionResult->outcome) {
+                $userPrediction->pointsObtained = $prediction->plus;
+            } else {
+                $userPrediction->pointsObtained = $prediction->minus * -1;
+            }
+            $userPrediction->save();
+        }
     }
 
 }

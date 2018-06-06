@@ -70,11 +70,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 	Route::get('/per-match-result/match/{match}', 'PerMatchResultController@match');
 	Route::post('/per-match-result/save', 'PerMatchResultController@save');
 	Route::post('/per-match-result/mark-as-published', 'PerMatchResultController@markAsPublished');
-
+	Route::post('/per-match-result/bonus-points', 'PerMatchResultController@bonusPoints');
 
 	//Lock Match Controller
 	Route::get('/lock-match', 'LockMatchController@index');
 	Route::post('/lock-match/run-lock-time', 'LockMatchController@save');
+
+	//Prediction Point Controller
+	Route::get('/prediction-points', 'PredictionPointController@index');
+	Route::post('/prediction-points/update', 'PredictionPointController@update');
 
 
 });

@@ -21,6 +21,14 @@
                 <i class="fa fa-lock"></i> <span>Lock Time</span>
             </a>
         </li>
+    <li class="header">Points</li>
+        <li>
+            <a href="/admin/prediction-points/" class="active" title="Points">
+                <i class="fa fa-superscript" aria-hidden="true"></i>
+                <span>Points</span>
+            </a>
+        </li>   
+
     <li class="header">Results</li>
         <li>
             <a href="/admin/overall-result/" class="active" title="Days">
