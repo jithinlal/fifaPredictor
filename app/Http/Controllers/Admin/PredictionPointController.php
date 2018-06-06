@@ -8,6 +8,9 @@ use Session;
 
 use App\Prediction;
 use App\Team;
+use App\BonusPoint;
+
+use Illuminate\Support\Facades\Auth;
 
 
 class PredictionPointController extends Controller
