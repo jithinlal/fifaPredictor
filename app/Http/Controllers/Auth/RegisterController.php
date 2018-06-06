@@ -28,7 +28,7 @@ class RegisterController extends Controller
 	 *
 	 * @var string
 	 */
-	protected $redirectTo = '/favTeam';
+	protected $redirectTo = '/rule-set';
 
 	/**
 	 * Create a new controller instance.

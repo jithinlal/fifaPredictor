@@ -12,6 +12,9 @@ class FavController extends Controller
 	{
 		$teamId = $request->team;
 		$id = Auth::id();
+		if (is_null($id)) {
+			return redirect('/');
+		}
 		$user = User::find($id);
 		$user->fav_team_id = $teamId;
 		$user->save();
