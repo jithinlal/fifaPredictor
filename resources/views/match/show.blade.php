@@ -59,7 +59,7 @@
                     <figcaption>
 
 							@if(\App\Meliorate::isItemPredicted(17, $match->id) != -1)
-								<h2><span id="homeScorePredict">{{\App\Meliorate::isItemPredicted(17, $match->id)}}</span></h2>
+								<h2><span id="homeScorePredict">@if(\App\Meliorate::isItemPredicted(17, $match->id) == 5)5+@else{{\App\Meliorate::isItemPredicted(17, $match->id)}}@endif</span></h2>
 							@else
 								<h2 id="homeScorePredicth2"><span>{{$teams[$match->home_team]->name}}</span> {{$teams[$match->away_team]->name}}</h2>
 							@endif
@@ -155,7 +155,7 @@
                      <figcaption>
 
 						@if(\App\Meliorate::isItemPredicted(18, $match->id) != -1)
-							<h2><span id="awayScorePredict">{{\App\Meliorate::isItemPredicted(18, $match->id)}}</span></h2>
+							<h2><span id="awayScorePredict">@if(\App\Meliorate::isItemPredicted(18, $match->id) == 5)5+@else{{\App\Meliorate::isItemPredicted(18, $match->id)}}@endif</span></h2>
 						@else
                         	<h2 id="awayScorePredicth2">{{$teams[$match->home_team]->name}} <span>{{$teams[$match->away_team]->name}}</span></h2>
 						@endif

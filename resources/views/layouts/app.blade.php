@@ -52,7 +52,6 @@
 
 
 
-    <script src="/home_vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/nice_select_plugin/js/jquery.nice-select.js"></script>
     <script src="/home_vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
