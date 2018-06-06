@@ -34,6 +34,7 @@ Route::get('/groupTeams', 'TeamController@groupTeams')->name('getGroupTeams');
 Route::get('/players', 'PlayerController@index')->name('getPlayerName');
 Route::get('/user/prediction', 'PredictionController@index')->name('submitPrediction');
 Route::get('/prediction/data', 'PredictionController@predictedData')->name('getPredictedData');
+Route::get('/user-match/{match}/{user}', 'UserResultController@index');
 
 // Individual match Prediction
 Route::get('away_team/goal', 'PredictionController@awayScore')->name('getAwayTeamGoal');

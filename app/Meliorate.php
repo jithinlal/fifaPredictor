@@ -173,7 +173,20 @@ class Meliorate extends Model
 		return self::baseFormater($date, self::PER_MATCH_DATE_FORMAT, $default);
 	}
 
-
+	/**
+	 * is result published
+	 * @param integer $matchId
+	 * @return bool
+	 */
+	public static function isMatchPublised($matchId)
+	{
+		$isPredicted = Match::find($matchId)->result_published;
+		if ($isPredicted == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
 	/**
 	 * get Time Alone
