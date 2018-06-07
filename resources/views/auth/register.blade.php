@@ -46,7 +46,14 @@
 	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 	<script>
 	// Initialize Firebase
-
+	var config = {
+		apiKey: env('GOOGLE_API_KEY'),
+		authDomain: env('GOOGLE_AUTH_DOMAIN'),
+		databaseURL: env('GOOGLE_DATABASE_URL'),
+		projectId: env('GOOGLE_PROJECT_ID'),
+		storageBucket: env('GOOGLE_STORAGE_BUCKET',''),
+		messagingSenderId: env('GOOGLE_MESSAGING_SENDER_ID')
+	};
 	firebase.initializeApp(config);
 
 	</script>
