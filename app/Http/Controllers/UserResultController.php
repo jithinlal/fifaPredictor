@@ -86,26 +86,32 @@ class UserResultController extends Controller
 		}
 
 		$home_outcome = Result::where([['match_id', $match_id], ['prediction_id', 17]])->get()->first()->outcome;
+		$home_comment = Result::where([['match_id', $match_id], ['prediction_id', 17]])->get()->first()->comment;
 		$away_outcome = Result::where([['match_id', $match_id], ['prediction_id', 18]])->get()->first()->outcome;
+		$away_comment = Result::where([['match_id', $match_id], ['prediction_id', 18]])->get()->first()->comment;
 		$yellow_outcome = Result::where([['match_id', $match_id], ['prediction_id', 19]])->get()->first()->outcome;
+		$yellow_comment = Result::where([['match_id', $match_id], ['prediction_id', 19]])->get()->first()->comment;
 		if ($yellow_outcome == 0) {
 			$yellow_outcome = 'NO';
 		} else {
 			$yellow_outcome = 'YES';
 		}
 		$red_outcome = Result::where([['match_id', $match_id], ['prediction_id', 20]])->get()->first()->outcome;
+		$red_comment = Result::where([['match_id', $match_id], ['prediction_id', 20]])->get()->first()->comment;
 		if ($red_outcome == 0) {
 			$red_outcome = 'NO';
 		} else {
 			$red_outcome = 'YES';
 		}
 		$hat_outcome = Result::where([['match_id', $match_id], ['prediction_id', 21]])->get()->first()->outcome;
+		$hat_comment = Result::where([['match_id', $match_id], ['prediction_id', 21]])->get()->first()->comment;
 		if ($hat_outcome == 0) {
 			$hat_outcome = 'NO';
 		} else {
 			$hat_outcome = 'YES';
 		}
 		$own_outcome = Result::where([['match_id', $match_id], ['prediction_id', 22]])->get()->first()->outcome;
+		$own_comment = Result::where([['match_id', $match_id], ['prediction_id', 22]])->get()->first()->comment;
 		if ($own_outcome == 0) {
 			$own_outcome = 'NO';
 		} else {

@@ -8,7 +8,7 @@
 		<div class="col-lg-10 mx-auto">
 		<h2>Your Total Points</h2>
 		<p class="lead mb-5"></p>
-		<a class="btn btn-dark btn-xl js-scroll-trigger" href="#upcoming">{{$sum}}</a>
+		<a class="btn btn-dark btn-xl js-scroll-trigger" href="#fixtures">{{$sum + \App\BonusPoint::userBonusPoints(auth()->id())}}</a>
 		</div>
 	</div>
 	</div>

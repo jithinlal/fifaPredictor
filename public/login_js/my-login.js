@@ -1,25 +1,95 @@
 $(function () {
-	function onSignIn(googleUser) {
-		// Useful data for your client-side scripts:
-		var profile = googleUser.getBasicProfile();
-		console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-		console.log('Full Name: ' + profile.getName());
-		console.log('Given Name: ' + profile.getGivenName());
-		console.log('Family Name: ' + profile.getFamilyName());
-		console.log("Image URL: " + profile.getImageUrl());
-		console.log("Email: " + profile.getEmail());
 
-		// The ID token you need to pass to your backend:
-		var id_token = googleUser.getAuthResponse().id_token;
-		console.log("ID Token: " + id_token);
-	};
+	function login() {
 
-	function signOut() {
-		var auth2 = gapi.auth2.getAuthInstance();
-		auth2.signOut().then(function () {
-			console.log('User signed out.');
-		});
+		function newLogin(user) {
+			if (user) {
+				app(user);
+			} else {
+				var provider = new firebase.auth.GoogleAuthProvider();
+				firebase.auth().signInWithPopup(provider).then(function (result) {
+					// This gives you a Google Access Token. You can use it to access the Google API.
+					var token = result.credential.accessToken;
+					// The signed-in user info.
+					var user = result.user;
+					console.log('USER :', user);
+					userName = user.displayName;
+					userEmail = user.email;
+					userEmailVerified = user.emailVerified;
+					userPhoto = user.photoURL;
+					userRefreshToken = user.refreshToken;
+					userUid = user.uid;
+
+				}).catch(function (error) {
+					// Handle Errors here.
+					var errorCode = error.code;
+					var errorMessage = error.message;
+					// The email of the user's account used.
+					var email = error.email;
+					// The firebase.auth.AuthCredential type that was used.
+					var credential = error.credential;
+					// ...
+				});
+
+				// // firebase.auth().signInWithRedirect(provider);
+				// firebase.auth().getRedirectResult().then(function (result) {
+				// 	if (result.credential) {
+				// 		// This gives you a Google Access Token. You can use it to access the Google API.
+				// 		var token = result.credential.accessToken;
+				// 		console.log('token', token);
+				// 		// ...
+				// 	}
+				// 	// The signed-in user info.
+				// 	var user = result.user;
+				// 	console.log('user', user);
+
+				// 	console.log('result', result);
+				// }).catch(function (error) {
+				// 	// Handle Errors here.
+				// 	var errorCode = error.code;
+				// 	var errorMessage = error.message;
+				// 	// The email of the user's account used.
+				// 	var email = error.email;
+				// 	// The firebase.auth.AuthCredential type that was used.
+				// 	var credential = error.credential;
+				// 	// ...
+				// });
+			}
+
+		}
+
+		firebase.auth().onAuthStateChanged(newLogin);
+
 	}
+
+	function app(user) {
+
+		var name, email, photoUrl, uid, emailVerified;
+
+		if (user != null) {
+			name = user.displayName;
+			email = user.email;
+			photoUrl = user.photoURL;
+			emailVerified = user.emailVerified;
+			uid = user.uid; // The user's ID, unique to the Firebase project. Do NOT use
+			// this value to authenticate with your backend server, if
+			// you have one. Use User.getToken() instead.
+
+		}
+		console.log(name, email, photoUrl, emailVerified, uid);
+	}
+
+	$('.signin').on('click', function () {
+		login();
+	});
+
+	$('.signout').on('click', function () {
+		firebase.auth().signOut().then(function () {
+			console.log('Signed Out');
+		}, function (error) {
+			console.error('Sign Out Error', error);
+		});
+	});
 
 	$("input[type='password'][data-eye]").each(function (i) {
 		let $this = $(this);

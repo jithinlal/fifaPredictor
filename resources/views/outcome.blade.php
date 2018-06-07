@@ -2,6 +2,10 @@
 
 @section('content')
 
+	@php
+		use \App\BonusPoint;
+	@endphp
+
 	<div class="row">
 
     	<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
@@ -9,9 +13,18 @@
 
             	<header>
 					<a type="button" class="btn btn-outline-warning" href="{{url()->previous()}}"><span style="font-size:50px;">&#8592;</span></a>
-                	<h2><span>{{$match->type}}</span></h2> <h2>{{$teams[$match->home_team]->name}}</h2>
+					<h2><span>{{$match->type}}</span></h2>
+					@if($winner_outcome == $teams[$match->home_team]->name)
+						<h2 style="color:green;">{{$teams[$match->home_team]->name}}</h2>
+					@else
+						<h2>{{$teams[$match->home_team]->name}}</h2>
+					@endif
                     <h1>v/s</h1>
-                    <h2>{{$teams[$match->away_team]->name}}</h2>
+					@if($winner_outcome == $teams[$match->away_team]->name)
+						<h2 style="color:green;">{{$teams[$match->away_team]->name}}</h2>
+					@else
+						<h2>{{$teams[$match->away_team]->name}}</h2>
+					@endif
 
                 </header>
 
@@ -28,10 +41,15 @@
             	<img src="/stadiums/{{$stadia[$match->stadium_id]->name}}.jpg" alt="" class="img-responsive"/>
 
                 <figcaption>
+					@if(BonusPoint::isFavTeamPlaying(Auth::id(), $match->id))
+                		<h2 id="bonusInfo">Bonus Points:<span>{{ BonusPoint::userMatchBonusPoints(Auth::id(), $match->id) }}</span></h2>
+						<a type="button" class="btn btn-primary bonusOutcome" data-goalpoints="{{ BonusPoint::userMatchFavTeamGoalsPoints(Auth::id(), $match->id) }}" data-goals="{{ BonusPoint::userMatchFavTeamGoals(Auth::id(), $match->id) }}" data-bonuspoints="{{ BonusPoint::userMatchFavTeamResultPoints(Auth::id(), $match->id) }}" data-team="{{ strtoupper(BonusPoint::getFavTeamName(Auth::id())) }}" data-result="{{ strtoupper(BonusPoint::userMatchFavTeamResult(Auth::id(), $match->id)) }}" >
+                          Info
+                        </a>
+					@else
+						<h2>No <span>{{ BonusPoint::getFavTeamName(Auth::id()) }}</span>, No Bonus.</h2>
+					@endif
 
-                	<h2>{{$stadia[$match->stadium_id]->name}}<span> {{$stadia[$match->stadium_id]->city}}</span></h2>
-
-					<p>{{ \App\Meliorate::perMatchDate($match->date) }}</p>
 
                 </figcaption>
 
@@ -197,24 +215,60 @@
       </div>
       <div class="modal-body">
         <table class="table table-striped table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Your Prediction</th>
-                    <th scope="col">Actual Outcome</th>
-                    <th scope="col">Points</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr>
+					<td><span style="font-weight:bold;">Your Prediction</span></td>
                     <td id="yourPre"></td>
+				</tr>
+				<tr>
+					<td><span style="font-weight:bold;">Actual Outcome</span></td>
                     <td id="oriOutcome"></td>
+				</tr>
+				<tr>
+					<td><span style="font-weight:bold;">Points</span></td>
                     <td id="totalPoint"></td>
                 </tr>
             </tbody>
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">X</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="bonusInfoModal" tabindex="-1" role="dialog" >
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title bonusModalTitle" id="exampleModalLabel"></h5>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped table-dark">
+            <tbody>
+                <tr>
+					<td><span style="font-weight:bold;">RESULT</span></td>
+                    <td id="resultOfMatch"></td>
+				</tr>
+				<tr>
+					<td><span style="font-weight:bold;">BONUS POINTS FOR WIN</span></td>
+                    <td id="winBonus"></td>
+				</tr>
+				<tr>
+					<td><span style="font-weight:bold;">GOALS</span></td>
+                    <td id="goalsScored"></td>
+                </tr>
+				<tr>
+					<td><span style="font-weight:bold;">BONUS POINTS FOR GOALS</span></td>
+                    <td id="goalBonus"></td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
       </div>
     </div>
   </div>
