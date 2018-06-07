@@ -110,6 +110,11 @@ class PerMatchResultController extends Controller
         $matchId = $request->matchId;
         $resultPublishedStatus = $request->publishResult;
 
+        if (!$this->_hasMatchResultPublished($matchId)) {
+            Session::flash('alert-danger', 'Publish all the match results first');
+            return redirect('/admin/per-match-result/match/' . $matchId);
+        }
+
         $match = Match::find($matchId);
         if (1 == $resultPublishedStatus) {
             $match->result_published = 1;
@@ -119,7 +124,7 @@ class PerMatchResultController extends Controller
             $match->save();
         }
 
-        Session::flash('alert-success', 'Match result_published fiels set as ' . $resultPublishedStatus);
+        Session::flash('alert-success', 'Match result_published field set as ' . $resultPublishedStatus);
         return redirect('/admin/per-match-result/match/' . $matchId);
     }
 
@@ -284,6 +289,18 @@ class PerMatchResultController extends Controller
             }
             $userPrediction->save();
         }
+    }
+
+    /**
+     * Find if the admin has published all the required results before a match is set as published
+     * 
+     */
+    private function _hasMatchResultPublished($matchId)
+    {
+        $perMatchPredictionsCount = Prediction::where('type', 'group')->count();
+        $perMatchResultCount = Result::where('match_id', $matchId)->count();
+
+        return $perMatchPredictionsCount == $perMatchResultCount;
     }
 
 }
