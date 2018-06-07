@@ -59,8 +59,8 @@
                     <figcaption>
 
 
-								<h2 id="homeScorePredicth2"><span>{{$user_home_point}}</span></h2>
-                                <a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_home_prediction}}" data-originaloutcome="{{$home_outcome}}" data-userredpoint="{{$user_home_point}}" data-title="Goal Scored By {{$teams[$match->home_team]->name}}">
+						<h2 id="homeScorePredicth2"><span>{{$user_home_point}}</span></h2>
+						<a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_home_prediction}}" data-originaloutcome="{{$home_outcome}}" data-userredpoint="{{$user_home_point}}" data-title="Goal Scored By {{$teams[$match->home_team]->name}}">
                           Info
                         </a>
 
@@ -80,9 +80,8 @@
 
                     <figcaption>
 
-                        	<h2 id="yellowCardPredicth2"><span>{{$user_yellow_point}}</span></h2>
-
-                            <a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_yellow_prediction}}" data-originaloutcome="{{$yellow_outcome}}" data-userredpoint="{{$user_yellow_point}}" data-title="Will There be more than 5 YELLOW CARDS?">
+						<h2 id="yellowCardPredicth2"><span>{{$user_yellow_point}}</span></h2>
+						<a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_yellow_prediction}}" data-originaloutcome="{{$yellow_outcome}}" data-userredpoint="{{$user_yellow_point}}" data-title="Will There be more than 5 YELLOW CARDS?">
                           Info
                         </a>
                     </figcaption>
@@ -100,8 +99,8 @@
                      <figcaption>
 
 
-                        	<h2 id="hatTrickPredicth2"><span>{{$user_hat_point}}</span></h2>
-                            <a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_hat_prediction}}" data-originaloutcome="{{$hat_outcome}}" data-userredpoint="{{$user_hat_point}}" data-title="Will There be any HAT TRICK?">
+						<h2 id="hatTrickPredicth2"><span>{{$user_hat_point}}</span></h2>
+						<a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_hat_prediction}}" data-originaloutcome="{{$hat_outcome}}" data-userredpoint="{{$user_hat_point}}" data-title="Will There be any HAT TRICK?">
                           Info
                         </a>
 
@@ -130,8 +129,8 @@
                      <figcaption>
 
 
-                        	<h2 id="awayScorePredicth2"><span>{{$user_away_point}}</span></h2>
-                            <a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_away_prediction}}" data-originaloutcome="{{$away_outcome}}" data-userredpoint="{{$user_away_point}}" data-title="Goal Scored By {{$teams[$match->away_team]->name}}">
+						<h2 id="awayScorePredicth2"><span>{{$user_away_point}}</span></h2>
+						<a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_away_prediction}}" data-originaloutcome="{{$away_outcome}}" data-userredpoint="{{$user_away_point}}" data-title="Goal Scored By {{$teams[$match->away_team]->name}}">
                           Info
                         </a>
 
@@ -150,8 +149,8 @@
                      <figcaption>
 
 
-                        	<h2 id="ownGoalPredicth2"><span>{{$user_own_point}}</span></h2>
-                            <a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_own_prediction}}" data-originaloutcome="{{$own_outcome}}" data-userredpoint="{{$user_own_point}}" data-title="Will There be any OWN GOAL?">
+						<h2 id="ownGoalPredicth2"><span>{{$user_own_point}}</span></h2>
+						<a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_own_prediction}}" data-originaloutcome="{{$own_outcome}}" data-userredpoint="{{$user_own_point}}" data-title="Will There be any OWN GOAL?">
                           Info
                         </a>
 
