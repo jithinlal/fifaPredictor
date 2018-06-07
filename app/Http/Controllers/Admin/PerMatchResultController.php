@@ -18,7 +18,7 @@ use App\BonusPoint;
 class PerMatchResultController extends Controller
 {
     const BONUS_POINT_VICTORY = 100;
-    const BONUS_POINT_LOSS = -100;
+    const BONUS_POINT_LOSS = 0;
     const BONUS_POINT_DRAW = 30;
     const BONUS_POINT_PER_GOAL = 10;
 
