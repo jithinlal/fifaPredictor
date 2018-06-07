@@ -58,9 +58,6 @@
 
 	</script>
 
-	{{-- <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="843739308716-8j5i5qr7kqqg9jqgie2rpk5pq41n9c4a.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script> --}}
 	<link rel="stylesheet" type="text/css" href={{asset("login_bootstrap/css/bootstrap.min.css")}}>
 	<link rel="stylesheet" type="text/css" href={{asset("login_css/my-login.css")}}>
 
