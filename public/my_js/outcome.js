@@ -4,16 +4,20 @@ $(document).ready(function () {
 		var originalOutcome = $(this).data('originaloutcome');
 		var userPoint = $(this).data('userredpoint');
 		var title = $(this).data('title');
+		var comment = $(this).data('comment')
 
 		$('#InfoModal').modal('show');
 		$('#yourPre').empty();
 		$('#oriOutcome').empty();
 		$('#totalPoint').empty();
 		$('.modal-title').empty();
+		$('#commentSection').empty();
+
 		$('#yourPre').text(myPrediction);
 		$('#oriOutcome').text(originalOutcome);
 		$('#totalPoint').text(userPoint);
 		$('.modal-title').text(title);
+		$('#commentSection').text(comment);
 	});
 
 	$('.bonusOutcome').on('click', function () {

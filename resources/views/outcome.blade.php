@@ -78,7 +78,7 @@
 
 
 						<h2 id="homeScorePredicth2"><span>{{$user_home_point}}</span></h2>
-						<a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_home_prediction}}" data-originaloutcome="{{$home_outcome}}" data-userredpoint="{{$user_home_point}}" data-title="Goal Scored By {{$teams[$match->home_team]->name}}">
+						<a type="button" class="btn btn-primary predictOutcome" data-comment="{{$home_comment}}" data-myprediction="{{$user_home_prediction}}" data-originaloutcome="{{$home_outcome}}" data-userredpoint="{{$user_home_point}}" data-title="Goal Scored By {{$teams[$match->home_team]->name}}">
                           Info
                         </a>
 
@@ -99,7 +99,7 @@
                     <figcaption>
 
 						<h2 id="yellowCardPredicth2"><span>{{$user_yellow_point}}</span></h2>
-						<a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_yellow_prediction}}" data-originaloutcome="{{$yellow_outcome}}" data-userredpoint="{{$user_yellow_point}}" data-title="Will There be more than 5 YELLOW CARDS?">
+						<a type="button" class="btn btn-primary predictOutcome" data-comment="{{$yellow_comment}}" data-myprediction="{{$user_yellow_prediction}}" data-originaloutcome="{{$yellow_outcome}}" data-userredpoint="{{$user_yellow_point}}" data-title="Will There be more than 5 YELLOW CARDS?">
                           Info
                         </a>
                     </figcaption>
@@ -118,7 +118,7 @@
 
 
 						<h2 id="hatTrickPredicth2"><span>{{$user_hat_point}}</span></h2>
-						<a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_hat_prediction}}" data-originaloutcome="{{$hat_outcome}}" data-userredpoint="{{$user_hat_point}}" data-title="Will There be any HAT TRICK?">
+						<a type="button" class="btn btn-primary predictOutcome" data-comment="{{$hat_comment}}" data-myprediction="{{$user_hat_prediction}}" data-originaloutcome="{{$hat_outcome}}" data-userredpoint="{{$user_hat_point}}" data-title="Will There be any HAT TRICK?">
                           Info
                         </a>
 
@@ -148,7 +148,7 @@
 
 
 						<h2 id="awayScorePredicth2"><span>{{$user_away_point}}</span></h2>
-						<a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_away_prediction}}" data-originaloutcome="{{$away_outcome}}" data-userredpoint="{{$user_away_point}}" data-title="Goal Scored By {{$teams[$match->away_team]->name}}">
+						<a type="button" class="btn btn-primary predictOutcome" data-comment="{{$away_comment}}" data-myprediction="{{$user_away_prediction}}" data-originaloutcome="{{$away_outcome}}" data-userredpoint="{{$user_away_point}}" data-title="Goal Scored By {{$teams[$match->away_team]->name}}">
                           Info
                         </a>
 
@@ -168,7 +168,7 @@
 
 
 						<h2 id="ownGoalPredicth2"><span>{{$user_own_point}}</span></h2>
-						<a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_own_prediction}}" data-originaloutcome="{{$own_outcome}}" data-userredpoint="{{$user_own_point}}" data-title="Will There be any OWN GOAL?">
+						<a type="button" class="btn btn-primary predictOutcome" data-comment="{{$own_comment}}" data-myprediction="{{$user_own_prediction}}" data-originaloutcome="{{$own_outcome}}" data-userredpoint="{{$user_own_point}}" data-title="Will There be any OWN GOAL?">
                           Info
                         </a>
 
@@ -187,7 +187,7 @@
                      <figcaption>
 
                         <h2><span>{{$user_red_point}}</span></h2>
-                        <a type="button" class="btn btn-primary predictOutcome" data-myprediction="{{$user_red_prediction}}" data-originaloutcome="{{$red_outcome}}" data-userredpoint="{{$user_red_point}}" data-title="Will There be any RED CARD?">
+                        <a type="button" class="btn btn-primary predictOutcome" data-comment="{{$red_comment}}" data-myprediction="{{$user_red_prediction}}" data-originaloutcome="{{$red_outcome}}" data-userredpoint="{{$user_red_point}}" data-title="Will There be any RED CARD?">
                           Info
                         </a>
 
@@ -214,6 +214,7 @@
         <h5 class="modal-title" id="exampleModalLabel"></h5>
       </div>
       <div class="modal-body">
+	  	<p id="commentSection" style="font-weight:bold;"></p>
         <table class="table table-striped table-dark">
             <tbody>
                 <tr>
@@ -253,7 +254,7 @@
                     <td id="resultOfMatch"></td>
 				</tr>
 				<tr>
-					<td><span style="font-weight:bold;">BONUS POINTS FOR WIN</span></td>
+					<td><span style="font-weight:bold;">BONUS POINTS FOR {{ strtoupper(BonusPoint::userMatchFavTeamResult(Auth::id(), $match->id))}}</span></td>
                     <td id="winBonus"></td>
 				</tr>
 				<tr>

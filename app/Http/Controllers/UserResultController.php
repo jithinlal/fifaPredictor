@@ -19,7 +19,8 @@ class UserResultController extends Controller
 
 		$user_home_score_prediction = UserMatchPrediction::where([['match_id', $match_id], ['user_id', Auth::id()], ['prediction_id', 17]])->get();
 		if ($user_home_score_prediction->count() == 0) {
-			$user_home_point = '';
+			$user_home_point = 0;
+			$user_home_prediction = 'Not Predicted';
 		} else {
 			$user_home_point = $user_home_score_prediction->first()->pointsObtained;
 			$user_home_prediction = $user_home_score_prediction->first()->prediction;
@@ -27,7 +28,8 @@ class UserResultController extends Controller
 
 		$user_away_score_prediction = UserMatchPrediction::where([['match_id', $match_id], ['user_id', Auth::id()], ['prediction_id', 18]])->get();
 		if ($user_away_score_prediction->count() == 0) {
-			$user_away_point = '';
+			$user_away_point = 0;
+			$user_away_prediction = 'Not Predicted';
 		} else {
 			$user_away_point = $user_away_score_prediction->first()->pointsObtained;
 			$user_away_prediction = $user_away_score_prediction->first()->prediction;
@@ -35,7 +37,8 @@ class UserResultController extends Controller
 
 		$user_yellow_card_prediction = UserMatchPrediction::where([['match_id', $match_id], ['user_id', Auth::id()], ['prediction_id', 19]])->get();
 		if ($user_yellow_card_prediction->count() == 0) {
-			$user_yellow_point = '';
+			$user_yellow_point = 0;
+			$user_yellow_prediction = 'Not Predicted';
 		} else {
 			$user_yellow_point = $user_yellow_card_prediction->first()->pointsObtained;
 			$user_yellow_prediction = $user_yellow_card_prediction->first()->prediction;
@@ -48,7 +51,8 @@ class UserResultController extends Controller
 
 		$user_red_card_prediction = UserMatchPrediction::where([['match_id', $match_id], ['user_id', Auth::id()], ['prediction_id', 20]])->get();
 		if ($user_red_card_prediction->count() == 0) {
-			$user_red_point = '';
+			$user_red_point = 0;
+			$user_red_prediction = 'Not Predicted';
 		} else {
 			$user_red_point = $user_red_card_prediction->first()->pointsObtained;
 			$user_red_prediction = $user_red_card_prediction->first()->prediction;
@@ -61,7 +65,8 @@ class UserResultController extends Controller
 
 		$user_hat_trick_prediction = UserMatchPrediction::where([['match_id', $match_id], ['user_id', Auth::id()], ['prediction_id', 21]])->get();
 		if ($user_hat_trick_prediction->count() == 0) {
-			$user_hat_point = '';
+			$user_hat_point = 0;
+			$user_hat_prediction = 'Not Predicted';
 		} else {
 			$user_hat_point = $user_hat_trick_prediction->first()->pointsObtained;
 			$user_hat_prediction = $user_hat_trick_prediction->first()->prediction;
@@ -74,7 +79,8 @@ class UserResultController extends Controller
 
 		$user_own_goal_prediction = UserMatchPrediction::where([['match_id', $match_id], ['user_id', Auth::id()], ['prediction_id', 22]])->get();
 		if ($user_own_goal_prediction->count() == 0) {
-			$user_own_point = '';
+			$user_own_point = 0;
+			$user_own_prediction = 'Not Predicted';
 		} else {
 			$user_own_point = $user_own_goal_prediction->first()->pointsObtained;
 			$user_own_prediction = $user_own_goal_prediction->first()->prediction;
@@ -118,10 +124,12 @@ class UserResultController extends Controller
 			$own_outcome = 'YES';
 		}
 		$winner_outcome = Result::where([['match_id', $match_id], ['prediction_id', 23]])->get()->first()->outcome;
+		$winner_comment = Result::where([['match_id', $match_id], ['prediction_id', 23]])->get()->first()->comment;
 
 		$match = Match::find($match_id);
 		$teams = Team::all()->keyBy('id');
 		$stadia = Stadium::all()->keyBy('id');
-		return view('outcome', compact('match', 'teams', 'stadia', 'user_own_prediction', 'user_hat_prediction', 'user_red_prediction', 'user_yellow_prediction', 'user_away_prediction', 'user_home_prediction', 'user_home_point', 'user_away_point', 'user_yellow_point', 'user_red_point', 'user_hat_point', 'user_own_point', 'home_outcome', 'away_outcome', 'yellow_outcome', 'red_outcome', 'hat_outcome', 'own_outcome', 'winner_outcome'));
+
+		return view('outcome', compact('match', 'teams', 'stadia', 'user_own_prediction', 'user_hat_prediction', 'user_red_prediction', 'user_yellow_prediction', 'user_away_prediction', 'user_home_prediction', 'user_home_point', 'user_away_point', 'user_yellow_point', 'user_red_point', 'user_hat_point', 'user_own_point', 'home_outcome', 'away_outcome', 'yellow_outcome', 'red_outcome', 'hat_outcome', 'own_outcome', 'winner_outcome', 'home_comment', 'away_comment', 'yellow_comment', 'red_comment', 'hat_comment', 'own_comment', 'winner_comment'));
 	}
 }

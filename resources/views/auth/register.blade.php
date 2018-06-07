@@ -46,14 +46,7 @@
 	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 	<script>
 	// Initialize Firebase
-	var config = {
-		apiKey: "AIzaSyC5FFz85ydgYAdr0yH2YcmeXzqhAQSt-SI",
-		authDomain: "wc-predict.firebaseapp.com",
-		databaseURL: "https://wc-predict.firebaseio.com",
-		projectId: "wc-predict",
-		storageBucket: "",
-		messagingSenderId: "444396113528"
-	};
+
 	firebase.initializeApp(config);
 
 	</script>
