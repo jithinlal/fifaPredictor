@@ -58,7 +58,7 @@ class ApiController extends Controller
 		foreach ($rows as $row) {
 			$bonusPoints = BonusPoint::userBonusPoints($row->id);
 			$row->bonusPoints = $bonusPoints;
-			$row->totalPoints = $row->nonBonusPoints + $bonusPoints;
+			$row->points = $row->nonBonusPoints + $bonusPoints;
 		}
 		$sortedRows = $rows->sortBy('totalPoints', SORT_REGULAR, true)->sortBy('name');
 
