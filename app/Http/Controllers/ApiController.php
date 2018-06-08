@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller
 {
-	public function allTime(Request $request)
+	public function nonBonusPoints(Request $request)
 	{
 		$result = [];
 		if ($request->ajax()) {
@@ -35,7 +35,7 @@ class ApiController extends Controller
 		}
 	}
 
-	public function withBonusPoints(Request $request)
+	public function allTime(Request $request)
 	{
 		$query = DB::table('users')
 			->leftJoin('user_match_predictions', 'users.id', '=', 'user_match_predictions.user_id');
