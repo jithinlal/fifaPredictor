@@ -27,6 +27,8 @@ class Meliorate extends Model
 	const MINUTES_FORMAT = '%i';
 	const HIS_FORMAT = '%h Hour %i Minutes';
 
+	const ADMINS = [1, 2];
+
 
 	/**
 	 * Available Lock Times
@@ -286,6 +288,15 @@ class Meliorate extends Model
 			$lockGap = self::findTimeDiffInHis($match1->date, $match1->lock_time);
 		}
 		return $lockGap;
+	}
+
+	/**
+	 * Get Number of users supporting a teams
+	 * 
+	 */
+	public static function getSupportingUserCount($teamId)
+	{
+		return User::where('fav_team_id', $teamId)->whereNotIn('id', self::ADMINS)->get()->count();
 	}
 
 }
