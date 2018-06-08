@@ -60,7 +60,8 @@ class ApiController extends Controller
 			$row->bonusPoints = $bonusPoints;
 			$row->points = $row->nonBonusPoints + $bonusPoints;
 		}
-		$sortedRows = $rows->sortBy('totalPoints', SORT_REGULAR, true)->sortBy('name');
+		$sortedRows = $rows->sortBy('points', SORT_REGULAR, true)->sortBy('name');
+		//test
 
 		$result = [];
 		foreach ($sortedRows as $sortedRow) {
