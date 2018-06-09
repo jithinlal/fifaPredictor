@@ -33,15 +33,15 @@ $(document).ready(function () {
 					<table className="table">
 						<tr>
 							<th>#</th>
-							<th>Camper Name</th>
-							<th>Points <span className={this.state.active == 'recent' ? 'none' : ''}>&#9660;</span></th>
+							<th>User Name</th>
+							<th>Total Points <span className={this.state.active == 'recent' ? 'none' : ''}>&#9660;</span></th>
 						</tr>
 						{
 							this.state.users.map(function (item, index) {
 								return (
 									<tr>
 										<td>{index + 1}</td>
-										<td><a href="" target="_blank"> <img className="user-img" src="/home_img/logo.jpg" />{item.name}</a></td>
+										<td><a href="" target="_blank"> <img className="user-img" src={item.image_url} />{item.name}</a></td>
 										<td>{item.points} </td>
 									</tr>
 								)
