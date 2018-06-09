@@ -29,8 +29,8 @@
 			<a class="js-scroll-trigger" href="#fixtures">Fixtures</a>
 		</li>
 
-		<li class="sidebar-nav-item">
-			<a  class="js-scroll-trigger bg-danger" href="{{ route('logout') }}"
+		<li class="sidebar-nav-item" id="logoutnav">
+			<a class="js-scroll-trigger bg-danger" href="{{ route('logout') }}"
             	onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
             		Logout

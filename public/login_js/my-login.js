@@ -2,63 +2,89 @@ $(function () {
 
 	function login() {
 
-		function newLogin(user) {
-			if (user) {
-				app(user);
-			} else {
-				var provider = new firebase.auth.GoogleAuthProvider();
-				firebase.auth().signInWithPopup(provider).then(function (result) {
-					// This gives you a Google Access Token. You can use it to access the Google API.
-					var token = result.credential.accessToken;
-					// The signed-in user info.
-					var user = result.user;
-					console.log('USER :', user);
-					userName = user.displayName;
-					userEmail = user.email;
-					userEmailVerified = user.emailVerified;
-					userPhoto = user.photoURL;
-					userRefreshToken = user.refreshToken;
-					userUid = user.uid;
+		// function newLogin(user) {
+		// 	if (user) {
+		// 		app(user);
+		// 	} else {
+		var provider = new firebase.auth.GoogleAuthProvider();
+		firebase.auth().signInWithPopup(provider).then(function (result) {
+			// This gives you a Google Access Token. You can use it to access the Google API.
+			var token = result.credential.accessToken;
+			// The signed-in user info.
+			var user = result.user;
+			console.log('USER :', user);
+			userName = user.displayName;
+			userEmail = user.email;
+			userEmailVerified = user.emailVerified;
+			userPhoto = user.photoURL;
+			userRefreshToken = user.refreshToken;
+			userUid = user.uid;
+			var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-				}).catch(function (error) {
-					// Handle Errors here.
-					var errorCode = error.code;
-					var errorMessage = error.message;
-					// The email of the user's account used.
-					var email = error.email;
-					// The firebase.auth.AuthCredential type that was used.
-					var credential = error.credential;
-					// ...
-				});
+			$.ajax({
+				type: 'POST',
+				url: loginUser,
+				data: {
+					_token: CSRF_TOKEN,
+					username: userName,
+					email: userEmail,
+					password: userEmail,
+					verify: userEmailVerified,
+					photo: userPhoto,
+					refreshtoken: userRefreshToken,
+					useruid: userUid
+				},
+				success: function (result) {
+					if (result) {
+						window.location.href = '/';
+					} else {
+						window.location.href = '/rule-set';
+					}
+				},
+				error: function (err) {
+					console.log(err);
+				}
+			});
 
-				// // firebase.auth().signInWithRedirect(provider);
-				// firebase.auth().getRedirectResult().then(function (result) {
-				// 	if (result.credential) {
-				// 		// This gives you a Google Access Token. You can use it to access the Google API.
-				// 		var token = result.credential.accessToken;
-				// 		console.log('token', token);
-				// 		// ...
-				// 	}
-				// 	// The signed-in user info.
-				// 	var user = result.user;
-				// 	console.log('user', user);
+		}).catch(function (error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			// The email of the user's account used.
+			var email = error.email;
+			// The firebase.auth.AuthCredential type that was used.
+			var credential = error.credential;
+			// ...
+		});
 
-				// 	console.log('result', result);
-				// }).catch(function (error) {
-				// 	// Handle Errors here.
-				// 	var errorCode = error.code;
-				// 	var errorMessage = error.message;
-				// 	// The email of the user's account used.
-				// 	var email = error.email;
-				// 	// The firebase.auth.AuthCredential type that was used.
-				// 	var credential = error.credential;
-				// 	// ...
-				// });
-			}
+		// // firebase.auth().signInWithRedirect(provider);
+		// firebase.auth().getRedirectResult().then(function (result) {
+		// 	if (result.credential) {
+		// 		// This gives you a Google Access Token. You can use it to access the Google API.
+		// 		var token = result.credential.accessToken;
+		// 		console.log('token', token);
+		// 		// ...
+		// 	}
+		// 	// The signed-in user info.
+		// 	var user = result.user;
+		// 	console.log('user', user);
 
-		}
+		// 	console.log('result', result);
+		// }).catch(function (error) {
+		// 	// Handle Errors here.
+		// 	var errorCode = error.code;
+		// 	var errorMessage = error.message;
+		// 	// The email of the user's account used.
+		// 	var email = error.email;
+		// 	// The firebase.auth.AuthCredential type that was used.
+		// 	var credential = error.credential;
+		// 	// ...
+		// });
+		// 	}
 
-		firebase.auth().onAuthStateChanged(newLogin);
+		// }
+
+		// firebase.auth().onAuthStateChanged(newLogin);
 
 	}
 
@@ -83,13 +109,13 @@ $(function () {
 		login();
 	});
 
-	$('.signout').on('click', function () {
-		firebase.auth().signOut().then(function () {
-			console.log('Signed Out');
-		}, function (error) {
-			console.error('Sign Out Error', error);
-		});
-	});
+	// $('.signout').on('click', function () {
+	// 	firebase.auth().signOut().then(function () {
+	// 		console.log('Signed Out');
+	// 	}, function (error) {
+	// 		console.error('Sign Out Error', error);
+	// 	});
+	// });
 
 	$("input[type='password'][data-eye]").each(function (i) {
 		let $this = $(this);

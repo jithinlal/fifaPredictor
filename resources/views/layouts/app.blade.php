@@ -43,9 +43,28 @@
       <i class="fa fa-angle-up"></i>
     </a>
 
+	<p id="getkeys" data-apikey="{{$googleApiKey}}" data-projectid="{{$googleProjectId}}" data-messagingid="{{$googleProjectId}}" data-databaseurl="{{$googleDatabaseUrl}}" data-authdomain="{{$googleAuthDomain}}"></p>
+
     <!-- Bootstrap core JavaScript -->
+	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+			apiKey = document.getElementById('getkeys').getAttribute('data-apikey');
+			projectId = document.getElementById('getkeys').getAttribute('data-projectid');
+			messagingId = document.getElementById('getkeys').getAttribute('data-messagingid');
+			databaseUrl = document.getElementById('getkeys').getAttribute('data-databaseurl');
+			authDomain = document.getElementById('getkeys').getAttribute('data-authdomain');
 
-
+			var config = {
+			apiKey: apiKey,
+			authDomain: authDomain,
+			databaseURL: databaseUrl,
+			projectId: projectId,
+			storageBucket: '',
+			messagingSenderId: messagingId
+		};
+		firebase.initializeApp(config);
+	</script>
     <script src="/home_vendor/jquery/jquery.min.js"></script>
 	<script src="/home_vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="/select-styles/js/bootstrap-select.min.js"></script>
@@ -70,7 +89,15 @@
 	{{-- Sweet Alert --}}
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-
+	<script>
+		$('#logoutnav').on('click', function(){
+			firebase.auth().signOut().then(function () {
+				console.log('Signed Out');
+			}, function (error) {
+				console.error('Sign Out Error', error);
+			});
+		})
+	</script>
   </body>
 
 </html>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,9 +50,13 @@ class RegisterController extends Controller
 	protected function validator(array $data)
 	{
 		return Validator::make($data, [
-			'name' => 'required|string|max:255',
-			'email' => 'required|string|email|max:255|unique:users',
-			'password' => 'required|string|min:6|confirmed',
+			'username' => 'string|max:255',
+			'email' => 'string|email|max:255|unique:users',
+			'password' => 'string|min:6|unique:users',
+			'photo' => 'string',
+			'verify' => 'string',
+			'refreshtoken' => 'string',
+			'useruid' => 'string'
 		]);
 	}
 
@@ -64,9 +69,25 @@ class RegisterController extends Controller
 	protected function create(array $data)
 	{
 		return User::create([
-			'name' => $data['name'],
+			'name' => $data['username'],
 			'email' => $data['email'],
-			'password' => Hash::make($data['password']),
+			'password' => Hash::make($data['email']),
+			'image_url' => $data['photo'],
+			'email_verify' => $data['verify'],
+			'refresh_token' => $data['refreshtoken'],
+			'user_uid' => $data['useruid']
 		]);
 	}
+
+	public function showRegistrationForm()
+	{
+		$googleApiKey = $_ENV['GOOGLE_API_KEY'];
+		$googleDatabaseUrl = $_ENV['GOOGLE_DATABASE_URL'];
+		$googleAuthDomain = $_ENV['GOOGLE_AUTH_DOMAIN'];
+		$googleProjectId = $_ENV['GOOGLE_PROJECT_ID'];
+		$googleMessagingSenderId = $_ENV['GOOGLE_MESSAGING_SENDER_ID'];
+
+		return view('auth.register', compact('googleApiKey', 'googleDatabaseUrl', 'googleAuthDomain', 'googleProjectId', 'googleMessagingSenderId'));
+	}
+
 }

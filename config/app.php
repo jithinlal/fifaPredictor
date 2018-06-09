@@ -163,7 +163,7 @@ return [
 		App\Providers\DaysServiceProvider::class,
 		App\Providers\AdminServiceProvider::class,
 		App\Providers\FavteamServiceProvider::class,
-
+		App\Providers\GoogleAuthProvider::class,
 	],
 
     /*
