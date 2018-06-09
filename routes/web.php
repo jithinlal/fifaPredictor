@@ -61,6 +61,10 @@ Route::get('red/card', 'PredictionController@redCard')->name('getRedCard');
 Route::get('hat/trick', 'PredictionController@hatTrick')->name('getHatTrick');
 Route::get('own/goal', 'PredictionController@ownGoal')->name('getOwnGoal');
 
+//Team Power Ranking
+Route::get('/power-rankings', 'PowerTeamController@list')->name('team-power-rankings');
+
+Auth::routes();
 
 
 //-----------------------------------Admin Routes--------------------------------------------

@@ -12,7 +12,10 @@ class BonusPoint extends Model
 {
     //protected $fillable = ['match_id', 'day_id'];
 
-
+    const ADMINS = [1, 2];
+    const DRAW_STATUS = 'draw';
+    const WIN_STATUS = 'win';
+    const LOSS_STATUS = 'lost';
 
     /**
      * Get User Fav team Id
@@ -132,5 +135,32 @@ class BonusPoint extends Model
             ['match_id', $matchId]
         ];
         return self::where($where)->value('result_point');
+    }
+
+    /**
+     * Get Number of matches won
+     * 
+     */
+    public static function getMatchesWonCount($teamId)
+    {
+        return self::where('result', self::WIN_STATUS)->where('team_id', $teamId)->count();
+    }
+
+    /**
+     * Get Number of matches loss
+     * 
+     */
+    public static function getMatchesLostCount($teamId)
+    {
+        return self::where('result', self::LOSS_STATUS)->where('team_id', $teamId)->count();
+    }
+
+    /**
+     * Get Number of matches draw 
+     * 
+     */
+    public static function getMatchesDrawnCount($teamId)
+    {
+        return self::where('result', self::DRAW_STATUS)->where('team_id', $teamId)->count();
     }
 }

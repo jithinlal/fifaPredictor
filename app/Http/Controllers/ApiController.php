@@ -2,152 +2,270 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use \stdClass;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\User;
+use App\Team;
+use App\BonusPoint;
+
 class ApiController extends Controller
 {
-	public function nonBonusPoints(Request $request)
+	private $_admins = [1, 2];
+
+	public function allTime(Request $request)
 	{
-		$result = [];
 		if ($request->ajax()) {
-			$query = DB::table('user_match_predictions')
-				->selectRaw('user_id as id, sum(pointsObtained) as points')
-				->groupBy('user_id')
-				->orderByRaw('sum(pointsObtained) DESC')->get()->toArray();
+			$allTeams = Team::all()->pluck('name', 'id');
 
-			foreach ($query as $q) {
-				$user = User::find($q->id);
-				$userName = $user->name;
-				$userEmail = $user->email;
-				$points = $q->points;
+			$query = DB::table('users')
+				->leftJoin('user_match_predictions', 'users.id', '=', 'user_match_predictions.user_id');
 
-				$obj = new stdClass();
-				$obj->id = $q->id;
-				$obj->name = $userName;
-				$obj->email = $userEmail;
-				$obj->points = $points;
-				$result[] = $obj;
+			$query->select(
+				'users.id AS id',
+				'users.name',
+				'users.user_uid',
+				'users.sa_user',
+				'users.email',
+				'users.image_url',
+				'users.fav_team_id',
+
+				DB::raw('sum(user_match_predictions.pointsObtained) AS nonBonusPoints')
+			);
+			$query->groupBy('users.id');
+
+			$query->whereNotIn('users.id', $this->_admins);
+
+			$rows = $query->get();
+
+			foreach ($rows as $row) {
+				if ($row->nonBonusPoints == null) {
+					$row->nonBonusPoints = 0;
+				}
+
+				$bonusPoints = BonusPoint::userBonusPoints($row->id);
+				$row->bonusPoints = $bonusPoints;
+
+				$row->points = $row->nonBonusPoints + $bonusPoints;
+
+				$row->favTeamName = 'None';
+				if ($row->fav_team_id) {
+					$row->favTeamName = $allTeams[$row->fav_team_id];
+				}
+
+				if ($row->points == null) {
+					$row->points = 0;
+				}
 			}
+			$sortedRows = $rows->sortBy('points', SORT_REGULAR, true)->sortBy('name');
+
+			$result = [];
+			foreach ($sortedRows as $sortedRow) {
+				$result[] = $sortedRow;
+			}
+
 			return response()->json(['result' => $result]);
 		}
 	}
 
-	public function allTime(Request $request)
+	public function nonBonus(Request $request)
 	{
-		$query = DB::table('users')
-			->leftJoin('user_match_predictions', 'users.id', '=', 'user_match_predictions.user_id');
+		if ($request->ajax()) {
+			$query = DB::table('users')
+				->leftJoin('user_match_predictions', 'users.id', '=', 'user_match_predictions.user_id');
 
-		$query->select(
-			'users.id AS id',
-			'users.name',
-			'users.user_uid',
-			'users.sa_user',
-			'users.email',
-			'users.image_url',
-			'users.fav_team_id',
+			$query->select(
+				'users.id AS id',
+				'users.name',
+				'users.user_uid',
+				'users.sa_user',
+				'users.email',
+				'users.image_url',
+				'users.fav_team_id',
 
-			DB::raw('sum(user_match_predictions.pointsObtained) AS nonBonusPoints')
-		);
-		$query->groupBy('users.id');
+				DB::raw('sum(user_match_predictions.pointsObtained) AS points')
+			);
+			$query->groupBy('users.id');
 
-		$rows = $query->get();
+			$query->whereNotIn('users.id', $this->_admins);
 
-		foreach ($rows as $row) {
-			$bonusPoints = BonusPoint::userBonusPoints($row->id);
-			$row->bonusPoints = $bonusPoints;
-			$row->points = $row->nonBonusPoints + $bonusPoints;
+			$rows = $query->get();
+
+			foreach ($rows as $row) {
+				if ($row->points == null) {
+					$row->points = 0;
+				}
+
+				$row->favTeamName = 'None';
+				if ($row->fav_team_id) {
+					$row->favTeamName = $allTeams[$row->fav_team_id];
+				}
+			}
+			$sortedRows = $rows->sortBy('points', SORT_REGULAR, true)->sortBy('name');
+
+			$result = [];
+			foreach ($sortedRows as $sortedRow) {
+				$result[] = $sortedRow;
+			}
+
+			return response()->json(['result' => $result]);
 		}
-		$sortedRows = $rows->sortBy('points', SORT_REGULAR, true)->sortBy('name');
-		//test
-
-		$result = [];
-		foreach ($sortedRows as $sortedRow) {
-			$result[] = $sortedRow;
-		}
-
-		return response()->json(['result' => $result]);
 	}
 
-	public function saUsers(Request $request)
+	public function saUser(Request $request)
 	{
-		$query = DB::table('users')
-			->leftJoin('user_match_predictions', 'users.id', '=', 'user_match_predictions.user_id');
+		if ($request->ajax()) {
+			$query = DB::table('users')
+				->leftJoin('user_match_predictions', 'users.id', '=', 'user_match_predictions.user_id');
 
-		$query->select(
-			'users.id AS id',
-			'users.name',
-			'users.sa_user',
-			'users.user_uid',
-			'users.email',
-			'users.image_url',
-			'users.fav_team_id',
+			$query->select(
+				'users.id AS id',
+				'users.name',
+				'users.sa_user',
+				'users.user_uid',
+				'users.email',
+				'users.image_url',
+				'users.fav_team_id',
 
-			DB::raw('sum(user_match_predictions.pointsObtained) AS nonBonusPoints')
-		);
+				DB::raw('sum(user_match_predictions.pointsObtained) AS nonBonusPoints')
+			);
 
-		$query->groupBy('users.id');
+			$query->groupBy('users.id');
 
-		$query->where('users.sa_user', 1);
+			$query->where('users.sa_user', 1);
 
-		$rows = $query->get();
+			$query->whereNotIn('users.id', $this->_admins);
 
-		foreach ($rows as $row) {
-			$bonusPoints = BonusPoint::userBonusPoints($row->id);
-			$row->bonusPoints = $bonusPoints;
-			$row->totalPoints = $row->nonBonusPoints + $bonusPoints;
+			$rows = $query->get();
+
+			foreach ($rows as $row) {
+				if ($row->nonBonusPoints == null) {
+					$row->nonBonusPoints = 0;
+				}
+
+				$bonusPoints = BonusPoint::userBonusPoints($row->id);
+				$row->bonusPoints = $bonusPoints;
+
+				$row->points = $row->nonBonusPoints + $bonusPoints;
+
+				$row->favTeamName = 'None';
+				if ($row->fav_team_id) {
+					$row->favTeamName = $allTeams[$row->fav_team_id];
+				}
+
+				if ($row->points == null) {
+					$row->points = 0;
+				}
+			}
+			$sortedRows = $rows->sortBy('totalPoints', SORT_REGULAR, true)->sortBy('name');
+
+			$result = [];
+			foreach ($sortedRows as $sortedRow) {
+				$result[] = $sortedRow;
+			}
+
+			return response()->json(['result' => $result]);
 		}
-		$sortedRows = $rows->sortBy('totalPoints', SORT_REGULAR, true)->sortBy('name');
-
-		$result = [];
-		foreach ($sortedRows as $sortedRow) {
-			$result[] = $sortedRow;
-		}
-
-		return response()->json(['result' => $result]);
 	}
 
-	public function favTeamWise(Request $request)
+	public function favTeam(Request $request)
 	{
-		//-----------------------------------------------
-		$teamId = $request->teamId;
-		//-----------------------------------------------
+		if ($request->ajax()) {
+			//$teamId = 2;
+			$teamId = $request->teamId;
+			//-----------------------------------------------
 
-		$query = DB::table('users')
-			->leftJoin('user_match_predictions', 'users.id', '=', 'user_match_predictions.user_id');
+			$query = DB::table('users')
+				->leftJoin('user_match_predictions', 'users.id', '=', 'user_match_predictions.user_id');
 
-		$query->select(
-			'users.id AS id',
-			'users.name',
-			'users.sa_user',
-			'users.user_uid',
-			'users.email',
-			'users.image_url',
-			'users.fav_team_id',
+			$query->select(
+				'users.id AS id',
+				'users.name',
+				'users.sa_user',
+				'users.user_uid',
+				'users.email',
+				'users.image_url',
+				'users.fav_team_id',
 
-			DB::raw('sum(user_match_predictions.pointsObtained) AS nonBonusPoints')
-		);
+				DB::raw('sum(user_match_predictions.pointsObtained) AS nonBonusPoints')
+			);
 
-		$query->groupBy('users.id');
+			$query->groupBy('users.id');
 
-		$query->where('users.fav_team_id', $teamId);
+			$query->where('users.fav_team_id', $teamId);
 
-		$rows = $query->get();
+			$query->whereNotIn('users.id', $this->_admins);
 
-		foreach ($rows as $row) {
-			$bonusPoints = BonusPoint::userBonusPoints($row->id);
-			$row->bonusPoints = $bonusPoints;
-			$row->totalPoints = $row->nonBonusPoints + $bonusPoints;
+			$rows = $query->get();
+
+			foreach ($rows as $row) {
+				if ($row->nonBonusPoints == null) {
+					$row->nonBonusPoints = 0;
+				}
+
+				$bonusPoints = BonusPoint::userBonusPoints($row->id);
+				$row->bonusPoints = $bonusPoints;
+
+				$row->points = $row->nonBonusPoints + $bonusPoints;
+
+				$row->favTeamName = 'None';
+				if ($row->fav_team_id) {
+					$row->favTeamName = $allTeams[$row->fav_team_id];
+				}
+
+				if ($row->points == null) {
+					$row->points = 0;
+				}
+			}
+			$sortedRows = $rows->sortBy('totalPoints', SORT_REGULAR, true)->sortBy('name');
+
+			$result = [];
+			foreach ($sortedRows as $sortedRow) {
+				$result[] = $sortedRow;
+			}
+
+			return response()->json(['result' => $result]);
 		}
-		$sortedRows = $rows->sortBy('totalPoints', SORT_REGULAR, true)->sortBy('name');
 
-		$result = [];
-		foreach ($sortedRows as $sortedRow) {
-			$result[] = $sortedRow;
+	}
+
+	public function allTeams(Request $request)
+	{
+		if ($request->ajax()) {
+			$query = DB::table('teams')
+				->leftJoin('bonus_points', 'teams.id', '=', 'bonus_points.team_id');
+
+			$query->select(
+				'teams.id AS id',
+				'teams.name',
+				'teams.group_name',
+				'teams.iso2',
+
+				DB::raw('sum(bonus_points.goals_scored) AS goalsScored'),
+				DB::raw('sum(bonus_points.points_goals_scored) AS points_goals_scored'),
+				DB::raw('sum(bonus_points.result_point) AS result_point'),
+				DB::raw('sum(bonus_points.total_point) AS points')
+			);
+			$query->groupBy('teams.id');
+
+			$query->orderBy('points', 'desc');
+			$query->orderBy('name');
+
+			$sortedRows = $query->get();
+
+			foreach ($sortedRows as $row) {
+				if ($row->points == null) {
+					$row->points = 0;
+				}
+			}
+
+			return response()->json(['result' => $sortedRows]);
 		}
+	}
 
-		return response()->json(['result' => $result]);
+	private function _isAdmin($userId)
+	{
+		return in_array($userId, $this->_admins);
 	}
 }

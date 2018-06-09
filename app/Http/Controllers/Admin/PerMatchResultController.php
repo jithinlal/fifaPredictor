@@ -24,7 +24,7 @@ class PerMatchResultController extends Controller
 
     const DRAW_STATUS = 'draw';
     const WIN_STATUS = 'win';
-    const LOSS_STATUS = 'loss';
+    const LOSS_STATUS = 'lost';
 
     public function index()
     {
@@ -132,8 +132,15 @@ class PerMatchResultController extends Controller
     {
 
         $matchId = $request->matchId;
-        BonusPoint::where('match_id', $matchId)->delete();
+
         $match = Match::find($matchId);
+
+        if ($match->result_published != 1) {
+            Session::flash('alert-warning', 'Do this only after the match result has been published');
+            return redirect('/admin/per-match-result/match/' . $matchId);
+        }
+
+        BonusPoint::where('match_id', $matchId)->delete();
         $allTeams = Team::all()->pluck('name', 'id');
 
         $homeTeamWhere = [

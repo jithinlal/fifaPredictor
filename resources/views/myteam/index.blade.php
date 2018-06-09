@@ -7,6 +7,9 @@
 		<div class="text-center">
 			<h3 class="mb-5">Pick your Favourite Team</h3>
 		</div>
+		<div class="text-center">
+			<h4 class="mb-5">You get Bonus Points every time your team scores and wins !</h3>
+		</div>
 		<div class="row no-gutters">
 			@foreach ($groupATeams as $team)			
 				
