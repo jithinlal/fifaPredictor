@@ -115,9 +115,10 @@ h2 a {
 }
 
 .rank {
+  font-size: 50px !important;
   background-color: #ffffff;
   color: #403E10;
-  font-weight: bold;
+  font-weight: bold !important;
   
   box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
   transform: translate3d(6px, -6px, 0);
@@ -126,6 +127,13 @@ h2 a {
 	  transition-duration: 0.4s;
 	  transition-property: all;
   transition-timing-function: line;
+}
+
+a#fixedbutton {
+    position: fixed;
+    top: 15px;
+    left: 15px; 
+    color: white;
 }
 
 @media (max-width: 800px) {
