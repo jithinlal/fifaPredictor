@@ -5,11 +5,15 @@ namespace App;
 use DateTime;
 use DateTimeZone;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Database\Eloquent\Model;
 
 use App\Match;
+use App\Day;
+use App\MatchDay;
 use App\UserMatchPrediction;
-use Illuminate\Support\Facades\Auth;
 
 
 class Meliorate extends Model
@@ -17,6 +21,7 @@ class Meliorate extends Model
 	const DATE_NULL = '0000-00-00';
 	const DATETIME_NULL = '0000-00-00 00:00:00';
 	const MYSQL_DATETIME = 'Y-m-d H:i:s';
+	const MYSQL_DATE = 'Y-m-d';
 	const OVERALL_PREDICTION_LOCK_TIME = '2018-06-14 20:00:00';
 	const SITE_DATE_FORMAT = 'd M Y';
 	const ADMIN_SITE_DATE_FORMAT = 'jS F , l';
@@ -28,6 +33,8 @@ class Meliorate extends Model
 	const HIS_FORMAT = '%h Hour %i Minutes';
 
 	const ADMINS = [1, 2];
+	const MIN_DAY = '2018-06-14';
+	const MAX_DAY = '2018-07-15';
 
 
 	/**
@@ -300,30 +307,170 @@ class Meliorate extends Model
 	}
 
 	/**
-	 * Get Matches Coming in the next match day
+	 * Find Out If Today is a Match Day
 	 * 
 	 */
-	public static function upcomingMatchDay()
+	public static function isTodayAMatchDay()
 	{
 		$today = new DateTime();
+		$todayMySql = $today->format(self::MYSQL_DATE);
+
+		if (1 == Day::where('day', $todayMySql)->count()) {
+			return Day::where('day', $todayMySql)->value('id');
+		}
+
+		return false;
 	}
 
 	/**
 	 * Get Matches Coming in the current match day
 	 * 
 	 */
-	public static function currentMatchDay()
+	public static function currentMatchDayGames()
 	{
+		if (self::isTodayAMatchDay()) {
 
+			$query = DB::table('match_days')
+				->join('days', 'days.id', '=', 'match_days.day_id')
+				->join('matches', 'matches.id', '=', 'match_days.match_id');
+
+			$query->select(
+				'days.day',
+
+				'match_days.match_id',
+
+				'matches.type',
+				'matches.home_team',
+				'matches.away_team',
+				'matches.date',
+				'matches.stadium_id',
+				'matches.lock_time',
+				'matches.result_published'
+			);
+
+			$query->where('match_days.day_id', self::isTodayAMatchDay());
+
+			return $query->get();
+
+		} else {
+			return false;
+		}
+
+	}
+
+	/**
+	 * Find Next Match Day
+	 * 
+	 */
+	public static function nextMatchDay()
+	{
+		$today = new DateTime();
+		$todayMySql = $today->format(self::MYSQL_DATE);
+		return Day::where('day', '>', $todayMySql)->pluck('id')->first();
+	}
+
+	/**
+	 * Get Matches Coming in the next match day
+	 * 
+	 */
+	public static function upcomingMatchDayGames()
+	{
+		if (!self::isTournamentLastDayOrOver()) {
+
+			$query = DB::table('match_days')
+				->join('days', 'days.id', '=', 'match_days.day_id')
+				->join('matches', 'matches.id', '=', 'match_days.match_id');
+
+			$query->select(
+				'days.id',
+				'days.day',
+
+				'match_days.match_id',
+
+				'matches.type',
+				'matches.home_team',
+				'matches.away_team',
+				'matches.date',
+				'matches.stadium_id',
+				'matches.lock_time',
+				'matches.result_published'
+			);
+
+			$query->where('match_days.day_id', self::nextMatchDay());
+
+			return $query->get();
+
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Find previous Match Day
+	 * 
+	 */
+	public static function previousMatchDay()
+	{
+		$today = new DateTime();
+		$todayMySql = $today->format(self::MYSQL_DATE);
+		$array1 = Day::where('day', '<', $todayMySql)->pluck('id')->toArray();
+		if (!empty($array1)) {
+			return array_slice($array1, -1)[0];
+		}
+		return 0;
 	}
 
 	/**
 	 * Get Matches Coming in the previous match day
 	 * 
 	 */
-	public static function previousMatchDay()
+	public static function previousMatchDayGames()
 	{
+		if (self::hasTournamentBegun()) {
 
+			$query = DB::table('match_days')
+				->join('days', 'days.id', '=', 'match_days.day_id')
+				->join('matches', 'matches.id', '=', 'match_days.match_id');
+
+			$query->select(
+				'days.id',
+				'days.day',
+
+				'match_days.match_id',
+
+				'matches.type',
+				'matches.home_team',
+				'matches.away_team',
+				'matches.date',
+				'matches.stadium_id',
+				'matches.lock_time',
+				'matches.result_published'
+			);
+
+			$query->where('match_days.day_id', self::previousMatchDay());
+
+			return $query->get();
+
+		} else {
+			return false;
+		}
+	}
+
+
+
+	public static function hasTournamentBegun()
+	{
+		$today = new DateTime();
+		$firstMatchDay = new DateTime(self::MIN_DAY);
+		return $today >= $firstMatchDay;
+	}
+
+	public static function isTournamentLastDayOrOver()
+	{
+		$today = new DateTime();
+		$lastMatchDay = new DateTime(self::MAX_DAY);
+
+		return $today >= $lastMatchDay;
 	}
 
 }

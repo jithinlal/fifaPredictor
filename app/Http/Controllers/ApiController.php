@@ -58,7 +58,7 @@ class ApiController extends Controller
 					$row->points = 0;
 				}
 			}
-			$sortedRows = $rows->sortBy('points', SORT_REGULAR, true)->sortBy('name');
+			$sortedRows = $rows->sortByDesc('points');
 
 			$result = [];
 			foreach ($sortedRows as $sortedRow) {
@@ -102,7 +102,7 @@ class ApiController extends Controller
 					$row->favTeamName = $allTeams[$row->fav_team_id];
 				}
 			}
-			$sortedRows = $rows->sortBy('points', SORT_REGULAR, true)->sortBy('name');
+			$sortedRows = $rows->sortByDesc('points');
 
 			$result = [];
 			foreach ($sortedRows as $sortedRow) {
@@ -158,7 +158,7 @@ class ApiController extends Controller
 					$row->points = 0;
 				}
 			}
-			$sortedRows = $rows->sortBy('totalPoints', SORT_REGULAR, true)->sortBy('name');
+			$sortedRows = $rows->sortByDesc('points');
 
 			$result = [];
 			foreach ($sortedRows as $sortedRow) {
@@ -218,7 +218,7 @@ class ApiController extends Controller
 					$row->points = 0;
 				}
 			}
-			$sortedRows = $rows->sortBy('totalPoints', SORT_REGULAR, true)->sortBy('name');
+			$sortedRows = $rows->sortByDesc('points');
 
 			$result = [];
 			foreach ($sortedRows as $sortedRow) {

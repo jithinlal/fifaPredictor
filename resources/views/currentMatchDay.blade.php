@@ -2,16 +2,16 @@
 <section class="content-section" id="upcoming">
 	<div class="container">
 		<div class="text-center">
-			<h3 class="mb-5">Upcoming Fixtures </h3>
-			<h4 class="mb-5">Match Day {{$upcomingGames[0]->id}}  </h4>
+			<h3 class="mb-5">Today's Fixtures </h3>
+			<h4 class="mb-5">Match Day {{$currentGames[0]->id}}  </h4>
 		</div>
 		<div class="row no-gutters">
 		@php
-			$count = count($upcomingGames);
+			$count = count($currentGames);
 		@endphp
 
-			@if($count != 0 && $upcomingGames)
-				@foreach ($upcomingGames as $game)
+			@if($count != 0 && $currentGames)
+				@foreach ($currentGames as $game)
 
 					@if($count == 1 || ($count == 3 && $loop->iteration == 3))
 						<div class="col-lg-3"></div>
@@ -81,43 +81,8 @@
 
 				@endforeach
 			@else
-				<b>No Upcoming Matches, we are done for four years :( </b>
+				<b>No Matches Today</b>
 			@endif
 		</div>
 	</div>
 </section>
-
-{{--
-<div class="col-lg-6">
-				<a class="portfolio-item" href="#">
-					<span class="caption">
-					<span class="caption-content">
-						<h2>Ice Cream</h2>
-						<p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
-					</span>
-					</span>
-					<img class="img-fluid" src="home_img/portfolio-2.jpg" alt="">
-				</a>
-				</div>
-				<div class="col-lg-6">
-				<a class="portfolio-item" href="#">
-					<span class="caption">
-					<span class="caption-content">
-						<h2>Strawberries</h2>
-						<p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
-					</span>
-					</span>
-					<img class="img-fluid" src="home_img/portfolio-3.jpg" alt="">
-				</a>
-				</div>
-				<div class="col-lg-6">
-				<a class="portfolio-item" href="#">
-					<span class="caption">
-					<span class="caption-content">
-						<h2>Workspace</h2>
-						<p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
-					</span>
-					</span>
-					<img class="img-fluid" src="home_img/portfolio-4.jpg" alt="">
-				</a>
-				</div> --}}
