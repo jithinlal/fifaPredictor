@@ -299,4 +299,31 @@ class Meliorate extends Model
 		return User::where('fav_team_id', $teamId)->whereNotIn('id', self::ADMINS)->get()->count();
 	}
 
+	/**
+	 * Get Matches Coming in the next match day
+	 * 
+	 */
+	public static function upcomingMatchDay()
+	{
+		$today = new DateTime();
+	}
+
+	/**
+	 * Get Matches Coming in the current match day
+	 * 
+	 */
+	public static function currentMatchDay()
+	{
+
+	}
+
+	/**
+	 * Get Matches Coming in the previous match day
+	 * 
+	 */
+	public static function previousMatchDay()
+	{
+
+	}
+
 }
