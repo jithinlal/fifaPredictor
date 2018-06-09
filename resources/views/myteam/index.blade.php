@@ -11,14 +11,14 @@
 			<h4 class="mb-5">You get Bonus Points every time your team scores and wins !</h3>
 		</div>
 		<div class="row no-gutters">
-			@foreach ($groupATeams as $team)			
-				
+			@foreach ($groupATeams as $team)
+
 					<div class="col-md-1">
 
 					</div>
 
-					<div class="col-md-4 mt-lg-5">
-						<a class="portfolio-item" href="/favTeam/{{$team->id}}">
+					<div class="col-md-4 mt-lg-5 favTeamSelect" data-teamid="{{$team->id}}">
+						<a class="portfolio-item">
 							<span class="caption">
 							<span class="caption-content">
 								<h2>Group: {{$team->group_name}}</h2>
@@ -31,20 +31,20 @@
 					</div>
 					<div class="col-md-1">
 
-					</div>					
-				
+					</div>
+
 			@endforeach
 		</div>
 
 		<div class="row no-gutters mt-lg-5">
-			@foreach ($groupBTeams as $team)			
-				
+			@foreach ($groupBTeams as $team)
+
 					<div class="col-md-1">
 
 					</div>
 
-					<div class="col-md-4 mt-lg-5">
-						<a class="portfolio-item" href="/favTeam/{{$team->id}}">
+					<div class="col-md-4 mt-lg-5 favTeamSelect" data-teamid="{{$team->id}}">
+						<a class="portfolio-item">
 							<span class="caption">
 							<span class="caption-content">
 								<h2>Group: {{$team->group_name}}</h2>
@@ -57,20 +57,20 @@
 					</div>
 					<div class="col-md-1">
 
-					</div>					
-				
+					</div>
+
 			@endforeach
 		</div>
 
 		<div class="row no-gutters mt-lg-5">
-			@foreach ($groupCTeams as $team)			
-				
+			@foreach ($groupCTeams as $team)
+
 					<div class="col-md-1">
 
 					</div>
 
-					<div class="col-md-4 mt-lg-5">
-						<a class="portfolio-item" href="/favTeam/{{$team->id}}">
+					<div class="col-md-4 mt-lg-5 favTeamSelect" data-teamid="{{$team->id}}">
+						<a class="portfolio-item">
 							<span class="caption">
 							<span class="caption-content">
 								<h2>Group: {{$team->group_name}}</h2>
@@ -83,20 +83,20 @@
 					</div>
 					<div class="col-md-1">
 
-					</div>					
-				
+					</div>
+
 			@endforeach
 		</div>
 
 		<div class="row no-gutters mt-lg-5">
-			@foreach ($groupDTeams as $team)			
-				
+			@foreach ($groupDTeams as $team)
+
 					<div class="col-md-1">
 
 					</div>
 
-					<div class="col-md-4 mt-lg-5">
-						<a class="portfolio-item" href="/favTeam/{{$team->id}}">
+					<div class="col-md-4 mt-lg-5 favTeamSelect" data-teamid="{{$team->id}}">
+						<a class="portfolio-item">
 							<span class="caption">
 							<span class="caption-content">
 								<h2>Group: {{$team->group_name}}</h2>
@@ -109,20 +109,20 @@
 					</div>
 					<div class="col-md-1">
 
-					</div>					
-				
+					</div>
+
 			@endforeach
 		</div>
 
 		<div class="row no-gutters mt-lg-5">
-			@foreach ($groupETeams as $team)			
-				
+			@foreach ($groupETeams as $team)
+
 					<div class="col-md-1">
 
 					</div>
 
-					<div class="col-md-4 mt-lg-5">
-						<a class="portfolio-item" href="/favTeam/{{$team->id}}">
+					<div class="col-md-4 mt-lg-5 favTeamSelect" data-teamid="{{$team->id}}">
+						<a class="portfolio-item">
 							<span class="caption">
 							<span class="caption-content">
 								<h2>Group: {{$team->group_name}}</h2>
@@ -135,20 +135,20 @@
 					</div>
 					<div class="col-md-1">
 
-					</div>					
-				
+					</div>
+
 			@endforeach
 		</div>
 
 		<div class="row no-gutters mt-lg-5">
-			@foreach ($groupFTeams as $team)			
-				
+			@foreach ($groupFTeams as $team)
+
 					<div class="col-md-1">
 
 					</div>
 
-					<div class="col-md-4 mt-lg-5">
-						<a class="portfolio-item" href="/favTeam/{{$team->id}}">
+					<div class="col-md-4 mt-lg-5 favTeamSelect" data-teamid="{{$team->id}}">
+						<a class="portfolio-item">
 							<span class="caption">
 							<span class="caption-content">
 								<h2>Group: {{$team->group_name}}</h2>
@@ -161,20 +161,20 @@
 					</div>
 					<div class="col-md-1">
 
-					</div>					
-				
+					</div>
+
 			@endforeach
 		</div>
 
 		<div class="row no-gutters mt-lg-5">
-			@foreach ($groupGTeams as $team)			
-				
+			@foreach ($groupGTeams as $team)
+
 					<div class="col-md-1">
 
 					</div>
 
-					<div class="col-md-4 mt-lg-5">
-						<a class="portfolio-item" href="/favTeam/{{$team->id}}">
+					<div class="col-md-4 mt-lg-5 favTeamSelect" data-teamid="{{$team->id}}">
+						<a class="portfolio-item">
 							<span class="caption">
 							<span class="caption-content">
 								<h2>Group: {{$team->group_name}}</h2>
@@ -187,20 +187,20 @@
 					</div>
 					<div class="col-md-1">
 
-					</div>					
-				
+					</div>
+
 			@endforeach
 		</div>
 
 		<div class="row no-gutters mt-lg-5">
-			@foreach ($groupHTeams as $team)			
-				
+			@foreach ($groupHTeams as $team)
+
 					<div class="col-md-1">
 
 					</div>
 
-					<div class="col-md-4 mt-lg-5">
-						<a class="portfolio-item" href="/favTeam/{{$team->id}}">
+					<div class="col-md-4 mt-lg-5 favTeamSelect" data-teamid="{{$team->id}}">
+						<a class="portfolio-item">
 							<span class="caption">
 							<span class="caption-content">
 								<h2>Group: {{$team->group_name}}</h2>
@@ -213,8 +213,8 @@
 					</div>
 					<div class="col-md-1">
 
-					</div>					
-				
+					</div>
+
 			@endforeach
 		</div>
 	</div>

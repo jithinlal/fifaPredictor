@@ -6,6 +6,25 @@ $(document).ready(function () {
 	var selected = -1;
 	var predictionText = '';
 
+	$('.favTeamSelect').on('click', function () {
+		var teamId = $(this).data('teamid');
+		$.ajax({
+			method: 'GET',
+			url: favTeamSelect,
+			data: {
+				'team': teamId
+			},
+			success: function (data) {
+				if (data.success) {
+					window.location.href = '/';
+				}
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
+	});
+
 	$('button.jqPredict').on('click', function () {
 		// $('select').awselect();
 		var self = $(this);

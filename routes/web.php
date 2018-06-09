@@ -31,9 +31,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/api/allTime', 'ApiController@allTime');
 
 Route::get('/', 'HomeController@index');
-Route::get('/favTeam', function () {
-	return view('myteam.index');
-});
+Route::get('/favTeam', 'FavController@index');
 
 Route::get('/rule-set', function () {
 	return view('ruleset.index');
@@ -43,7 +41,7 @@ Route::get('/leaderboard', function () {
 	return view('leaderboard.index');
 });
 
-Route::get('/favTeam/{team}', 'FavController@index');
+Route::get('/favTeam/team', 'FavController@team')->name('favTeamSelect');
 // Route::get('/coming-soon', 'SoonController@index');
 Route::get('/match/{match}', 'MatchController@show');
 Route::get('/teams', 'TeamController@index')->name('getPredict');
