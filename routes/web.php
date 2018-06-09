@@ -64,7 +64,7 @@ Route::get('own/goal', 'PredictionController@ownGoal')->name('getOwnGoal');
 //Team Power Ranking
 Route::get('/power-rankings', 'PowerTeamController@list')->name('team-power-rankings');
 
-Auth::routes();
+// Auth::routes();
 
 
 //-----------------------------------Admin Routes--------------------------------------------
