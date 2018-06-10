@@ -10,6 +10,7 @@ use App\Prediction;
 use App\Team;
 use App\User;
 use App\Result;
+use App\Player;
 use App\UserMatchPrediction;
 
 class OverallResultController extends Controller
@@ -18,9 +19,9 @@ class OverallResultController extends Controller
     {
         $overallPredictions = Prediction::where('type', 'overall')->get();
         $teams = Team::all();
-        $players = '';
-        $goalkeepers = '';
-        $youngPlayers = '';
+        $players = Player::all();
+        $goalkeepers = Player::where('gk', 1)->get();
+        $youngPlayers = Player::whereNotNull('age')->where('age', '<', 22)->get();
         $groups = [
             'A' => Team::where('group_name', 'A')->get(),
             'B' => Team::where('group_name', 'B')->get(),
@@ -34,7 +35,7 @@ class OverallResultController extends Controller
 
         $currentPredictions = Result::where('match_id', 0)->pluck('outcome', 'prediction_id')->toArray();
         $currentComments = Result::where('match_id', 0)->pluck('comment', 'prediction_id')->toArray();
-        return view('overall-result.list', compact('overallPredictions', 'teams', 'currentPredictions', 'groups', 'currentComments'));
+        return view('overall-result.list', compact('overallPredictions', 'teams', 'currentPredictions', 'groups', 'currentComments', 'players', 'goalkeepers', 'youngPlayers'));
     }
 
     public function save(Request $request)

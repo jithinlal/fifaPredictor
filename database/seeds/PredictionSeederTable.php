@@ -16,31 +16,31 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => '2018 World Cup Winner',
 				'plus' => 1000,
-				'minus' => 100,
+				'minus' => 200,
 				'type' => 'overall',
 				'image' => 'world-cup',
 				'forType' => 'team'
 			],
 			[
 				'name' => 'Runner Up',
-				'plus' => 500,
-				'minus' => 50,
+				'plus' => 750,
+				'minus' => 150,
 				'type' => 'overall',
 				'image' => 'world-cup-2',
 				'forType' => 'team'
 			],
 			[
 				'name' => '3rd Place',
-				'plus' => 300,
-				'minus' => 30,
+				'plus' => 500,
+				'minus' => 100,
 				'type' => 'overall',
 				'image' => 'world-cup-3',
 				'forType' => 'team'
 			],
 			[
 				'name' => '4th Place',
-				'plus' => 200,
-				'minus' => 20,
+				'plus' => 250,
+				'minus' => 50,
 				'type' => 'overall',
 				'image' => 'world-cup-4',
 				'forType' => 'team'
@@ -112,7 +112,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Golden Boot',
 				'plus' => 500,
-				'minus' => 100,
+				'minus' => 10,
 				'type' => 'overall',
 				'image' => 'golden-boot',
 				'forType' => 'player'
@@ -120,7 +120,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Golden Ball',
 				'plus' => 500,
-				'minus' => 100,
+				'minus' => 10,
 				'type' => 'overall',
 				'image' => 'golden-ball',
 				'forType' => 'player'
@@ -128,7 +128,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Golden Glove',
 				'plus' => 500,
-				'minus' => 100,
+				'minus' => 10,
 				'type' => 'overall',
 				'image' => 'golden-glove',
 				'forType' => 'goalkeeper'
@@ -136,7 +136,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Best Young Player',
 				'plus' => 500,
-				'minus' => 100,
+				'minus' => 10,
 				'type' => 'overall',
 				'image' => 'best-young-player',
 				'forType' => 'young_player',
@@ -144,7 +144,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Home Team Goal',
 				'plus' => 50,
-				'minus' => 25,
+				'minus' => 0,
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'score',
@@ -152,14 +152,14 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Away Team Goal',
 				'plus' => 50,
-				'minus' => 10,
+				'minus' => 0,
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'score',
 			],
 			[
 				'name' => 'Yellow Card',
-				'plus' => 50,
+				'plus' => 30,
 				'minus' => 10,
 				'type' => 'group',
 				'image' => '',
@@ -167,7 +167,7 @@ class PredictionSeederTable extends Seeder
 			],
 			[
 				'name' => 'Red Card',
-				'plus' => 50,
+				'plus' => 30,
 				'minus' => 10,
 				'type' => 'group',
 				'image' => '',
@@ -175,16 +175,16 @@ class PredictionSeederTable extends Seeder
 			],
 			[
 				'name' => 'Hat Trick',
-				'plus' => 50,
-				'minus' => 10,
+				'plus' => 80,
+				'minus' => 20,
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'yesNo',
 			],
 			[
 				'name' => 'Own Goal',
-				'plus' => 50,
-				'minus' => 25,
+				'plus' => 80,
+				'minus' => 20,
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'yesNo',
@@ -192,14 +192,14 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Result',
 				'plus' => 50,
-				'minus' => 10,
+				'minus' => 20,
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'result',
 			],
 			[
 				'name' => 'SemiFinalist',
-				'plus' => 300,
+				'plus' => 200,
 				'minus' => 0,
 				'type' => 'AdminAdded',
 				'image' => '',

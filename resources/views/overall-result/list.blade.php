@@ -78,20 +78,44 @@
                                             <option {{$selected}} id="{{$team->name}}" value="{{$team->name}}" data-tokens="{{$team->name}}">{{$team->name}}</option>
                                         @endforeach
                                         @break       
-                                    @case('player')
-                                        <option>Player 1</option>
-                                        <option>Player 2</option>
-                                        <option>Player 3</option>
+                                    @case('player')                                        
+                                        @foreach($players as $player)   
+                                            @php
+                                                $selected = '';
+                                                if (isset($currentPredictions[$overallPrediction->id])) {
+                                                    if ($currentPredictions[$overallPrediction->id] == $player->name) {
+                                                        $selected = 'selected="selected"';
+                                                    }
+                                                } 
+                                            @endphp            
+                                            <option {{ $selected }} value="{{ $player->name }}" data-tokens="{{ $player->name }}">{{ $player->name }}</option>
+                                        @endforeach
                                         @break
                                     @case('goalkeeper')
-                                        <option>GK 1</option>
-                                        <option>GK 2</option>
-                                        <option>GK 3</option>
+                                         @foreach($goalkeepers as $goalkeeper)   
+                                            @php
+                                                $selected = '';
+                                                if (isset($currentPredictions[$overallPrediction->id])) {
+                                                    if ($currentPredictions[$overallPrediction->id] == $goalkeeper->name) {
+                                                        $selected = 'selected="selected"';
+                                                    }
+                                                } 
+                                            @endphp            
+                                            <option {{ $selected }} value="{{ $goalkeeper->name }}" data-tokens="{{ $goalkeeper->name }}">{{ $goalkeeper->name }}</option>
+                                        @endforeach
                                         @break
                                     @case('young_player')
-                                        <option>Young player 1</option>
-                                        <option>Young player 2</option>
-                                        <option>Young player 3</option>
+                                        @foreach($youngPlayers as $youngPlayer)   
+                                            @php
+                                                $selected = '';
+                                                if (isset($currentPredictions[$overallPrediction->id])) {
+                                                    if ($currentPredictions[$overallPrediction->id] == $youngPlayer->name) {
+                                                        $selected = 'selected="selected"';
+                                                    }
+                                                } 
+                                            @endphp            
+                                            <option {{ $selected }} value="{{ $youngPlayer->name }}" data-tokens="{{ $youngPlayer->name }}">{{ $youngPlayer->name }}</option>
+                                        @endforeach
                                     @break
                                 @endswitch                               
                             </select>
