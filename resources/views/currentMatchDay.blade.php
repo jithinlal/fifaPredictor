@@ -1,5 +1,5 @@
 <!-- Portfolio -->
-<section class="content-section" id="upcoming">
+<section class="content-section" id="today">
 	<div class="container">
 		<div class="text-center">
 			<h3 class="mb-5">Today's Fixtures </h3>
@@ -33,8 +33,8 @@
 										</span>
 
 									@else
-										
-										<span class="caption-content">											
+
+										<span class="caption-content">
 											<h2>Knock Out</h2>
 											<h3 style="color:white">TBA v/s TBA</h3>
 											<p class="mb-0">{{$stadia[$game->stadium_id]['name']}}, {{$stadia[$game->stadium_id]['city']}}</p>
@@ -65,8 +65,8 @@
 										</span>
 
 									@else
-										
-										<span class="caption-content">											
+
+										<span class="caption-content">
 											<h2>Knock Out</h2>
 											<h3 style="color:white">TBA v/s TBA</h3>
 											<p class="mb-0">{{$stadia[$game->stadium_id]['name']}}, {{$stadia[$game->stadium_id]['city']}}</p>

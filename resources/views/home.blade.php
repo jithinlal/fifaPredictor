@@ -22,6 +22,10 @@
 
     @include('leaderboard')
 
+    @include('previousMatchDay')
+
+    @include('currentMatchDay')
+
     @include('upcoming')
 
     @include('secondnation')
