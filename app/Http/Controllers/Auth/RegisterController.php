@@ -68,15 +68,29 @@ class RegisterController extends Controller
 	 */
 	protected function create(array $data)
 	{
-		return User::create([
-			'name' => $data['username'],
-			'email' => $data['email'],
-			'password' => Hash::make($data['email']),
-			'image_url' => $data['photo'],
-			'email_verify' => $data['verify'],
-			'refresh_token' => $data['refreshtoken'],
-			'user_uid' => $data['useruid']
-		]);
+		$domain = substr(strrchr($data['email'], "@"), 1);
+		if ($domain == "softwareassociates.co.in" || $domain == "softwareassociates.in") {
+			return User::create([
+				'name' => $data['username'],
+				'email' => $data['email'],
+				'password' => Hash::make($data['email']),
+				'image_url' => $data['photo'],
+				'email_verify' => $data['verify'],
+				'refresh_token' => $data['refreshtoken'],
+				'user_uid' => $data['useruid'],
+				'sa_user' => 1
+			]);
+		} else {
+			return User::create([
+				'name' => $data['username'],
+				'email' => $data['email'],
+				'password' => Hash::make($data['email']),
+				'image_url' => $data['photo'],
+				'email_verify' => $data['verify'],
+				'refresh_token' => $data['refreshtoken'],
+				'user_uid' => $data['useruid']
+			]);
+		}
 	}
 
 	public function showRegistrationForm()
