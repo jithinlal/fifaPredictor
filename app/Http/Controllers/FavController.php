@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Team;
 
 class FavController extends Controller
 {
@@ -26,8 +27,10 @@ class FavController extends Controller
 			if (is_null($user->fav_team_id)) {
 				$user->fav_team_id = $teamId;
 				$user->save();
+
+				$team = Team::find($teamId)->name;
 			}
-			return response()->json(['success' => true]);
+			return response()->json(['success' => true, 'team' => $team]);
 		} else {
 			return view('errors.503');
 		}

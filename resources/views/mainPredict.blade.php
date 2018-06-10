@@ -68,6 +68,31 @@
 </div>
 
 
+<div class="modal" tabindex="-1" role="dialog" id="player_modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title jqModalTitle"></h5>
+        <button type="button" class="close jqClosePlayer" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <select class="form-control jqSelectCountry">
+		</select>
+		<hr/>
+		<select class="form-control jqSelectPlayer">
+		</select>
+      </div>
+      <div class="modal-footer">
+        {{-- <button type="button" class="btn btn-info jqSaveCountry">Select Country</button> --}}
+		<button type="button" class="btn btn-info jqSavePlayer">Predict</button>
+        <button type="button" class="btn btn-warning jqCloseClose" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 	var token = '{{Session::token()}}';
 	var teamUrl = '{{route('getPredict')}}';
