@@ -496,4 +496,14 @@ class Meliorate extends Model
 		return $lockDate->format(self::ADMIN_SITE_DATE_FORMAT_WITH_TIME);
 	}
 
+	public static function hasUserPredictedAll($matchId)
+	{
+		return UserMatchPrediction::where('match_id', $matchId)->where('user_id', Auth::id())->whereIn('prediction_id', [17, 18, 19, 20, 21, 22])->count() == 6;
+	}
+
+	public static function userPredictedCount($matchId)
+	{
+		return UserMatchPrediction::where('match_id', $matchId)->where('user_id', Auth::id())->whereIn('prediction_id', [17, 18, 19, 20, 21, 22])->count();
+	}
+
 }

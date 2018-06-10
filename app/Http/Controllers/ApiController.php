@@ -24,12 +24,12 @@ class ApiController extends Controller
 
 			$query->select(
 				'users.id AS id',
-				'users.name',
-				'users.user_uid',
-				'users.sa_user',
-				'users.email',
-				'users.image_url',
-				'users.fav_team_id',
+				DB::raw('min(users.name) AS name'),
+				DB::raw('min(users.user_uid) AS user_uid'),
+				DB::raw('min(users.sa_user) AS sa_user'),
+				DB::raw('min(users.email) AS email'),
+				DB::raw('min(users.image_url) AS image_url'),
+				DB::raw('min(users.fav_team_id) AS fav_team_id'),
 
 				DB::raw('sum(user_match_predictions.pointsObtained) AS nonBonusPoints')
 			);
@@ -77,12 +77,12 @@ class ApiController extends Controller
 
 			$query->select(
 				'users.id AS id',
-				'users.name',
-				'users.user_uid',
-				'users.sa_user',
-				'users.email',
-				'users.image_url',
-				'users.fav_team_id',
+				DB::raw('min(users.name) AS name'),
+				DB::raw('min(users.user_uid) AS user_uid'),
+				DB::raw('min(users.sa_user) AS sa_user'),
+				DB::raw('min(users.email) AS email'),
+				DB::raw('min(users.image_url) AS image_url'),
+				DB::raw('min(users.fav_team_id) AS fav_team_id'),
 
 				DB::raw('sum(user_match_predictions.pointsObtained) AS points')
 			);
@@ -121,12 +121,12 @@ class ApiController extends Controller
 
 			$query->select(
 				'users.id AS id',
-				'users.name',
-				'users.sa_user',
-				'users.user_uid',
-				'users.email',
-				'users.image_url',
-				'users.fav_team_id',
+				DB::raw('min(users.name) AS name'),
+				DB::raw('min(users.user_uid) AS user_uid'),
+				DB::raw('min(users.sa_user) AS sa_user'),
+				DB::raw('min(users.email) AS email'),
+				DB::raw('min(users.image_url) AS image_url'),
+				DB::raw('min(users.fav_team_id) AS fav_team_id'),
 
 				DB::raw('sum(user_match_predictions.pointsObtained) AS nonBonusPoints')
 			);
@@ -181,12 +181,12 @@ class ApiController extends Controller
 
 			$query->select(
 				'users.id AS id',
-				'users.name',
-				'users.sa_user',
-				'users.user_uid',
-				'users.email',
-				'users.image_url',
-				'users.fav_team_id',
+				DB::raw('min(users.name) AS name'),
+				DB::raw('min(users.user_uid) AS user_uid'),
+				DB::raw('min(users.sa_user) AS sa_user'),
+				DB::raw('min(users.email) AS email'),
+				DB::raw('min(users.image_url) AS image_url'),
+				DB::raw('min(users.fav_team_id) AS fav_team_id'),
 
 				DB::raw('sum(user_match_predictions.pointsObtained) AS nonBonusPoints')
 			);
@@ -238,9 +238,9 @@ class ApiController extends Controller
 
 			$query->select(
 				'teams.id AS id',
-				'teams.name',
-				'teams.group_name',
-				'teams.iso2',
+				DB::raw('min(teams.name) AS name'),
+				DB::raw('min(teams.group_name) AS group_name'),
+				DB::raw('min(teams.iso2) AS iso2'),
 
 				DB::raw('sum(bonus_points.goals_scored) AS goalsScored'),
 				DB::raw('sum(bonus_points.points_goals_scored) AS points_goals_scored'),

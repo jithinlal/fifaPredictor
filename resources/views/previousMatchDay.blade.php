@@ -18,7 +18,7 @@
 					@if($count == 1 || ($count == 3 && $loop->iteration == 3))
 						<div class="col-lg-3"></div>
 						<div class="col-lg-6">
-							<a class="portfolio-item" href="/match/{{$game->match_id}}">
+							<a class="portfolio-item" href="@if($game->home_team && $game->away_team) /match/{{$game->match_id}} @else javascript: @endif">
 								<span class="caption">
 									@if($game->home_team && $game->away_team)
 
@@ -39,6 +39,19 @@
 												<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>
 											@endif											
 											<p class="mb-0">{{$stadia[$game->stadium_id]['name']}}, {{$stadia[$game->stadium_id]['city']}}</p>
+											<p>
+												@if($game->result_published)
+													<button class="btn btn-sm btn-primary disabled">Results Published</button>
+												@elseif(Meliorate::isMatchLocked($game->match_id))
+													<button class="btn btn-sm btn-danger disabled">Match Locked</button>
+												@endif
+												
+												@if(Meliorate::hasUserPredictedAll($game->match_id))
+													<button class="btn btn-sm btn-success disabled">Prediction Complete</button>
+												@else
+													<button class="btn btn-sm btn-warning disabled">Predictions : {{ Meliorate::userPredictedCount($game->match_id) }} / 6</button>
+												@endif	
+											</p>
 										</span>
 
 									@else
@@ -57,7 +70,7 @@
 						<div class="col-lg-3"></div>
 					@else
 						<div class="col-lg-6">
-							<a class="portfolio-item" href="/match/{{$game->match_id}}">
+							<a class="portfolio-item" href="@if($game->home_team && $game->away_team) /match/{{$game->match_id}} @else javascript: @endif">
 								<span class="caption">
 									@if($game->home_team && $game->away_team)
 
@@ -78,6 +91,19 @@
 												<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>
 											@endif		
 											<p class="mb-0">{{$stadia[$game->stadium_id]['name']}}, {{$stadia[$game->stadium_id]['city']}}</p>
+											<p>
+												@if($game->result_published)
+													<button class="btn btn-sm btn-primary disabled">Results Published</button>
+												@elseif(Meliorate::isMatchLocked($game->match_id))
+													<button class="btn btn-sm btn-danger disabled">Match Locked</button>
+												@endif
+												
+												@if(Meliorate::hasUserPredictedAll($game->match_id))
+													<button class="btn btn-sm btn-success disabled">Prediction Complete</button>
+												@else
+													<button class="btn btn-sm btn-warning disabled">Predictions : {{ Meliorate::userPredictedCount($game->match_id) }} / 6</button>
+												@endif	
+											</p>
 										</span>
 
 									@else

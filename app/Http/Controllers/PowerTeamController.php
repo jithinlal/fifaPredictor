@@ -25,9 +25,9 @@ class PowerTeamController extends Controller
 
         $query->select(
             'teams.id AS id',
-            'teams.name',
-            'teams.group_name',
-            'teams.iso2',
+            DB::raw('min(teams.name) AS name'),
+            DB::raw('min(teams.group_name) AS group_name'),
+            DB::raw('min(teams.iso2) AS iso2'),
 
             DB::raw('sum(bonus_points.goals_scored) AS goalsScored'),
             DB::raw('sum(bonus_points.points_goals_scored) AS points_goals_scored'),

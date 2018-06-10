@@ -37,6 +37,10 @@ Route::get('/rule-set', function () {
 	return view('ruleset.index');
 });
 
+Route::get('/basic-rules', function () {
+	return view('basic-rules-page');
+});
+
 Route::get('/leaderboard', function () {
 	return view('leaderboard.index');
 });
@@ -61,6 +65,9 @@ Route::get('own/goal', 'PredictionController@ownGoal')->name('getOwnGoal');
 
 //Team Power Ranking
 Route::get('/power-rankings', 'PowerTeamController@list')->name('team-power-rankings');
+
+//Point Summary
+Route::get('/point-summary/{userId}', 'PointSummaryController@list')->name('point-summary');
 
 // Auth::routes();
 
