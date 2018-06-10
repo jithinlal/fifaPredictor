@@ -16,6 +16,9 @@ class DayController extends Controller
     const MIN_DAY = '2018-06-14';
     const MAX_DAY = '2018-07-15';
 
+    // const MIN_DAY = '2018-06-1';
+    // const MAX_DAY = '2018-06-12';
+
     public function create()
     {
         $days = [];

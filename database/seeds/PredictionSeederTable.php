@@ -15,7 +15,7 @@ class PredictionSeederTable extends Seeder
 		DB::table('predictions')->insert([
 			[
 				'name' => '2018 World Cup Winner',
-				'plus' => 500,
+				'plus' => 1000,
 				'minus' => 100,
 				'type' => 'overall',
 				'image' => 'world-cup',
@@ -23,8 +23,8 @@ class PredictionSeederTable extends Seeder
 			],
 			[
 				'name' => 'Runner Up',
-				'plus' => 400,
-				'minus' => 75,
+				'plus' => 500,
+				'minus' => 50,
 				'type' => 'overall',
 				'image' => 'world-cup-2',
 				'forType' => 'team'
@@ -32,7 +32,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => '3rd Place',
 				'plus' => 300,
-				'minus' => 50,
+				'minus' => 30,
 				'type' => 'overall',
 				'image' => 'world-cup-3',
 				'forType' => 'team'
@@ -40,7 +40,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => '4th Place',
 				'plus' => 200,
-				'minus' => 25,
+				'minus' => 20,
 				'type' => 'overall',
 				'image' => 'world-cup-4',
 				'forType' => 'team'
@@ -152,7 +152,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Away Team Goal',
 				'plus' => 50,
-				'minus' => 25,
+				'minus' => 10,
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'score',
@@ -160,7 +160,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Yellow Card',
 				'plus' => 50,
-				'minus' => 25,
+				'minus' => 10,
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'yesNo',
@@ -168,7 +168,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Red Card',
 				'plus' => 50,
-				'minus' => 25,
+				'minus' => 10,
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'yesNo',
@@ -176,7 +176,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Hat Trick',
 				'plus' => 50,
-				'minus' => 25,
+				'minus' => 10,
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'yesNo',
@@ -192,7 +192,7 @@ class PredictionSeederTable extends Seeder
 			[
 				'name' => 'Result',
 				'plus' => 50,
-				'minus' => 25,
+				'minus' => 10,
 				'type' => 'group',
 				'image' => '',
 				'forType' => 'result',

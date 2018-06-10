@@ -30,7 +30,14 @@
 											@endif
 											<img class="img-fluid" src="/flags/png100px/{{$teams[$game->home_team]['iso2']}}.png">
 											<img class="img-fluid" src="/flags/png100px/{{$teams[$game->away_team]['iso2']}}.png">
-											<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>
+											@if($game->result_published)
+												<h3 style="color:white">{{$teams[$game->home_team]['name']}} &nbsp; {{ $game->home_result }} &nbsp; - &nbsp; {{ $game->away_result }} &nbsp; {{$teams[$game->away_team]['name']}}</h3>
+												@if($game->result_text)											
+													<h4 style="color:white">{{ $game->result_text }}</h4>
+												@endif	
+											@else
+												<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>
+											@endif	
 											<p class="mb-0">{{$stadia[$game->stadium_id]['name']}}, {{$stadia[$game->stadium_id]['city']}}</p>
 										</span>
 
@@ -62,7 +69,14 @@
 											@endif
 											<img class="img-fluid" src="/flags/png100px/{{$teams[$game->home_team]['iso2']}}.png">
 											<img class="img-fluid" src="/flags/png100px/{{$teams[$game->away_team]['iso2']}}.png">
-											<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>
+											@if($game->result_published)
+												<h3 style="color:white">{{$teams[$game->home_team]['name']}} &nbsp; {{ $game->home_result }} &nbsp; - &nbsp; {{ $game->away_result }} &nbsp; {{$teams[$game->away_team]['name']}}</h3>
+												@if($game->result_text)											
+													<h4 style="color:white">{{ $game->result_text }}</h4>
+												@endif	
+											@else
+												<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>
+											@endif	
 											<p class="mb-0">{{$stadia[$game->stadium_id]['name']}}, {{$stadia[$game->stadium_id]['city']}}</p>
 										</span>
 
@@ -83,7 +97,25 @@
 
 				@endforeach
 			@else
-				<b>No Upcoming Matches, we are done for four years :( </b>
+						<div class="col-lg-3">
+						</div>
+
+						<div class="col-lg-6">
+							<a class="portfolio-item" href="#">
+								<span class="caption">
+									
+
+										<span class="caption-content">											
+											<b>No Upcoming Matches, see you in 2022 :( </b>
+										</span>
+									
+								</span>
+								<img class="img-fluid" src="/home_img/trophy.jpg" alt="">
+							</a>
+						</div>
+
+						<div class="col-lg-3">
+						</div>
 			@endif
 		</div>
 	</div>

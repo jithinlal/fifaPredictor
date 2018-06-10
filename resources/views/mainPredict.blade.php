@@ -2,8 +2,9 @@
 <section class="content-section bg-primary text-white text-center" id="services">
 	<div class="container">
 		<div class="content-section-heading">
-			<h3 class="text-secondary mb-0">The Golden 16</h3>
+			<h3 class="text-secondary mb-5">The Golden 16</h3>
 			<h2 class="mb-5">MAIN PREDICTION</h2>
+			<h4 style="color:yellow" class="mb-5"> Lock Time {{ \App\Meliorate::getOverallLockTime() }}</h4>
 		</div>
 		<div class="row">
 

@@ -22,7 +22,7 @@ class Meliorate extends Model
 	const DATETIME_NULL = '0000-00-00 00:00:00';
 	const MYSQL_DATETIME = 'Y-m-d H:i:s';
 	const MYSQL_DATE = 'Y-m-d';
-	const OVERALL_PREDICTION_LOCK_TIME = '2018-06-14 20:00:00';
+	const OVERALL_PREDICTION_LOCK_TIME = '2018-06-19 23:00:00';
 	const SITE_DATE_FORMAT = 'd M Y';
 	const ADMIN_SITE_DATE_FORMAT = 'jS F , l';
 	const ADMIN_SITE_TIME = 'h:i A';
@@ -33,8 +33,12 @@ class Meliorate extends Model
 	const HIS_FORMAT = '%h Hour %i Minutes';
 
 	const ADMINS = [1, 2];
+
 	const MIN_DAY = '2018-06-14';
 	const MAX_DAY = '2018-07-15';
+
+	// const MIN_DAY = '2018-06-1';
+	// const MAX_DAY = '2018-06-12';
 
 
 	/**
@@ -335,6 +339,7 @@ class Meliorate extends Model
 				->join('matches', 'matches.id', '=', 'match_days.match_id');
 
 			$query->select(
+				'days.id',
 				'days.day',
 
 				'match_days.match_id',
@@ -342,6 +347,10 @@ class Meliorate extends Model
 				'matches.type',
 				'matches.home_team',
 				'matches.away_team',
+				'matches.home_result',
+				'matches.away_result',
+				'matches.penalty',
+				'matches.result_text',
 				'matches.date',
 				'matches.stadium_id',
 				'matches.lock_time',
@@ -390,6 +399,10 @@ class Meliorate extends Model
 				'matches.type',
 				'matches.home_team',
 				'matches.away_team',
+				'matches.home_result',
+				'matches.away_result',
+				'matches.penalty',
+				'matches.result_text',
 				'matches.date',
 				'matches.stadium_id',
 				'matches.lock_time',
@@ -441,6 +454,10 @@ class Meliorate extends Model
 				'matches.type',
 				'matches.home_team',
 				'matches.away_team',
+				'matches.home_result',
+				'matches.away_result',
+				'matches.penalty',
+				'matches.result_text',
 				'matches.date',
 				'matches.stadium_id',
 				'matches.lock_time',
@@ -471,6 +488,12 @@ class Meliorate extends Model
 		$lastMatchDay = new DateTime(self::MAX_DAY);
 
 		return $today >= $lastMatchDay;
+	}
+
+	public static function getOverallLockTime()
+	{
+		$lockDate = new DateTime(self::OVERALL_PREDICTION_LOCK_TIME);
+		return $lockDate->format(self::ADMIN_SITE_DATE_FORMAT_WITH_TIME);
 	}
 
 }

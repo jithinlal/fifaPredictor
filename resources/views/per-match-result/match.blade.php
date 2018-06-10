@@ -143,12 +143,57 @@
             @php $count++; @endphp
         @endforeach
 
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><strong>#{{ ++$count }} </strong> &nbsp; Add the Goals scored to Match Table for using on user side</h3>                   
+                </div>
+                <form method="POST" action="/admin/per-match-result/goals-scores-for-matches-table" class="form-horizontal">
+                    {{ csrf_field() }}                    
+                    
+                    <div class="form-group">
+                        <label for="homeTeamGoals" class="col-sm-4 control-label">{{ $teams[$match->home_team] }} Score at end of time </label>
+                        <input type="number" id="homeTeamGoals" name="homeTeamGoals" value="{{ empty($match->home_result) ? '' : $match->home_result }}">                        
+                    </div>
 
+                    <div class="form-group">
+                        <label for="awayTeamGoals" class="col-sm-4 control-label">{{ $teams[$match->away_team] }} Score at end of time</label>
+                        <input type="number" id="awayTeamGoals" name="awayTeamGoals" value="{{ empty($match->away_result) ? '' : $match->away_result }}">                        
+                    </div>
+
+                    
+                        <label for="penalty" class="col-sm-4 control-label">Did it end in Penalties?</label>
+                         <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="penalty" id="penalty" value=1>
+                            <label class="form-check-label" for="penalty">
+                                Yes
+                            </label>
+
+                             <input class="form-check-input" type="radio" name="penalty" id="penalty2" value=0>
+                            <label class="form-check-label" for="penalty2">
+                                No
+                            </label>
+                        </div>                        
+                   
+
+                    <div class="form-group">
+                        <label for="resultText" class="col-sm-4 control-label">Result Text to show on User Side</label>
+                        <input type="text" id="resultText" name="resultText" value="{{ empty($match->resultText) ? '' : $match->resultText }}">                        
+                    </div>
+
+                    <input type="hidden" name="matchId" value="{{ $match->id }}">
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info pull-right">Publish Goals Scored</button>
+                    </div>
+                </form>
+            </div>
+        </div>    
 
         <div class="col-md-6">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>#{{ $count }} </strong> &nbsp; Result Published</h3>
+                    <h3 class="box-title"><strong>#{{ ++$count }} </strong> &nbsp; Result Published</h3>
                     <h4 style="color:red">Do this only after publishing other predictions</h4>
                 </div>
                 <form method="POST" action="/admin/per-match-result/mark-as-published" class="form-horizontal">

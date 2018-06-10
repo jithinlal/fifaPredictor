@@ -94,6 +94,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 	Route::post('/per-match-result/save', 'PerMatchResultController@save');
 	Route::post('/per-match-result/mark-as-published', 'PerMatchResultController@markAsPublished');
 	Route::post('/per-match-result/bonus-points', 'PerMatchResultController@bonusPoints');
+	Route::post('/per-match-result/goals-scores-for-matches-table', 'PerMatchResultController@goalsScoredForMatchTable');
 
 	//Lock Match Controller
 	Route::get('/lock-match', 'LockMatchController@index');

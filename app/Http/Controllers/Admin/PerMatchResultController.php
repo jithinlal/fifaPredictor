@@ -218,6 +218,35 @@ class PerMatchResultController extends Controller
 
     }
 
+    public function goalsScoredForMatchTable(Request $request)
+    {
+        $request->validate([
+            'matchId' => 'required',
+            'homeTeamGoals' => 'required',
+            'awayTeamGoals' => 'required',
+            'penalty' => 'required',
+            'resultText' => 'required',
+        ]);
+
+        $matchId = $request->matchId;
+        $homeTeamGoals = $request->homeTeamGoals;
+        $awayTeamGoals = $request->awayTeamGoals;
+        $penalty = $request->penalty;
+        $resultText = $request->resultText;
+
+        $match = Match::find($matchId);
+        $match->home_result = $homeTeamGoals;
+        $match->away_result = $awayTeamGoals;
+        $match->penalty = $penalty;
+        $match->result_text = $resultText;
+        $match->finished = 1;
+        $match->save();
+
+        Session::flash('alert-success', 'Goals Scored Added to Matches Table for displaying on user side');
+
+        return redirect('/admin/per-match-result/match/' . $matchId);
+    }
+
     /**
      * Populating 'result' prediction for users who have predicted the scoreline of this match
      * 
