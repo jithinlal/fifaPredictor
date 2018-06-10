@@ -3,7 +3,9 @@
 	<div class="container">
 		<div class="text-center">
 			<h3 class="mb-5">Upcoming Fixtures </h3>
-			<h4 class="mb-5">Match Day {{$upcomingGames[0]->id}}  </h4>
+			@if($upcomingMatchDayNumber != '')
+				<h4 class="mb-5">Match Day {{ $upcomingMatchDayNumber }}  </h4>
+			@endif
 		</div>
 		<div class="row no-gutters">
 		@php

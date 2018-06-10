@@ -46,7 +46,24 @@ class DaysServiceProvider extends ServiceProvider
 			$previousGames = Meliorate::previousMatchDayGames();
 			$currentGames = Meliorate::currentMatchDayGames();
 
-			$view->with(compact('upcomingGames', 'currentGames', 'previousGames'));
+			$upcomingMatchDayNumber = '';
+			if ($upcomingGames) {
+				$upcomingMatchDayNumber = $upcomingGames[0]->id;
+			}
+
+			$previousMatchDayNumber = '';
+			if ($previousGames) {
+				$previousMatchDayNumber = $previousGames[0]->id;
+			}
+
+			$currentMatchDayNumber = '';
+			if ($currentGames) {
+				$currentMatchDayNumber = $currentGames[0]->id;
+			}
+
+			$hasTournamentBegun = Meliorate::hasTournamentBegun();
+
+			$view->with(compact('upcomingGames', 'currentGames', 'previousGames', 'upcomingMatchDayNumber', 'previousMatchDayNumber', 'currentMatchDayNumber', 'hasTournamentBegun'));
 		});
 	}
 

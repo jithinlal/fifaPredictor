@@ -3,7 +3,9 @@
 	<div class="container">
 		<div class="text-center">
 			<h3 class="mb-5">Today's Fixtures </h3>
-			<h4 class="mb-5">Match Day {{$currentGames[0]->id}}  </h4>
+			@if($currentMatchDayNumber != '')
+				<h4 class="mb-5">Match Day {{ $currentMatchDayNumber }}  </h4>
+			@endif
 		</div>
 		<div class="row no-gutters">
 		@php
@@ -81,7 +83,11 @@
 
 				@endforeach
 			@else
-				<b>No Matches Today</b>
+				@if($hasTournamentBegun)	
+					<b>No Matches Today</b>	
+				@else	
+					<b>The Tournament hasn't begun, Yet :)</b>
+				@endif
 			@endif
 		</div>
 	</div>

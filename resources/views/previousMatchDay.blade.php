@@ -2,8 +2,10 @@
 <section class="content-section" id="previous">
 	<div class="container">
 		<div class="text-center">
-			<h3 class="mb-5">Last Match Day Fixtures </h3>
-			<h4 class="mb-5">Match Day {{$previousGames[0]->id}}  </h4>
+			<h3 class="mb-5">Previous Match Day Fixtures </h3>
+			@if($previousMatchDayNumber != '')
+				<h4 class="mb-5">Match Day {{ $previousMatchDayNumber }}  </h4>
+			@endif
 		</div>
 		<div class="row no-gutters">
 		@php
@@ -81,7 +83,11 @@
 
 				@endforeach
 			@else
-				<b>No Matches Today</b>
+				@if($hasTournamentBegun)	
+					<b>The Very First Match Day !</b>	
+				@else	
+					<b>The Tournament hasn't begun, Yet :)</b>
+				@endif
 			@endif
 		</div>
 	</div>
