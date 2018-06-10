@@ -64,6 +64,9 @@
     <!-- Custom scripts for this template -->
     <script src="/home_js/stylish-portfolio.min.js"></script>
 
+	{{-- Sweet Alert --}}
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 	{{-- Custom Script made by me --}}
 	<script src="/my_assets/script.js"></script>
 
