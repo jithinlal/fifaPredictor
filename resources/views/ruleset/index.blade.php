@@ -74,38 +74,58 @@
 <body background="/home_img/trophy.jpg">
   <section class="slider slider-for">
     <div>
-      <img src="http://placehold.it/300x150?text=haiiiiii">
-	  {{-- <h2>A Movie in the Park:<br />Kung Fu Panda</h2> --}}
+      <img src="/rule_img/main/1.png">
     </div>
     <div>
-      <img src="http://placehold.it/300x150?text=10">
+      <img src="/rule_img/main/2.png">
     </div>
     <div>
-      <img src="http://placehold.it/300x150?text=10">
+      <img src="/rule_img/main/3.png">
     </div>
     <div>
-      <img src="http://placehold.it/300x150?text=10">
+      <img src="/rule_img/main/4.png">
     </div>
     <div>
-      <img src="http://placehold.it/300x150?text=10">
+      <img src="/rule_img/main/5.png">
     </div>
     <div>
-      <img src="http://placehold.it/300x150?text=10">
+      <img src="/rule_img/main/6.png">
     </div>
     <div>
-      <img src="http://placehold.it/300x150?text=10">
+      <img src="/rule_img/main/7.png">
     </div>
     <div>
-      <img src="http://placehold.it/300x150?text=10">
+      <img src="/rule_img/main/8.png">
     </div>
     <div>
-      <img src="http://placehold.it/300x150?text=10">
+      <img src="/rule_img/main/9.png">
     </div>
     <div>
-      <img src="http://placehold.it/300x150?text=10">
+      <img src="/rule_img/main/10.png">
+    </div>
+    <div>
+      <img src="/rule_img/main/11.png">
+    </div>
+    <div>
+      <img src="/rule_img/main/12.png">
+    </div>
+    <div>
+      <img src="/rule_img/main/13.png">
+    </div>
+    <div>
+      <img src="/rule_img/main/14.png">
+    </div>
+    <div>
+      <img src="/rule_img/main/15.png">
+    </div>
+    <div>
+      <img src="/rule_img/main/16.png">
+    </div>
+    <div>
+      <img src="/rule_img/main/17.png">
     </div>
 	<div>
-      <img src="http://placehold.it/300x150?text=11" class="goFav">
+      <img src="/rule_img/main/18.png" class="goFav">
     </div>
   </section>
 
@@ -113,37 +133,58 @@
 
   <section class=" slider slider-nav">
     <div>
-      <img src="http://placehold.it/100x100?text=6">
+      <img src="/rule_img/side/1.png">
     </div>
     <div>
-      <img src="http://placehold.it/100x100?text=6">
+      <img src="/rule_img/side/2.png">
     </div>
     <div>
-      <img src="http://placehold.it/100x100?text=6">
+      <img src="/rule_img/side/3.png">
     </div>
     <div>
-      <img src="http://placehold.it/100x100?text=6">
+      <img src="/rule_img/side/4.png">
     </div>
     <div>
-      <img src="http://placehold.it/100x100?text=6">
+      <img src="/rule_img/side/5.png">
     </div>
     <div>
-      <img src="http://placehold.it/100x100?text=6">
+      <img src="/rule_img/side/6.png">
     </div>
     <div>
-      <img src="http://placehold.it/100x100?text=6">
+      <img src="/rule_img/side/7.png">
     </div>
     <div>
-      <img src="http://placehold.it/100x100?text=6">
+      <img src="/rule_img/side/8.png">
     </div>
     <div>
-      <img src="http://placehold.it/100x100?text=6">
+      <img src="/rule_img/side/9.png">
     </div>
 	<div>
-      <img src="http://placehold.it/100x100?text=6">
+      <img src="/rule_img/side/10.png">
     </div>
 	<div>
-      <img src="http://placehold.it/100x100?text=6" >
+      <img src="/rule_img/side/11.png" >
+    </div>
+	<div>
+      <img src="/rule_img/side/12.png" >
+    </div>
+	<div>
+      <img src="/rule_img/side/13.png" >
+    </div>
+	<div>
+      <img src="/rule_img/side/14.png" >
+    </div>
+	<div>
+      <img src="/rule_img/side/15.png" >
+    </div>
+	<div>
+      <img src="/rule_img/side/16.png" >
+    </div>
+	<div>
+      <img src="/rule_img/side/17.png" >
+    </div>
+	<div>
+      <img src="/rule_img/side/18.png">
     </div>
   </section>
 
