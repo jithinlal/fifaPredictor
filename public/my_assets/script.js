@@ -43,7 +43,7 @@ $(document).ready(function () {
 					});
 
 				} else {
-					swal("Your imaginary file is safe!");
+					swal("You haven't selected!");
 				}
 			});
 	});
@@ -283,7 +283,7 @@ $(document).ready(function () {
 	$('.jqSelectCountry').change(function () {
 		countrySelected = $('.jqSelectCountry').val();
 		// playerPredictedText = $('.jqSelectCountry :selected').text();
-		// console.log(selected);
+		// console.log(id);
 
 		if (countrySelected == -1) {
 			swal("Prediction aborted!", "You haven't chosen anything!", "error");
@@ -298,6 +298,7 @@ $(document).ready(function () {
 
 				success: function (data) {
 					data = data.result;
+					console.log(data);
 					if (data.length == 0) {
 						var option = '<option value=-1>No Young Player Nominee</option>';
 						$('.jqSelectPlayer').html('');

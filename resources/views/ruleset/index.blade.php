@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Slick Playground</title>
+  <title>Fifa Predict 2018</title>
+  <link rel="shortcut icon" href="/prediction_logo/favicon.ico" />
+
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="/slick/slick.css">
   <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css">

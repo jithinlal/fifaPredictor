@@ -104,6 +104,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 	Route::get('/prediction-points', 'PredictionPointController@index');
 	Route::post('/prediction-points/update', 'PredictionPointController@update');
 
+	Route::get('/cache/clear', '\App\Http\Controllers\ArtisanController@cacheClear');
+	Route::get('/config/clear', '\App\Http\Controllers\ArtisanController@configClear');
+	Route::get('/config/cache', '\App\Http\Controllers\ArtisanController@configCache');
+	Route::get('/refresh', '\App\Http\Controllers\ArtisanController@refresh');
+	Route::get('/db/seed', '\App\Http\Controllers\ArtisanController@dbSeed');
 
 });
 
