@@ -482,6 +482,13 @@ class Meliorate extends Model
 		return $today >= $firstMatchDay;
 	}
 
+	public static function isFirstDay()
+	{
+		$today = new DateTime();
+		$firstMatchDay = new DateTime(self::MIN_DAY);
+		return $today == $firstMatchDay;
+	}
+
 	public static function isTournamentLastDayOrOver()
 	{
 		$today = new DateTime();
