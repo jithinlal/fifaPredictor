@@ -28,6 +28,8 @@
 	<link href="/my_css/hover.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
+	<link rel="stylesheet" href="/loaders/css/style.css">
+    <link rel="stylesheet" href="/loaders/css/loader-2.css">
   </head>
 
   <body id="page-top">
