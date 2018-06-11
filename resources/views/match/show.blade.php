@@ -8,7 +8,7 @@
         	<article role="pge-title-content">
 
             	<header>
-					<a type="button" class="btn btn-outline-warning" href="{{url()->previous()}}"><span style="font-size:50px;">&#8592;</span></a>
+					<a type="button" class="btn btn-outline-warning" href="/"><span style="font-size:50px;">&#8592;</span></a>
                 	<h2><span>{{$match->type}}</span></h2> <h2>{{$teams[$match->home_team]->name}}</h2>
                     <h1>v/s</h1>
                     <h2>{{$teams[$match->away_team]->name}}</h2>
@@ -63,6 +63,7 @@
 							@else
 								<h2 id="homeScorePredicth2"><span>{{$teams[$match->home_team]->name}}</span> {{$teams[$match->away_team]->name}}</h2>
 							@endif
+
 
                             <p>How much will <b>{{$teams[$match->home_team]->name}}</b> score?</p>
 
