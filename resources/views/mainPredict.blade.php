@@ -47,9 +47,9 @@
 
 
 <div class="modal" tabindex="-1" role="dialog" id="modal_predict">
-  <div class="loader-wrapper" id="loader-2">
-        <div id="loader"></div>
-    </div>
+<div class="loader-wrapper" id="loader-2">
+  <div id="loader"></div>
+</div>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-warning">
