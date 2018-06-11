@@ -33,7 +33,7 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('/login_page/images/login_back.jpg');">
+		<div class="container-login100" style="background-image: url('/login_page/images/bg-01.jpg');">
 			<a href="#" class="btn-google m-b-20 signin">
 				<img src="/login_page/images/icons/icon-google.png" alt="GOOGLE"> Google
 			</a>

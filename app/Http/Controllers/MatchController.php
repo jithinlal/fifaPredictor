@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Match;
 use App\Team;
 use App\Stadium;
+use Illuminate\Support\Facades\Auth;
 
 class MatchController extends Controller
 {
@@ -17,6 +18,11 @@ class MatchController extends Controller
 		$match = Match::find($id);
 		$teams = Team::all()->keyBy('id');
 		$stadia = Stadium::all()->keyBy('id');
-		return view('match.show', ['match' => $match, 'teams' => $teams, 'stadia' => $stadia]);
+		if ($match->result_published) {
+			$text = "/user-match/" . $match->id . "/" . Auth::id();
+			return redirect($text);
+		} else {
+			return view('match.show', ['match' => $match, 'teams' => $teams, 'stadia' => $stadia]);
+		}
 	}
 }
