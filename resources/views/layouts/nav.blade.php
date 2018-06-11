@@ -19,12 +19,16 @@
         <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="#leaderboard">Leaderboard</a>
         </li>
-		<li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="#previous">Previous Day</a>
-        </li>
-		<li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="#today">Today's Game</a>
-        </li>
+		@if(\App\Meliorate::hasTournamentBegun() && !\App\Meliorate::isFirstDay())
+			<li class="sidebar-nav-item">
+				<a class="js-scroll-trigger" href="#previous">Previous Day</a>
+			</li>
+		@endif
+		@if(\App\Meliorate::hasTournamentBegun())
+			<li class="sidebar-nav-item">
+				<a class="js-scroll-trigger" href="#today">Today's Game</a>
+			</li>
+		@endif
         <li class="sidebar-nav-item">
           	<a class="js-scroll-trigger" href="#upcoming">Upcoming</a>
         </li>

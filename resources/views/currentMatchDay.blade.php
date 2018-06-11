@@ -1,3 +1,4 @@
+@if(\App\Meliorate::hasTournamentBegun())
 <!-- Portfolio -->
 <section class="content-section" id="today">
 	<div class="container">
@@ -32,12 +33,12 @@
 											<img class="img-fluid" src="/flags/png100px/{{$teams[$game->away_team]['iso2']}}.png">
 											@if($game->result_published)
 												<h3 style="color:white">{{$teams[$game->home_team]['name']}} &nbsp; {{ $game->home_result }} &nbsp; - &nbsp; {{ $game->away_result }} &nbsp; {{$teams[$game->away_team]['name']}}</h3>
-												@if($game->result_text)											
+												@if($game->result_text)
 													<h4 style="color:white">{{ $game->result_text }}</h4>
-												@endif	
+												@endif
 											@else
 												<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>
-											@endif	
+											@endif
 											<p class="mb-0">{{$stadia[$game->stadium_id]['name']}}, {{$stadia[$game->stadium_id]['city']}}</p>
 											<p>
 												@if($game->result_published)
@@ -45,12 +46,12 @@
 												@elseif(Meliorate::isMatchLocked($game->match_id))
 													<button class="btn btn-sm btn-danger disabled">Match Locked</button>
 												@endif
-												
+
 												@if(Meliorate::hasUserPredictedAll($game->match_id))
 													<button class="btn btn-sm btn-success disabled">Prediction Complete</button>
 												@else
 													<button class="btn btn-sm btn-warning disabled">Predictions : {{ Meliorate::userPredictedCount($game->match_id) }} / 6</button>
-												@endif	
+												@endif
 											</p>
 										</span>
 
@@ -84,12 +85,12 @@
 											<img class="img-fluid" src="/flags/png100px/{{$teams[$game->away_team]['iso2']}}.png">
 											@if($game->result_published)
 												<h3 style="color:white">{{$teams[$game->home_team]['name']}} &nbsp; {{ $game->home_result }} &nbsp; - &nbsp; {{ $game->away_result }} &nbsp; {{$teams[$game->away_team]['name']}}</h3>
-												@if($game->result_text)											
+												@if($game->result_text)
 													<h4 style="color:white">{{ $game->result_text }}</h4>
-												@endif	
+												@endif
 											@else
 												<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>
-											@endif	
+											@endif
 											<p class="mb-0">{{$stadia[$game->stadium_id]['name']}}, {{$stadia[$game->stadium_id]['city']}}</p>
 											<p>
 												@if($game->result_published)
@@ -97,12 +98,12 @@
 												@elseif(Meliorate::isMatchLocked($game->match_id))
 													<button class="btn btn-sm btn-danger disabled">Match Locked</button>
 												@endif
-												
+
 												@if(Meliorate::hasUserPredictedAll($game->match_id))
 													<button class="btn btn-sm btn-success disabled">Prediction Complete</button>
 												@else
 													<button class="btn btn-sm btn-warning disabled">Predictions : {{ Meliorate::userPredictedCount($game->match_id) }} / 6</button>
-												@endif	
+												@endif
 											</p>
 										</span>
 
@@ -123,20 +124,20 @@
 
 				@endforeach
 			@else
-				@if($hasTournamentBegun)	
-					
+				@if($hasTournamentBegun)
+
 						<div class="col-lg-3">
 						</div>
 
 						<div class="col-lg-6">
 							<a class="portfolio-item" href="#">
 								<span class="caption">
-									
+
 
 										<span class="caption-content">
-											<b>No match today !</b>	
+											<b>No match today !</b>
 										</span>
-									
+
 								</span>
 								<img class="img-fluid" src="/home_img/trophy.jpg" alt="">
 							</a>
@@ -148,19 +149,19 @@
 
 
 
-				@else						
+				@else
 						<div class="col-lg-3">
 						</div>
 
 						<div class="col-lg-6">
 							<a class="portfolio-item" href="#">
 								<span class="caption">
-									
+
 
 										<span class="caption-content">
 											<b>The Tournament hasn't begun, Yet :)</b>
 										</span>
-									
+
 								</span>
 								<img class="img-fluid" src="/home_img/trophy.jpg" alt="">
 							</a>
@@ -173,3 +174,4 @@
 		</div>
 	</div>
 </section>
+@endif
