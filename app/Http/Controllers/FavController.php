@@ -29,6 +29,8 @@ class FavController extends Controller
 				$user->save();
 
 				$team = Team::find($teamId)->name;
+			} else {
+				$team = [];
 			}
 			return response()->json(['success' => true, 'team' => $team]);
 		} else {
