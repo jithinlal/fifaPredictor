@@ -38,10 +38,10 @@ $(document).ready(function () {
 						$('#scoreHomeModal').modal('hide');
 						$('#homeScorePredict').text('');
 						$('#homeScorePredicth2').empty();
-						if(score == 5){
+						if (score == 5) {
 							$('#homeScorePredict').text('5+');
 							$('#homeScorePredicth2').html(`<span id="homeScorePredict">5+</span>`);
-						}else{
+						} else {
 							$('#homeScorePredict').text(score);
 							$('#homeScorePredicth2').html(`<span id="homeScorePredict">` + score + `</span>`);
 						}
@@ -71,10 +71,10 @@ $(document).ready(function () {
 						$('#scoreAwayModal').modal('hide');
 						$('#awayScorePredict').text('');
 						$('#awayScorePredicth2').empty();
-						if(score == 5){
+						if (score == 5) {
 							$('#awayScorePredict').text('5+');
 							$('#awayScorePredicth2').html(`<span id="awayScorePredict">5+</span>`);
-						}else{
+						} else {
 							$('#awayScorePredict').text(score);
 							$('#awayScorePredicth2').html(`<span id="awayScorePredict">` + score + `</span>`);
 						}
@@ -120,9 +120,9 @@ $(document).ready(function () {
 								predictionText: 1
 							},
 							success: function (result) {
-								console.log(result);
+								// console.log(result);
 								if (result.success) {
-									$.alert('Prediction Recorded!');
+									// $.alert('Prediction Recorded!');
 									$('#yellowCardPredict').text('');
 									$('#yellowCardPredict').text('YES');
 									$('#yellowCardPredicth2').empty();
@@ -148,9 +148,9 @@ $(document).ready(function () {
 								predictionText: 0
 							},
 							success: function (result) {
-								console.log(result);
+								// console.log(result);
 								if (result.success) {
-									$.alert('Prediction Recorded!');
+									// $.alert('Prediction Recorded!');
 									$('#yellowCardPredict').text('');
 									$('#yellowCardPredict').text('NO');
 									$('#yellowCardPredicth2').empty();
@@ -166,7 +166,7 @@ $(document).ready(function () {
 					}
 				},
 				cancel: function () {
-					$.alert('Canceled!');
+					// $.alert('Canceled!');
 				}
 			}
 		});
@@ -192,9 +192,9 @@ $(document).ready(function () {
 							},
 
 							success: function (result) {
-								console.log(result);
+								// console.log(result);
 								if (result.success) {
-									$.alert('Prediction Recorded!');
+									// $.alert('Prediction Recorded!');
 									$('#hatTrickPredict').text('');
 									$('#hatTrickPredict').text('YES');
 									$('#hatTrickPredicth2').empty();
@@ -221,9 +221,9 @@ $(document).ready(function () {
 							},
 
 							success: function (result) {
-								console.log(result);
+								// console.log(result);
 								if (result.success) {
-									$.alert('Prediction Recorded!');
+									// $.alert('Prediction Recorded!');
 									$('#hatTrickPredict').text('');
 									$('#hatTrickPredict').text('NO');
 									$('#hatTrickPredicth2').empty();
@@ -239,7 +239,7 @@ $(document).ready(function () {
 					}
 				},
 				cancel: function () {
-					$.alert('Canceled!');
+					// $.alert('Canceled!');
 				}
 			}
 		});
@@ -265,9 +265,9 @@ $(document).ready(function () {
 							},
 
 							success: function (result) {
-								console.log(result);
+								// console.log(result);
 								if (result.success) {
-									$.alert('Prediction Recorded!');
+									// $.alert('Prediction Recorded!');
 									$('#ownGoalPredict').text('');
 									$('#ownGoalPredict').text('YES');
 									$('#ownGoalPredicth2').empty();
@@ -294,9 +294,9 @@ $(document).ready(function () {
 							},
 
 							success: function (result) {
-								console.log(result);
+								// console.log(result);
 								if (result.success) {
-									$.alert('Prediction Recorded!');
+									// $.alert('Prediction Recorded!');
 									$('#ownGoalPredict').text('');
 									$('#ownGoalPredict').text('NO');
 									$('#ownGoalPredicth2').empty();
@@ -312,7 +312,7 @@ $(document).ready(function () {
 					}
 				},
 				cancel: function () {
-					$.alert('Canceled!');
+					// $.alert('Canceled!');
 				}
 			}
 		});
@@ -338,9 +338,9 @@ $(document).ready(function () {
 							},
 
 							success: function (result) {
-								console.log(result);
+								// console.log(result);
 								if (result.success) {
-									$.alert('Prediction Recorded!');
+									// $.alert('Prediction Recorded!');
 									$('#redCardPredict').text('');
 									$('#redCardPredict').text('YES');
 									$('#redCardPredicth2').empty();
@@ -367,9 +367,9 @@ $(document).ready(function () {
 							},
 
 							success: function (result) {
-								console.log(result);
+								// console.log(result);
 								if (result.success) {
-									$.alert('Prediction Recorded!');
+									// $.alert('Prediction Recorded!');
 									$('#redCardPredict').text('');
 									$('#redCardPredict').text('NO');
 									$('#redCardPredicth2').empty();
@@ -385,7 +385,7 @@ $(document).ready(function () {
 					}
 				},
 				cancel: function () {
-					$.alert('Canceled!');
+					// $.alert('Canceled!');
 				}
 			}
 		});
