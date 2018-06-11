@@ -47,6 +47,8 @@ $(document).ready(function () {
 	});
 
 	$('button.jqPredict').on('click', function () {
+		loaders = document.getElementsByClassName('loader-wrapper');
+		loaders[0].style.display = "inherit";
 		// $('select').awselect();
 		var self = $(this);
 		id = self.data('id');
@@ -70,41 +72,34 @@ $(document).ready(function () {
 				url: teamUrl,
 
 				success: function (data) {
-					loaders = document.getElementsByClassName('loader-wrapper');
-					loaders[0].style.display = "inherit";
 					$.ajax({
 						method: 'GET',
 						url: getPredicted,
 
 						success: function (predictedArray) {
-							// $('select').niceSelect();
 							var option = '<option value=-1>Select</option>';
 							$('.jqSelect').html('');
 							$('.jqSelect').append(option);
-							// $('.jqSelect').selectpicker('render').selectpicker('refresh');
-							// $('select').niceSelect('update');
 							for (var i = 0; i < data.length; i++) {
 								if (!predictedArray.includes(data[i].name)) {
 									option = '<option value={0}>{1}</option>'
 										.replace('{0}', data[i].id)
 										.replace('{1}', data[i].name);
 									$('.jqSelect').append(option);
-									// $('.jqSelect').selectpicker('render').selectpicker('refresh');
-									// $('select').niceSelect('update');
 								}
 							}
 							loaders[0].style.display = "none";
-							// $('select').niceSelect('updaplayer_modalte');
-							// $('.selectpicker').selectpicker();
 						},
 						error: function () {
 							console.log('error getting predicted values');
+							loaders[0].style.display = "none";
 						}
 					});
 				},
 
 				error: function () {
 					console.log('error');
+					loaders[0].style.display = "none";
 				}
 			});
 		}
@@ -127,9 +122,11 @@ $(document).ready(function () {
 							.replace('{1}', data[i].name);
 						$('.jqSelect').append(option);
 					}
+					loaders[0].style.display = "none";
 				},
 				error: function () {
 					console.log('error in group');
+					loaders[0].style.display = "none";
 				}
 			});
 		}
@@ -149,9 +146,11 @@ $(document).ready(function () {
 							.replace('{1}', data[i].name);
 						$('.jqSelectCountry').append(option);
 					}
+					loaders[0].style.display = "none";
 				},
 				error: function () {
 					console.log('error getting predicted values');
+					loaders[0].style.display = "none";
 				}
 			});
 		}
@@ -224,7 +223,7 @@ $(document).ready(function () {
 							icon: "success",
 						});
 					} else {
-						swal("Your prediction is not recorded!");
+						// swal("Your prediction is not recorded!");
 						$('#modal_predict').hide();
 					}
 				});
@@ -274,7 +273,7 @@ $(document).ready(function () {
 							icon: "success",
 						});
 					} else {
-						swal("Your prediction is not recorded!");
+						// swal("Your prediction is not recorded!");
 						$('#player_modal').hide();
 					}
 				});
@@ -283,6 +282,7 @@ $(document).ready(function () {
 
 	$('.jqSelectCountry').change(function () {
 		countrySelected = $('.jqSelectCountry').val();
+		playerSelected = -1;
 		// playerPredictedText = $('.jqSelectCountry :selected').text();
 		// console.log(id);
 
