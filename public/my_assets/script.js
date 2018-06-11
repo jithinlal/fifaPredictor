@@ -32,9 +32,7 @@ $(document).ready(function () {
 								swal("Your Team is : " + data.team, {
 									icon: "success",
 								});
-								setTimeout(function () {
-									window.location.href = '/';
-								}, 3000);
+								window.location.href = '/';
 							}
 						},
 						error: function (err) {
@@ -72,6 +70,8 @@ $(document).ready(function () {
 				url: teamUrl,
 
 				success: function (data) {
+					loaders = document.getElementsByClassName('loader-wrapper');
+					loaders[0].style.display = "inherit";
 					$.ajax({
 						method: 'GET',
 						url: getPredicted,
@@ -93,6 +93,7 @@ $(document).ready(function () {
 									// $('select').niceSelect('update');
 								}
 							}
+							loaders[0].style.display = "none";
 							// $('select').niceSelect('updaplayer_modalte');
 							// $('.selectpicker').selectpicker();
 						},
