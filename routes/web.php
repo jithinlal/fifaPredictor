@@ -30,7 +30,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/api/allTime', 'ApiController@allTime');
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/favTeam', 'FavController@index');
 
 Route::get('/rule-set', function () {
