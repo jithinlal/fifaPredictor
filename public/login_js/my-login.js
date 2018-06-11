@@ -38,7 +38,7 @@ $(function () {
 					if (result) {
 						window.location.href = '/';
 					} else {
-						window.location.href = '/rule-set';
+						window.location.href = '/favTeam';
 					}
 				},
 				error: function (err) {
