@@ -35,7 +35,7 @@
 											@if($game->result_published)
 												<h3 style="color:white">{{$teams[$game->home_team]['name']}} &nbsp; {{ $game->home_result }} &nbsp; - &nbsp; {{ $game->away_result }} &nbsp; {{$teams[$game->away_team]['name']}}</h3>
 												@if($game->result_text)											
-													<h4 style="color:white">{{ $game->result_text }}</h4>
+													<h6 style="color:white">{{ $game->result_text }}</h6>
 												@endif	
 											@else
 												<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>
@@ -87,7 +87,7 @@
 											@if($game->result_published)
 												<h3 style="color:white">{{$teams[$game->home_team]['name']}} &nbsp; {{ $game->home_result }} &nbsp; - &nbsp; {{ $game->away_result }} &nbsp; {{$teams[$game->away_team]['name']}}</h3>
 												@if($game->result_text)											
-													<h4 style="color:white">{{ $game->result_text }}</h4>
+													<h6 style="color:white">{{ $game->result_text }}</h6>
 												@endif	
 											@else
 												<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>

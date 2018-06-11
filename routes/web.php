@@ -37,6 +37,10 @@ Route::get('/rule-set', function () {
 	return view('ruleset.index');
 });
 
+Route::get('/point-system', function () {
+	return view('vishnu-rules');
+});
+
 Route::get('/basic-rules', function () {
 	return view('basic-rules-page');
 });
@@ -111,11 +115,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 	Route::get('/prediction-points', 'PredictionPointController@index');
 	Route::post('/prediction-points/update', 'PredictionPointController@update');
 
+	//Artisan Commands
 	Route::get('/cache/clear', '\App\Http\Controllers\ArtisanController@cacheClear');
 	Route::get('/config/clear', '\App\Http\Controllers\ArtisanController@configClear');
 	Route::get('/config/cache', '\App\Http\Controllers\ArtisanController@configCache');
 	Route::get('/refresh', '\App\Http\Controllers\ArtisanController@refresh');
 	Route::get('/db/seed', '\App\Http\Controllers\ArtisanController@dbSeed');
+
+	//User Controller
+	Route::get('/user', 'UserController@index');
+	Route::get('/user-admin', 'UserController@admin');
+	Route::get('/user-sa-user', 'UserController@saUser');
 
 });
 
