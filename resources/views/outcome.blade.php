@@ -12,7 +12,7 @@
         	<article role="pge-title-content">
 
             	<header>
-					<a type="button" class="btn btn-outline-warning" href="{{url()->previous()}}"><span style="font-size:50px;">&#8592;</span></a>
+					<a type="button" class="btn btn-outline-warning" href="/"><span style="font-size:50px;">&#8592;</span></a>
 					<h2><span>{{$match->type}}</span></h2>
 					@if($winner_outcome == $teams[$match->home_team]->name)
 						<h2 style="color:green;">{{$teams[$match->home_team]->name}}</h2>
