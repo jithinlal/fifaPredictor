@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	<a type="button" class="btn btn-outline-warning" href="/"><span style="font-size:50px;color: white;">&#8592;</span></a>
+	<a type="button" class="btn btn-outline-warning" href="/"><span style="font-size:50px;color: black;">&#8592;</span></a>
 	<div id="app"></div>
 
 	<script src="/home_vendor/jquery/jquery.min.js"></script>
