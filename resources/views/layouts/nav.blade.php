@@ -5,6 +5,7 @@
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
+		<img src="{{ Auth::user()->image_url }}" width="30px" height:"30px" style="border-radius:50%;"/>
           	<a class="js-scroll-trigger" href="#page-top">{{ Auth::user()->name }}</a>
         </li>
         <li class="sidebar-nav-item">
