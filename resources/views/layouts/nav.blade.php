@@ -5,6 +5,7 @@
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
+		<img src="{{ Auth::user()->image_url }}" width="30px" height:"30px" style="border-radius:50%;"/>
           	<a class="js-scroll-trigger" href="#page-top">{{ Auth::user()->name }}</a>
         </li>
         <li class="sidebar-nav-item">
@@ -19,12 +20,16 @@
         <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="#leaderboard">Leaderboard</a>
         </li>
-		<li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="#previous">Previous Day</a>
-        </li>
-		<li class="sidebar-nav-item">
-            <a class="js-scroll-trigger" href="#today">Today's Game</a>
-        </li>
+		@if(\App\Meliorate::hasTournamentBegun() && !\App\Meliorate::isFirstDay())
+			<li class="sidebar-nav-item">
+				<a class="js-scroll-trigger" href="#previous">Previous Day</a>
+			</li>
+		@endif
+		@if(\App\Meliorate::hasTournamentBegun())
+			<li class="sidebar-nav-item">
+				<a class="js-scroll-trigger" href="#today">Today's Game</a>
+			</li>
+		@endif
         <li class="sidebar-nav-item">
           	<a class="js-scroll-trigger" href="#upcoming">Upcoming</a>
         </li>

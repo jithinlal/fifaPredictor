@@ -18,6 +18,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
-	<script type="text/babel" src="/my_js/other_lead.js"></script>
+	<script type="text/babel" src="/my_js/other_lead_sa.js"></script>
 </body>
 </html>

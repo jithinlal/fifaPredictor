@@ -28,77 +28,29 @@
 	<link rel="stylesheet" type="text/css" href="/login_page/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/login_page/css/main.css">
 	<!--===============================================================================================-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+
+	<link rel="stylesheet" type="text/css" href="/login_page/css/loader.css">
 </head>
 
 <body>
 
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('/login_page/images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('/login_page/images/login_back.jpg');">
 			<a href="#" class="btn-google m-b-20 signin">
 				<img src="/login_page/images/icons/icon-google.png" alt="GOOGLE"> Google
 			</a>
-
-			{{-- <form method="POST" action="{{ route('register') }}" id="submitForm" hidden>
-				@csrf
-				<div class="form-group">
-					<input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" required autofocus> @if ($errors->has('name'))
-					<span class="invalid-feedback">
-						<strong>{{ $errors->first('name') }}</strong>
-					</span>
-					@endif
-				</div>
-
-				<div class="form-group">
-					<input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" required> @if ($errors->has('email'))
-					<span class="invalid-feedback">
-						<strong>{{ $errors->first('email') }}</strong>
-					</span>
-					@endif
-				</div>
-
-				<div class="form-group">
-					<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
-						required> @if ($errors->has('password'))
-					<span class="invalid-feedback">
-						<strong>{{ $errors->first('password') }}</strong>
-					</span>
-					@endif
-				</div>
-
-				<div class="form-group">
-					<input id="photo" type="text" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" name="photo"> @if ($errors->has('photo'))
-					<span class="invalid-feedback">
-						<strong>{{ $errors->first('photo') }}</strong>
-					</span>
-					@endif
-				</div>
-
-				<div class="form-group">
-					<input id="refreshtoken" type="text" class="form-control{{ $errors->has('refreshtoken') ? ' is-invalid' : '' }}" name="refreshtoken"> @if ($errors->has('refreshtoken'))
-					<span class="invalid-feedback">
-						<strong>{{ $errors->first('refreshtoken') }}</strong>
-					</span>
-					@endif
-				</div>
-
-				<div class="form-group">
-					<input id="verify" type="text" class="form-control{{ $errors->has('verify') ? ' is-invalid' : '' }}" name="verify"> @if ($errors->has('verify'))
-					<span class="invalid-feedback">
-						<strong>{{ $errors->first('verify') }}</strong>
-					</span>
-					@endif
-				</div>
-
-			</form> --}}
-
 		<p id="getkeys" data-apikey="{{$googleApiKey}}" data-projectid="{{$googleProjectId}}" data-messagingid="{{$googleProjectId}}" data-databaseurl="{{$googleDatabaseUrl}}" data-authdomain="{{$googleAuthDomain}}"></p>
-
-		{{-- <button class="signout">click</button>
-		</div> --}}
 	</div>
 
 
 	<div id="dropDownSelect1"></div>
+
+	<div id="spiner-load-ajax" class="modal bigModal">
+        <div class="widget-spin">
+            <i class="ace-icon fa fa-spinner fa-spin green bigger-500"></i>
+        </div>
+	</div>
 
 
 	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>

@@ -29,6 +29,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 
 Route::get('/api/allTime', 'ApiController@allTime');
+Route::get('/api/saUser', 'ApiController@saUser');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/favTeam', 'FavController@index');
@@ -45,9 +46,7 @@ Route::get('/basic-rules', function () {
 	return view('basic-rules-page');
 });
 
-Route::get('/leaderboard', function () {
-	return view('leaderboard.index');
-});
+Route::get('/leaderboard', 'LeaderController@index');
 
 Route::get('/favTeam/team', 'FavController@team')->name('favTeamSelect');
 // Route::get('/coming-soon', 'SoonController@index');
