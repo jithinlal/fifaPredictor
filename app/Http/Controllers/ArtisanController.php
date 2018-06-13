@@ -32,4 +32,10 @@ class ArtisanController extends Controller
 		Artisan::call('db:seed');
 		return '<h1>Seeded</h1>';
 	}
+
+	public function sendMail()
+	{
+		Artisan::call('mail:users');
+		return 'Done';
+	}
 }

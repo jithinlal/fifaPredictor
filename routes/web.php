@@ -116,6 +116,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 	Route::get('/refresh', '\App\Http\Controllers\ArtisanController@refresh');
 	Route::get('/db/seed', '\App\Http\Controllers\ArtisanController@dbSeed');
 
+	Route::get('/send/mail', '\App\Http\Controllers\ArtisanController@sendMail');
+
 });
 
 

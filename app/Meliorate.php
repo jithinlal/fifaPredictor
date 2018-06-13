@@ -7,6 +7,7 @@ use DateTimeZone;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +15,7 @@ use App\Match;
 use App\Day;
 use App\MatchDay;
 use App\UserMatchPrediction;
+use App\Mail\SendUserEmail;
 
 
 class Meliorate extends Model
@@ -289,7 +291,7 @@ class Meliorate extends Model
 
 	/**
 	 * Find the current lock time gap
-	 * 
+	 *
 	 */
 	public static function currentLockTimeGap()
 	{
@@ -303,7 +305,7 @@ class Meliorate extends Model
 
 	/**
 	 * Get Number of users supporting a teams
-	 * 
+	 *
 	 */
 	public static function getSupportingUserCount($teamId)
 	{
@@ -312,7 +314,7 @@ class Meliorate extends Model
 
 	/**
 	 * Find Out If Today is a Match Day
-	 * 
+	 *
 	 */
 	public static function isTodayAMatchDay()
 	{
@@ -328,7 +330,7 @@ class Meliorate extends Model
 
 	/**
 	 * Get Matches Coming in the current match day
-	 * 
+	 *
 	 */
 	public static function currentMatchDayGames()
 	{
@@ -369,7 +371,7 @@ class Meliorate extends Model
 
 	/**
 	 * Find Next Match Day
-	 * 
+	 *
 	 */
 	public static function nextMatchDay()
 	{
@@ -380,7 +382,7 @@ class Meliorate extends Model
 
 	/**
 	 * Get Matches Coming in the next match day
-	 * 
+	 *
 	 */
 	public static function upcomingMatchDayGames()
 	{
@@ -420,7 +422,7 @@ class Meliorate extends Model
 
 	/**
 	 * Find previous Match Day
-	 * 
+	 *
 	 */
 	public static function previousMatchDay()
 	{
@@ -435,7 +437,7 @@ class Meliorate extends Model
 
 	/**
 	 * Get Matches Coming in the previous match day
-	 * 
+	 *
 	 */
 	public static function previousMatchDayGames()
 	{
@@ -511,6 +513,17 @@ class Meliorate extends Model
 	public static function userPredictedCount($matchId)
 	{
 		return UserMatchPrediction::where('match_id', $matchId)->where('user_id', Auth::id())->whereIn('prediction_id', [17, 18, 19, 20, 21, 22])->count();
+	}
+
+	public function sendMail()
+	{
+		$users = \App\User::all();
+		$mails = [];
+		foreach ($users as $user) {
+			$mails[] = $user->email;
+		}
+
+		Mail::to($mails)->send(new SendUserEmail);
 	}
 
 }
