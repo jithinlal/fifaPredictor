@@ -5,6 +5,35 @@
             <i class="fa fa-dashboard"></i> <span>Admin Home</span>
         </a>
     </li>
+    <li class="header">Users</li>
+
+         <li class="treeview">
+            <a href="javascript:;">
+                <i class="fa fa-user"></i>
+                <span>Users</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="/admin/user-admin/" class="active" title="Admins">
+                        <i class="fa fa-user"></i> <span>Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/user/" class="active" title="Users">
+                        <i class="fa fa-user"></i> <span>All Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/user-sa-user/" class="active" title="SA Users">
+                        <i class="fa fa-user"></i> <span>SA Users</span>
+                    </a>
+                </li>
+            </ul>
+        </li>          
+
     <li class="header">Schedule</li>
         <li>
             <a href="/admin/days/" class="active" title="Days">

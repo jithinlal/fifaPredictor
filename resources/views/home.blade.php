@@ -10,8 +10,9 @@
           <em style="color:black">Let's join the global carnival of Football</em>
         </h3>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#services">Main Prediction</a>
-		<a class="btn btn-danger btn-xl js-scroll-trigger" href="#about">Total Points</a>
-		<a class="btn btn-primary btn-xl js-scroll-trigger" href="#upcoming">Upcoming Games</a>
+		{{-- <a class="btn btn-danger btn-xl js-scroll-trigger" href="#about">Total Points</a> --}}
+        <a class="btn btn-danger btn-xl js-scroll-trigger" href="/point-system">Rules</a>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#upcoming">Upcoming Games</a>
       </div>
       <div class="overlay"></div>
     </header>

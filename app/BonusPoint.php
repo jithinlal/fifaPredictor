@@ -33,7 +33,11 @@ class BonusPoint extends Model
     public static function getFavTeamName($userId)
     {
         $allTeams = Team::all()->pluck('name', 'id');
-        return $allTeams[self::getFavTeamId($userId)];
+        if (self::getFavTeamId($userId)) {
+            return $allTeams[self::getFavTeamId($userId)];
+        }
+
+        return 'Favourite Team';
     }
 
     /**

@@ -72,6 +72,7 @@ class ApiController extends Controller
 	public function nonBonus(Request $request)
 	{
 		if ($request->ajax()) {
+			$allTeams = Team::all()->pluck('name', 'id');
 			$query = DB::table('users')
 				->leftJoin('user_match_predictions', 'users.id', '=', 'user_match_predictions.user_id');
 
@@ -116,6 +117,7 @@ class ApiController extends Controller
 	public function saUser(Request $request)
 	{
 		if ($request->ajax()) {
+			$allTeams = Team::all()->pluck('name', 'id');
 			$query = DB::table('users')
 				->leftJoin('user_match_predictions', 'users.id', '=', 'user_match_predictions.user_id');
 
@@ -172,6 +174,7 @@ class ApiController extends Controller
 	public function favTeam(Request $request)
 	{
 		if ($request->ajax()) {
+			$allTeams = Team::all()->pluck('name', 'id');
 			//$teamId = 2;
 			$teamId = $request->teamId;
 			//-----------------------------------------------
