@@ -26,11 +26,10 @@ class TestController extends Controller
     public function index()
     {
 
-        $today = new DateTime();
-        $todayMySql = $today->format(self::MYSQL_DATE);
-        $array1 = Day::where('day', '<', $todayMySql)->pluck('id')->toArray();
-        dd($array1);
-        dd(array_slice($array1, -1)[0]);
+        $email = "sanath@softwareassociates.in";
+        $domain_name = substr(strrchr($email, "@"), 1);
+        echo "Domain name is :" . $domain_name;
+        exit;
 
         //-------------------------------------------------
 
