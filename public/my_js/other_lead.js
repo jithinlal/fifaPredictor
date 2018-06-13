@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	// var urlRecent = 'https://fcctop100.herokuapp.com/api/fccusers/top/recent';
-	var urlRecent = '/api/allTime';
+	var urlRecent = '/api/saUser';
 	// var urlAllTime = 'https://fcctop100.herokuapp.com/api/fccusers/top/alltime';
 
 	var App = React.createClass({

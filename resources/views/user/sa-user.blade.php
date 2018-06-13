@@ -2,11 +2,11 @@
 
 @section('title')
     @parent
-    User Controller
+    SA Users
 @endsection
 
 @section('pageHeading')
-    SA
+    List
 @endsection
 
 @section('pageSubHeading')
@@ -14,8 +14,8 @@
 @endsection
 
 @section('breadcrumbLevelOne')
-        <a href="/admin/admin">
-				User Controller
+        <a href="/admin/user-sa-user">
+				SA Users
 		</a>
 @endsection
 
@@ -26,17 +26,19 @@
     <table class="table table-striped">
         <thead>
             <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">UserId</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($users as $user)
                 <tr>
-                    <th scope="row">{{ $user->id }}</th>
+                    <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    <td>{{ $user->id }}</td>
                 </tr>  
             @endforeach         
         </tbody>

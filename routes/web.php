@@ -126,11 +126,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 	Route::get('/user', 'UserController@index');
 	Route::get('/user-admin', 'UserController@admin');
 	Route::get('/user-sa-user', 'UserController@saUser');
+	Route::get('/make-sa-user', 'UserController@makeSaUsers');
 
 });
-
-
-
-
-
-

@@ -23,12 +23,12 @@
                 </li>
                 <li>
                     <a href="/admin/user/" class="active" title="Users">
-                        <i class="fa fa-user"></i> <span>Users</span>
+                        <i class="fa fa-user"></i> <span>All Users</span>
                     </a>
                 </li>
                 <li>
                     <a href="/admin/user-sa-user/" class="active" title="SA Users">
-                        <i class="fa fa-user"></i> <span>Sa Users</span>
+                        <i class="fa fa-user"></i> <span>SA Users</span>
                     </a>
                 </li>
             </ul>

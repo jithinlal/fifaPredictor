@@ -6,16 +6,16 @@
 @endsection
 
 @section('pageHeading')
-    User Controller
+    Admins
 @endsection
 
 @section('pageSubHeading')
-    Index 
+    List 
 @endsection
 
 @section('breadcrumbLevelOne')
-        <a href="/admin/test">
-				User Controller
+        <a href="/admin/user-admin">
+				Admins
 		</a>
 @endsection
 
@@ -24,9 +24,9 @@
     <table class="table table-striped">
         <thead>
             <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
             </tr>
         </thead>
         <tbody>
