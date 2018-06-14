@@ -13,17 +13,17 @@
 
             	<header>
 					<a type="button" class="btn btn-outline-warning" href="/"><span style="font-size:50px;">&#8592;</span></a>
-					<h2><span>{{$match->type}}</span></h2>
+					<h2><span style="color:black">{{$match->type}}</span></h2>
 					@if($winner_outcome == $teams[$match->home_team]->name)
 						<h2 style="color:green;">{{$teams[$match->home_team]->name}}</h2>
 					@else
-						<h2>{{$teams[$match->home_team]->name}}</h2>
+						<h2 style="color:red;">{{$teams[$match->home_team]->name}}</h2>
 					@endif
                     <h1>v/s</h1>
 					@if($winner_outcome == $teams[$match->away_team]->name)
 						<h2 style="color:green;">{{$teams[$match->away_team]->name}}</h2>
 					@else
-						<h2>{{$teams[$match->away_team]->name}}</h2>
+						<h2 style="color:red;">{{$teams[$match->away_team]->name}}</h2>
 					@endif
 
                 </header>

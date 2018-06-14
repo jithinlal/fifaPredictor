@@ -91,6 +91,15 @@ class UserResultController extends Controller
 			}
 		}
 
+		$user_winner_prediction = UserMatchPrediction::where([['match_id', $match_id], ['user_id', Auth::id()], ['prediction_id', 23]])->get();
+		if ($user_winner_prediction->count() == 0) {
+			$user_winner_point = 0;
+			$user_winner_prediction = 'Not Predicted';
+		} else {
+			$user_winner_point = $user_winner_prediction->first()->pointsObtained;
+			$user_winner_prediction = $user_winner_prediction->first()->prediction;
+		}
+
 		$home_outcome = Result::where([['match_id', $match_id], ['prediction_id', 17]])->get()->first()->outcome;
 		$home_comment = Result::where([['match_id', $match_id], ['prediction_id', 17]])->get()->first()->comment;
 		$away_outcome = Result::where([['match_id', $match_id], ['prediction_id', 18]])->get()->first()->outcome;
@@ -130,6 +139,6 @@ class UserResultController extends Controller
 		$teams = Team::all()->keyBy('id');
 		$stadia = Stadium::all()->keyBy('id');
 
-		return view('outcome', compact('match', 'teams', 'stadia', 'user_own_prediction', 'user_hat_prediction', 'user_red_prediction', 'user_yellow_prediction', 'user_away_prediction', 'user_home_prediction', 'user_home_point', 'user_away_point', 'user_yellow_point', 'user_red_point', 'user_hat_point', 'user_own_point', 'home_outcome', 'away_outcome', 'yellow_outcome', 'red_outcome', 'hat_outcome', 'own_outcome', 'winner_outcome', 'home_comment', 'away_comment', 'yellow_comment', 'red_comment', 'hat_comment', 'own_comment', 'winner_comment'));
+		return view('outcome', compact('match', 'teams', 'stadia', 'user_own_prediction', 'user_hat_prediction', 'user_red_prediction', 'user_yellow_prediction', 'user_away_prediction', 'user_home_prediction', 'user_home_point', 'user_away_point', 'user_yellow_point', 'user_red_point', 'user_hat_point', 'user_own_point', 'home_outcome', 'away_outcome', 'yellow_outcome', 'red_outcome', 'hat_outcome', 'own_outcome', 'winner_outcome', 'user_winner_point', 'user_winner_prediction', 'home_comment', 'away_comment', 'yellow_comment', 'red_comment', 'hat_comment', 'own_comment', 'winner_comment'));
 	}
 }
