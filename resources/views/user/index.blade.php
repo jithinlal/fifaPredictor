@@ -21,6 +21,25 @@
 
 @section('content')
 
+<div class="pull-right">
+    <a class="btn btn-primary" href="/admin/user?page={{ $users->lastPage() }}"> Go to last Page </a>   
+</div>
+
+    <div class="container">
+        <div class="col-lg-3 col-xs-6">
+          <div class="small-box bg-green">
+            <div class="inner">
+                <h3>{{ $count }}</h3>
+
+                <p>Total Count</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+          </div>
+        </div>
+    </div>   
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -43,7 +62,9 @@
                     </tr>  
                 @endforeach
             @else
-                <td> No Records Found </td>
+                <tr>
+                    <td> No Records Found </td>
+                </tr>
             @endif
         </tbody>
     </table>

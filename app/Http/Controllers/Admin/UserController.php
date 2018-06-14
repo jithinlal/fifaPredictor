@@ -13,6 +13,8 @@ class UserController extends Controller
     const ADMINS = [1, 2];
     const SA_DOMAIN_NAMES = ['softwareassociates.in', 'softwareassociates.co.in'];
 
+    private $_records = 20;
+
     public function index()
     {
         $data = [];
@@ -22,7 +24,7 @@ class UserController extends Controller
 
         $count = User::whereNotIn('id', self::ADMINS)->count();
         if ($count > 0) {
-            $users = User::whereNotIn('id', self::ADMINS)->paginate(15);
+            $users = User::whereNotIn('id', self::ADMINS)->paginate($this->_records);
         }
 
         $data['users'] = $users;
@@ -38,7 +40,7 @@ class UserController extends Controller
     {
         $data = [];
 
-        $admins = User::whereIn('id', self::ADMINS)->paginate(15);
+        $admins = User::whereIn('id', self::ADMINS)->paginate($this->_records);
 
         $data['users'] = $admins;
 
@@ -50,9 +52,16 @@ class UserController extends Controller
     {
         $data = [];
 
-        $saUsers = User::where('sa_user', 1)->paginate(15);
+        $data['users'] = [];
+        $data['count'] = 0;
+
+        $count = User::where('sa_user', 1)->count();
+        if ($count > 0) {
+            $saUsers = User::where('sa_user', 1)->paginate($this->_records);
+        }
 
         $data['users'] = $saUsers;
+        $data['count'] = $count;
 
 
         return view('user.sa-user', $data);
@@ -77,10 +86,14 @@ class UserController extends Controller
                     $newSaUsernames[] = $newSaUser->name;
                 }
             }
-            Session::flash('alert-success', $newSaUsercount . ' SA users Added. They are ' . implode(" , ", $newSaUsernames));
+            if ($newSaUsercount > 0) {
+                Session::flash('alert-success', $newSaUsercount . ' SA users Added. They are ' . implode(" , ", $newSaUsernames));
+            } else {
+                Session::flash('alert-success', $newSaUsercount . ' SA users Added');
+            }
             return redirect('/admin/user-sa-user');
         } else {
-            Session::flash('alert-warning', $newSaUsercount . ' SA users Added');
+            Session::flash(' alert - warning ', $newSaUsercount . ' SA users Added ');
             return redirect('/admin/user-sa-user');
         }
 
