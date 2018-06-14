@@ -489,8 +489,12 @@ class Meliorate extends Model
 	public static function isFirstDay()
 	{
 		$today = new DateTime();
+		$todayFormat = $today->format(self::MYSQL_DATE);
+
 		$firstMatchDay = new DateTime(self::MIN_DAY);
-		return $today == $firstMatchDay;
+		$firstDayFormat = $firstMatchDay->format(self::MYSQL_DATE);
+
+		return $todayFormat == $firstDayFormat;
 	}
 
 	public static function isTournamentLastDayOrOver()

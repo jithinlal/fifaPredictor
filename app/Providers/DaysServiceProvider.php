@@ -47,17 +47,17 @@ class DaysServiceProvider extends ServiceProvider
 			$currentGames = Meliorate::currentMatchDayGames();
 
 			$upcomingMatchDayNumber = '';
-			if ($upcomingGames) {
+			if ($upcomingGames && $upcomingGames->count()) {
 				$upcomingMatchDayNumber = $upcomingGames[0]->id;
 			}
 
 			$previousMatchDayNumber = '';
-			if ($previousGames) {
+			if ($previousGames && $previousGames->count()) {
 				$previousMatchDayNumber = $previousGames[0]->id;
 			}
 
 			$currentMatchDayNumber = '';
-			if ($currentGames) {
+			if ($currentGames && $currentGames->count()) {
 				$currentMatchDayNumber = $currentGames[0]->id;
 			}
 
