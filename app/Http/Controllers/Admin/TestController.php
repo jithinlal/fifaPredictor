@@ -25,6 +25,7 @@ class TestController extends Controller
 
     public function index()
     {
+        dd(\App\Meliorate::isFirstDay());
 
         $email = "sanath@softwareassociates.in";
         $domain_name = substr(strrchr($email, "@"), 1);

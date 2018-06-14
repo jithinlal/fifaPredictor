@@ -1,3 +1,8 @@
+@php
+    use App\Meliorate;
+@endphp
+
+
 @if(\App\Meliorate::hasTournamentBegun() && !\App\Meliorate::isFirstDay())
 <!-- Portfolio -->
 <section class="content-section" id="previous">
@@ -39,7 +44,6 @@
 											@else
 												<h3 style="color:white">{{$teams[$game->home_team]['name']}} v/s {{$teams[$game->away_team]['name']}}</h3>
 											@endif
-											<p class="mb-0">{{$stadia[$game->stadium_id]['name']}}, {{$stadia[$game->stadium_id]['city']}}</p>
 											<p>
 												@if($game->result_published)
 													<button class="btn btn-sm btn-primary disabled">Results Published</button>
@@ -53,6 +57,7 @@
 													<button class="btn btn-sm btn-warning disabled">Predictions : {{ Meliorate::userPredictedCount($game->match_id) }} / 6</button>
 												@endif
 											</p>
+											<p class="mb-0">{{$stadia[$game->stadium_id]['name']}}, {{$stadia[$game->stadium_id]['city']}}</p>											
 										</span>
 
 									@else

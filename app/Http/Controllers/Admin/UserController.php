@@ -17,11 +17,16 @@ class UserController extends Controller
     {
         $data = [];
 
-        //$admins = User::whereIn('id', self::ADMINS);
-        //$users = User::paginate(15);
-        $users = User::whereNotIn('id', self::ADMINS)->paginate(15);
+        $data['users'] = [];
+        $data['count'] = 0;
+
+        $count = User::whereNotIn('id', self::ADMINS)->count();
+        if ($count > 0) {
+            $users = User::whereNotIn('id', self::ADMINS)->paginate(15);
+        }
 
         $data['users'] = $users;
+        $data['count'] = $count;
 
 
         return view('user.index', $data);

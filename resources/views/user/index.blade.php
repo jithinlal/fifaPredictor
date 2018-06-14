@@ -32,15 +32,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($users as $user)
-                <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ empty($user->sa_user) ? 'No' : 'Yes' }}</td>
-                    <td>{{ $user->id }}</td>
-                </tr>  
-            @endforeach         
+            @if($count > 0)
+                @foreach ($users as $user)
+                    <tr>
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ empty($user->sa_user) ? 'No' : 'Yes' }}</td>
+                        <td>{{ $user->id }}</td>
+                    </tr>  
+                @endforeach
+            @else
+                <td> No Records Found </td>
+            @endif
         </tbody>
     </table>
 
