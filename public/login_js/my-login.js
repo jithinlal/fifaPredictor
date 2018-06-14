@@ -1,5 +1,15 @@
 $(function () {
 
+	$(document).ajaxStart(function () {
+		$('#spiner-load-ajax').modal({
+			backdrop: 'static',
+			keyboard: false
+		});
+	});
+	$(document).ajaxComplete(function () {
+		$('#spiner-load-ajax').modal('hide');
+	});
+
 	function login() {
 
 		// function newLogin(user) {

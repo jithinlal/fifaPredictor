@@ -16,6 +16,8 @@ use App\Day;
 use App\MatchDay;
 use App\UserMatchPrediction;
 use App\Mail\SendUserEmail;
+use App\Notifications\SendMarkdownUser;
+use Notification;
 
 
 class Meliorate extends Model
@@ -523,7 +525,8 @@ class Meliorate extends Model
 			$mails[] = $user->email;
 		}
 
-		Mail::to($mails)->send(new SendUserEmail);
+		// Notification::send('jithinlal@softwareassociates.in', new SendMarkdownUser);
+		Notification::route('mail', 'jithinlal@softwareassociates.in')->notify(new SendMarkdownUser('jithinlal@softwareassociates.in'));
 	}
 
 }
