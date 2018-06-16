@@ -25,12 +25,28 @@ class TestController extends Controller
 
     public function index()
     {
-        dd(\App\Meliorate::isFirstDay());
+        $allTeams = Team::all()->pluck('name', 'id');
 
-        $email = "sanath@softwareassociates.in";
-        $domain_name = substr(strrchr($email, "@"), 1);
-        echo "Domain name is :" . $domain_name;
-        exit;
+        $query = DB::table('users')
+            ->leftJoin('user_match_predictions', 'users.id', '=', 'user_match_predictions.user_id');
+
+        $query->select(
+            'users.id AS id',
+            DB::raw('min(users.name) AS name'),
+            DB::raw('min(users.user_uid) AS user_uid'),
+            DB::raw('min(users.sa_user) AS sa_user'),
+            DB::raw('min(users.email) AS email'),
+            DB::raw('min(users.image_url) AS image_url'),
+            DB::raw('min(users.fav_team_id) AS fav_team_id'),
+
+            DB::raw('sum(user_match_predictions.pointsObtained) AS nonBonusPoints')
+        );
+        $query->groupBy('users.id');
+
+        $query->whereNotIn('users.id', $this->_admins);
+
+        $rows = $query->get();
+        dd($rows);
 
         //-------------------------------------------------
 
