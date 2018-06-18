@@ -1,7 +1,9 @@
 $(document).ready(function () {
 	// var urlRecent = 'https://fcctop100.herokuapp.com/api/fccusers/top/recent';
-	var urlRecent = '/api/saUser';
+	var urlRecent = '/api/allTime';
 	// var urlAllTime = 'https://fcctop100.herokuapp.com/api/fccusers/top/alltime';
+
+	var userId = $('.getUser').data('userid');
 
 	var App = React.createClass({
 		getInitialState() {
@@ -39,7 +41,7 @@ $(document).ready(function () {
 						{
 							this.state.users.map(function (item, index) {
 								return (
-									<tr>
+									<tr className={(item.id == userId ? 'some' : 'none')}>
 										<td>{index + 1}</td>
 										<td><a href="javascript:;" target="_blank"> <img className="user-img" src={item.image_url} />{item.name}</a></td>
 										<td>{item.points} </td>
