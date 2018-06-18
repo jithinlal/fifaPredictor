@@ -3,6 +3,8 @@ $(document).ready(function () {
 	var urlRecent = '/api/saUser';
 	// var urlAllTime = 'https://fcctop100.herokuapp.com/api/fccusers/top/alltime';
 
+	var userId = $('.getUser').data('userid');
+
 	var App = React.createClass({
 		getInitialState() {
 			return {
@@ -39,7 +41,7 @@ $(document).ready(function () {
 						{
 							this.state.users.map(function (item, index) {
 								return (
-									<tr>
+									<tr className={(item.id == userId ? 'userColor' : 'otherColor')}>
 										<td>{index + 1}</td>
 										<td><a href="javascript:;" target="_blank"> <img className="user-img" src={item.image_url} />{item.name}</a></td>
 										<td>{item.points} </td>

@@ -41,7 +41,7 @@ $(document).ready(function () {
 						{
 							this.state.users.map(function (item, index) {
 								return (
-									<tr className={(item.id == userId ? 'some' : 'none')}>
+									<tr className={(item.id == userId ? 'userColor' : 'otherColor')}>
 										<td>{index + 1}</td>
 										<td><a href="javascript:;" target="_blank"> <img className="user-img" src={item.image_url} />{item.name}</a></td>
 										<td>{item.points} </td>
