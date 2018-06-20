@@ -141,4 +141,9 @@ class UserResultController extends Controller
 
 		return view('outcome', compact('match', 'teams', 'stadia', 'user_own_prediction', 'user_hat_prediction', 'user_red_prediction', 'user_yellow_prediction', 'user_away_prediction', 'user_home_prediction', 'user_home_point', 'user_away_point', 'user_yellow_point', 'user_red_point', 'user_hat_point', 'user_own_point', 'home_outcome', 'away_outcome', 'yellow_outcome', 'red_outcome', 'hat_outcome', 'own_outcome', 'winner_outcome', 'user_winner_point', 'user_winner_prediction', 'home_comment', 'away_comment', 'yellow_comment', 'red_comment', 'hat_comment', 'own_comment', 'winner_comment'));
 	}
+
+	public function knockout(Request $request)
+	{
+		return view('knock-out-result');
+	}
 }

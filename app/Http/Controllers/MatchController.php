@@ -25,4 +25,17 @@ class MatchController extends Controller
 			return view('match.show', ['match' => $match, 'teams' => $teams, 'stadia' => $stadia]);
 		}
 	}
+
+	public function knockOut($id)
+	{
+		$match = Match::find($id);
+		$teams = Team::all()->keyBy('id');
+		$stadia = Stadium::all()->keyBy('id');
+		if ($match->result_published) {
+			$text = "/knockout-match/" . $match->id . "/" . Auth::id();
+			return redirect($text);
+		} else {
+			return view('match.knockout', ['match' => $match, 'teams' => $teams, 'stadia' => $stadia]);
+		}
+	}
 }

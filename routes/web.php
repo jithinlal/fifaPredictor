@@ -51,12 +51,14 @@ Route::get('/leaderboard', 'LeaderController@index');
 Route::get('/favTeam/team', 'FavController@team')->name('favTeamSelect');
 // Route::get('/coming-soon', 'SoonController@index');
 Route::get('/match/{match}', 'MatchController@show');
+Route::get('/knock-out/{match}', 'MatchController@knockOut');
 Route::get('/teams', 'TeamController@index')->name('getPredict');
 Route::get('/groupTeams', 'TeamController@groupTeams')->name('getGroupTeams');
 Route::get('/players', 'PlayerController@index')->name('getPlayerName');
 Route::get('/user/prediction', 'PredictionController@index')->name('submitPrediction');
 Route::get('/prediction/data', 'PredictionController@predictedData')->name('getPredictedData');
 Route::get('/user-match/{match}/{user}', 'UserResultController@index');
+Route::get('/knockout-match/{match}/{user}', 'UserResultController@knockout');
 
 // Individual match Prediction
 Route::get('away_team/goal', 'PredictionController@awayScore')->name('getAwayTeamGoal');
