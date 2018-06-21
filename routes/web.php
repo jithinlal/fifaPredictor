@@ -48,7 +48,7 @@ Route::get('/basic-rules', function () {
 
 Route::get('/leaderboard', 'LeaderController@index');
 
-Route::get('/favTeam/team', 'FavController@team')->name('favTeamSelect');
+// Route::get('/favTeam/team', 'FavController@team')->name('favTeamSelect');
 // Route::get('/coming-soon', 'SoonController@index');
 Route::get('/match/{match}', 'MatchController@show');
 Route::get('/knock-out/{match}', 'MatchController@knockOut');

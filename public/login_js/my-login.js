@@ -48,7 +48,7 @@ $(function () {
 					if (result) {
 						window.location.href = '/';
 					} else {
-						window.location.href = '/favTeam';
+						window.location.href = '/';
 					}
 				},
 				error: function (err) {

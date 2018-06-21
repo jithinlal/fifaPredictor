@@ -12,7 +12,7 @@ class FavController extends Controller
 
 	public function index()
 	{
-		return view('myteam.index');
+		return view('home');
 	}
 
 	public function team(Request $request)
