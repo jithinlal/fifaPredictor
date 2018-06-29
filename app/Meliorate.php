@@ -533,4 +533,15 @@ class Meliorate extends Model
 		Notification::route('mail', 'jithinlal@softwareassociates.in')->notify(new SendMarkdownUser('jithinlal@softwareassociates.in'));
 	}
 
-}
+	public static function isSaUser($userId)
+	{
+		$user = User::findOrFail($userId);
+		return $user->sa_user == 1;
+	}
+
+	public static function overallPredictionUserPoints($userId, $predictionId)
+	{
+		return UserMatchPrediction::where('user_id', $userId)->where('match_id', 0)->where('prediction_id', $predictionId)->value('pointsObtained');
+	}
+
+}	

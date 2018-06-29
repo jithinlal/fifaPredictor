@@ -1,3 +1,7 @@
+@php
+    use App\Meliorate;
+@endphp
+
 @extends('layouts.powerRankings')
 
 @section('content')
@@ -16,8 +20,10 @@
 		<tr>
 			<th><h1>&NonBreakingSpace;</h1></th>
 			<th><h1>&NonBreakingSpace;</h1></th>
-			<th><h1>Goals Scored</h1></th>
-			<th><h1>Supporters</h1></th>
+            <th><h1>Goals Scored</h1></th>
+            @if(! Meliorate::isSaUser(auth()->id()))
+                <th><h1>Supporters</h1></th>
+            @endif
 			<th><h1>Wins</h1></th>
 			<th><h1>Losses</h1></th>
 			<th><h1>Draws</h1></th>
@@ -39,7 +45,9 @@
                     </td>
                     <td style="color:white">{{ $team->name }}</td>                    
                     <td>{{ $team->goalsScored }}</td>
-                    <td>{{ $team->supporterCount }}</td>
+                    @if(! Meliorate::isSaUser(auth()->id()))
+                        <td>{{ $team->supporterCount }}</td>
+                    @endif    
                     <td>{{ $team->winCount }}</td>
                     <td>{{ $team->lossCount }}</td>
                     <td>{{ $team->drawCount }}</td>
@@ -58,7 +66,9 @@
                     </td>
                     <td>{{ $team->name }}</td>
                     <td>{{ $team->goalsScored }}</td>
-                    <td>{{ $team->supporterCount }}</td>
+                    @if(! Meliorate::isSaUser(auth()->id()))
+                        <td>{{ $team->supporterCount }}</td>
+                    @endif  
                     <td>{{ $team->winCount }}</td>
                     <td>{{ $team->lossCount }}</td>
                     <td>{{ $team->drawCount }}</td>
@@ -76,7 +86,9 @@
                     </td>
                     <td>{{ $team->name }}</td>
                     <td>{{ $team->goalsScored }}</td>
-                    <td>{{ $team->supporterCount }}</td>
+                    @if(! Meliorate::isSaUser(auth()->id()))
+                        <td>{{ $team->supporterCount }}</td>
+                    @endif  
                     <td>{{ $team->winCount }}</td>
                     <td>{{ $team->lossCount }}</td>
                     <td>{{ $team->drawCount }}</td>
