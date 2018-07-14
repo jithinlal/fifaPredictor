@@ -48,7 +48,7 @@
 			</div>
 			@endif
 		</div>
-	@else
+	@elseif($match->type == 'rof16')
 		<div class="row ">
 			<div class="col-md-4 text-left list-group-item list-group-item-action">
 				@if(\App\Meliorate::isMatchPublised($match->id))
@@ -56,7 +56,7 @@
 					<img class="hvr-grow" src="/flags/png100px/{{$teams[$match->home_team]['iso2']}}.png">
 				<a/>
 				@else
-				<a href="/knock-out/{{$game->match_id}}">
+				<a href="/knock-out/{{$match->id}}">
 					<img class="hvr-grow" src="/flags/png100px/{{$teams[$match->home_team]['iso2']}}.png">
 				<a/>
 				@endif
@@ -71,7 +71,7 @@
 					<span class="text-align-center">{{ \App\Meliorate::daysFromToday($match->date) }}</span>
 				<a/>
 				@else
-				<a href="/knock-out/{{$game->match_id}}" class="btn btn-info">
+				<a href="/knock-out/{{$match->id}}" class="btn btn-info">
 					<span class="text-align-center">{{$teams[$match->home_team]['name']}} - {{$teams[$match->away_team]['name']}}</span>
 					<br>
 					<span class="text-align-center">{{$match->stadium->name}}</span>
@@ -88,7 +88,7 @@
 			</div>
 			@else
 			<div class="col-md-4 text-light list-group-item list-group-item-action">
-				<a href="/knock-out/{{$game->match_id}}">
+				<a href="/knock-out/{{$match->id}}">
 					<img class="float-right hvr-grow" src="/flags/png100px/{{$teams[$match->away_team]['iso2']}}.png">
 				<a/>
 			</div>

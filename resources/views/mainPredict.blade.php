@@ -36,6 +36,7 @@
 						@else
 							<p class="text-uppercase font-weight-bold text-warning">Not Predicted</p>
 						@endif
+						<p class="text-uppercase font-weight-bold text-success">{{/App/Meliorate::overallPredictionUserPoints(auth()->id(), $prediction->id)}}</p>
 					@endif
 
 					<p class="text-uppercase font-weight-bold text-warning"></p>
